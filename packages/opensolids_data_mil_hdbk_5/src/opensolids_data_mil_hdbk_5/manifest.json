@@ -1,6 +1,6 @@
 {
   "provider": "mil-hdbk-5",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "schema_version": 1,
   "record_counts": {
     "materials": 3,

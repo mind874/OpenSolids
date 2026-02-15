@@ -78,19 +78,19 @@ Bundled material inventory:
 
 ### Thermal conductivity comparison (NTRS copper alloys)
 
-![Thermal conductivity comparison](https://raw.githubusercontent.com/mind874/OpenSolids/main/docs/assets/plots/curve_k_regen.png)
+<img src="https://raw.githubusercontent.com/mind874/OpenSolids/main/docs/assets/plots/curve_k_regen.png" alt="Thermal conductivity comparison" width="65%">
 
 ### Yield strength comparison (NTRS + MIL)
 
-![Yield strength comparison](https://raw.githubusercontent.com/mind874/OpenSolids/main/docs/assets/plots/curve_sigma_y_regen.png)
+<img src="https://raw.githubusercontent.com/mind874/OpenSolids/main/docs/assets/plots/curve_sigma_y_regen.png" alt="Yield strength comparison" width="65%">
 
 ### Out-of-range policy behavior
 
-![Policy behavior plot](https://raw.githubusercontent.com/mind874/OpenSolids/main/docs/assets/plots/policy_cucrzr_k.png)
+<img src="https://raw.githubusercontent.com/mind874/OpenSolids/main/docs/assets/plots/policy_cucrzr_k.png" alt="Policy behavior plot" width="65%">
 
 ### Multi-database 6061 workflow
 
-![Multi-database 6061](https://raw.githubusercontent.com/mind874/OpenSolids/main/docs/assets/plots/al6061_multidatabase.png)
+<img src="https://raw.githubusercontent.com/mind874/OpenSolids/main/docs/assets/plots/al6061_multidatabase.png" alt="Multi-database 6061" width="65%">
 
 ## Documentation
 

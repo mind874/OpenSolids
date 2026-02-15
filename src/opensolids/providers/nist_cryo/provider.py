@@ -17,7 +17,7 @@ class NISTCryoProvider(LocalDataPackProvider):
         )
         super().__init__(
             name="nist-cryo",
-            version="0.2.2",
+            version="0.2.3",
             package_name="opensolids_data_nist_cryo",
             fallback_path=fallback,
         )

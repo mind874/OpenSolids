@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "opensolids"
-version = "0.2.2"
+version = "0.2.3"
 description = "Open solid material properties with provenance and provider backends"
 readme = "README.pypi.md"
 requires-python = ">=3.11"
