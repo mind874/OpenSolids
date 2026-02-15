@@ -21,7 +21,7 @@ def sync_nist_cryo(output_dir: Path, *, max_materials: int | None = None, timeou
     with requests.Session() as session:
         session.headers.update(
             {
-                "User-Agent": "OpenSolids/0.2 (+https://github.com/opensolids/opensolids)",
+                "User-Agent": "OpenSolids/0.2 (+https://github.com/mind874/OpenSolids)",
                 "Accept": "text/html,application/xhtml+xml",
             }
         )
