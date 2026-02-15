@@ -49,6 +49,9 @@ def test_parse_nist_live_6061_page_table_layout():
     assert props["E"]["units"] == "Pa"
     assert props["eps_th"]["model"]["type"] == "piecewise"
     assert props["eps_th"]["units"] == "1"
+    assert props["k"]["model"]["coefficients"][0] == 0.07918
+    assert props["cp"]["model"]["coefficients"][0] == 46.6467
+    assert props["eps_th"]["model"]["branches"][0]["model"]["y"][0] == -0.0041545
     assert props["k"]["valid_T_min"] == 1.0
     assert props["k"]["valid_T_max"] == 300.0
 
@@ -65,3 +68,5 @@ def test_parse_nist_live_304_page_table_layout():
     assert {"k", "cp", "E", "eps_th"}.issubset(props.keys())
     assert props["k"]["model"]["type"] == "log_polynomial"
     assert props["eps_th"]["model"]["type"] in {"piecewise", "polynomial"}
+    assert props["E"]["units"] == "Pa"
+    assert props["E"]["model"]["coefficients"][0] == 210059300000.0

@@ -9,14 +9,14 @@
   "properties": {
     "k": {
       "units": "W/(m*K)",
-      "valid_T_min": 4.0,
+      "valid_T_min": 1.0,
       "valid_T_max": 300.0,
       "recommended_T_min": 20.0,
       "recommended_T_max": 293.15,
       "source_id": "nist-cryo-src:aluminum-6061-t6",
       "model": {
         "type": "log_polynomial",
-        "coefficients": [1.22, 0.09, -0.02]
+        "coefficients": [0.07918, 1.0957, -0.07277, 0.08084, 0.02803, -0.09464, 0.04179, -0.00571, 0.0]
       }
     },
     "cp": {
@@ -28,34 +28,49 @@
       "source_id": "nist-cryo-src:aluminum-6061-t6",
       "model": {
         "type": "log_polynomial",
-        "coefficients": [1.9, 0.72, -0.12]
+        "coefficients": [46.6467, -314.292, 866.662, -1298.3, 1162.27, -637.795, 210.351, -38.3094, 2.96344]
       }
     },
     "E": {
       "units": "Pa",
-      "valid_T_min": 20.0,
-      "valid_T_max": 300.0,
+      "valid_T_min": 2.0,
+      "valid_T_max": 295.0,
       "recommended_T_min": 77.0,
       "recommended_T_max": 293.15,
       "source_id": "nist-cryo-src:aluminum-6061-t6",
       "model": {
         "type": "polynomial",
-        "coefficients": [72000000000.0, -28000000.0]
+        "coefficients": [77712210000.0, 10306460.0, -292410.0, 899.36, -1.0709]
       }
     },
     "eps_th": {
       "units": "1",
-      "valid_T_min": 20.0,
+      "valid_T_min": 4.0,
       "valid_T_max": 300.0,
       "recommended_T_min": 77.0,
       "recommended_T_max": 293.15,
       "reference_temperature": 293.15,
       "source_id": "nist-cryo-src:aluminum-6061-t6",
       "model": {
-        "type": "tabular",
-        "interpolation": "pchip",
-        "T": [20.0, 77.0, 150.0, 293.15],
-        "y": [-0.0031, -0.0022, -0.0012, 0.0]
+        "type": "piecewise",
+        "branches": [
+          {
+            "condition": {"kind": "lt", "upper": 18.0},
+            "model": {
+              "type": "tabular",
+              "interpolation": "linear",
+              "T": [4.0, 300.0],
+              "y": [-0.0041545, -0.0041545]
+            }
+          },
+          {
+            "condition": {"kind": "ge", "lower": 18.0},
+            "model": {
+              "type": "polynomial",
+              "coefficients": [-0.0041277, -3.0389e-06, 8.7696e-08, -9.9821e-11, 0.0]
+            }
+          }
+        ]
       }
     }
   }

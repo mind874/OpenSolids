@@ -1,0 +1,43 @@
+name: Publish To PyPI
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - path: .
+            name: opensolids
+          - path: packages/opensolids_data_nist_cryo
+            name: opensolids-data-nist-cryo
+          - path: packages/opensolids_data_ntrs_public
+            name: opensolids-data-ntrs-public
+          - path: packages/opensolids_data_mil_hdbk_5
+            name: opensolids-data-mil-hdbk-5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build
+        run: |
+          python -m pip install --upgrade pip build twine
+          python -m build --sdist --wheel --outdir dist "${{ matrix.package.path }}"
+          python -m twine check dist/*
+
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}

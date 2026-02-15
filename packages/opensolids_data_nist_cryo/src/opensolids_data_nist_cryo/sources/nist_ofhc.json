@@ -1,14 +1,15 @@
 {
   "source_id": "nist-cryo-src:oxygen-free-copper",
-  "title": "Oxygen-Free Copper",
+  "title": "OFHC Copper (UNS C10100/C10200)",
   "publisher": "NIST",
   "organization": "National Institute of Standards and Technology",
-  "url_or_citation_id": "https://trc.nist.gov/cryogenics/materials/materialproperties.htm",
+  "url_or_citation_id": "https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm",
   "license_notes": "NIST fair use/license statement applies; include attribution.",
   "retrieved_at": "2026-02-15T00:00:00Z",
-  "page_or_table": "material properties page",
+  "page_or_table": "cryogenic property equation table",
   "extraction_method": "fit-parse",
   "metadata": {
-    "provider": "nist-cryo"
+    "provider": "nist-cryo",
+    "disclaimer": "Engineering use requires independent verification for certification workflows."
   }
 }

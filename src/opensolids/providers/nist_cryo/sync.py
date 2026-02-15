@@ -59,7 +59,7 @@ def sync_nist_cryo(output_dir: Path, *, max_materials: int | None = None, timeou
 
     manifest = {
         "provider": "nist-cryo",
-        "version": "0.2.0",
+        "version": "0.2.1",
         "record_counts": {"materials": material_count, "sources": source_count},
         "license_notes": [
             "NIST attribution required.",

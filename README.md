@@ -30,13 +30,19 @@ keeping source/provenance information visible.
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e '.[dev]'
+pip install opensolids
 ```
 
 For plot-generating examples:
 
 ```bash
-pip install -e '.[viz]'
+pip install "opensolids[viz]"
+```
+
+For local development from this repository:
+
+```bash
+pip install -e '.[dev,viz]'
 ```
 
 ## Quick Start
@@ -80,6 +86,27 @@ Run:
 - Property calls: `mat.k(T)`, `mat.cp(T)`, `mat.E(T)`, `mat.sigma_y(T)`, ...
 - Out-of-range policy per call: `policy="clamp" | "raise" | "extrapolate"`
 - Units conversion per call: `units="MPa"`, `units="GPa"`, etc.
+
+## Units
+
+OpenSolids stores and serves curves in canonical SI units internally:
+
+- `k`: `W/(m*K)`
+- `cp`: `J/(kg*K)`
+- `rho`: `kg/m^3`
+- `E`, `sigma_y`, `sigma_uts`: `Pa`
+- `alpha`: `1/K`
+- `nu`, `eps_th`: `1`
+
+You can request output units per call with `units=...`.
+
+## Data Packaging
+
+Provider databases are bundled with the `opensolids` wheel, so `pip install opensolids`
+includes NIST, curated NTRS, and MIL-HDBK-5 records by default.
+
+If you are working from source, provider data also resolves from the local
+`packages/opensolids_data_*` directories.
 
 ## Visual Outputs
 
@@ -140,6 +167,7 @@ opensolids import mil-hdbk-5 --pdf /path/to/MIL-HDBK-5.pdf
 - `examples/08_database_workflows.py`
 - `examples/09_plot_provider_coverage.py`
 - `examples/10_plot_multidatabase_6061.py`
+- `examples/11_verify_units_and_sanity.py`
 
 Run all visual examples:
 
@@ -147,11 +175,18 @@ Run all visual examples:
 .venv/bin/python examples/07_generate_all_visuals.py
 ```
 
+Run the database SI/sanity verification example:
+
+```bash
+.venv/bin/python examples/11_verify_units_and_sanity.py
+```
+
 ## Documentation
 
 - Comprehensive guide: `docs/usage-guide.md`
 - Example index: `examples/README.md`
 - Compliance notes: `docs/compliance/`
+- PyPI publish workflow: `.github/workflows/publish-pypi.yml` (uses `PYPI_API_TOKEN`)
 
 ## License
 

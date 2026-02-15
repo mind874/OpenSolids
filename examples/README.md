@@ -10,7 +10,13 @@ For visual examples (PNG plots):
 
 ```bash
 source .venv/bin/activate
-pip install -e '.[viz]'
+pip install "opensolids[viz]"
+```
+
+For local development in this repository:
+
+```bash
+pip install -e '.[dev,viz]'
 ```
 
 ## Scripts
@@ -25,6 +31,7 @@ pip install -e '.[viz]'
 - `08_database_workflows.py`: practical walkthrough for NIST/NTRS/MIL usage.
 - `09_plot_provider_coverage.py`: provider material count + property coverage visuals.
 - `10_plot_multidatabase_6061.py`: combines NIST and MIL data for one alloy workflow.
+- `11_verify_units_and_sanity.py`: SI unit compatibility + reference sanity checks.
 
 ## Generated output locations
 

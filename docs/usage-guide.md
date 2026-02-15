@@ -8,13 +8,19 @@ It includes code snippets, generated visuals, and provider/database workflows.
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e '.[dev,viz]'
+pip install "opensolids[viz]"
 ```
 
 Quick checks:
 
 ```bash
 .venv/bin/python -c "import opensolids as osl; print(osl.list_providers())"
+```
+
+For local development in this repository:
+
+```bash
+pip install -e '.[dev,viz]'
 .venv/bin/pytest
 ```
 
@@ -39,6 +45,8 @@ Providers in this library:
 - `nist-cryo`: cryogenic/room-temperature thermal + elastic curves.
 - `ntrs`: curated NASA-report-derived engineering curves.
 - `mil-hdbk-5`: handbook allowables style strength curves.
+
+These provider data packs are bundled in the `opensolids` pip wheel by default.
 
 ID pattern by provider:
 
@@ -83,9 +91,9 @@ Material: nist-cryo:aluminum-6061-t6
 Name: Aluminum 6061-T6
 Available properties: E, cp, eps_th, k
 
-k(300 K) = 20.903 W/(m*K)
-E([77,150,293.15] K) = [69.844  67.8    63.7918] GPa
-eps_th(120 K, T_ref=293.15 K) = -1.572163e-03
+k(300 K) = 155.319 W/(m*K)
+E([77,150,293.15] K) = [77.14505066 75.17215087 70.35301593] GPa
+eps_th(120 K, T_ref=293.15 K) = -3.402036e-03
 ```
 
 ## 5. Units Conversion and Out-of-Range Policies
@@ -275,7 +283,29 @@ Generates/refreshes files in:
 - `docs/assets/plots/`
 - `docs/assets/data/`
 
-## 14. Best Practices
+## 14. Verify Units and Data Sanity
+
+Source: `examples/11_verify_units_and_sanity.py`
+
+Run:
+
+```bash
+.venv/bin/python examples/11_verify_units_and_sanity.py
+```
+
+What it checks:
+
+- Every packaged curve unit is compatible with canonical SI for its property key.
+- Reference checkpoints for NIST materials (6061, 304, OFHC `cp`) are in expected ranges.
+
+Sample output:
+
+```text
+Checked 24 property curves for SI compatibility.
+All curve units are SI-compatible (or dimensionless where expected).
+```
+
+## 15. Best Practices
 
 - Use `policy="raise"` in strict validation pipelines.
 - Use `policy="clamp"` in broad design sweeps.
@@ -283,13 +313,13 @@ Generates/refreshes files in:
 - Catch `KeyError` when iterating heterogeneous materials.
 - Inspect `mat.sources` and compliance notes before publication use.
 
-## 15. Current Limits
+## 16. Current Limits
 
 - Coverage varies across materials/properties and is not uniform yet.
 - NTRS is metadata-first with curated numeric subsets.
 - MIL PDF import is intentionally minimal and expects parseable table text.
 
-## 16. Additional References
+## 17. Additional References
 
 - PRD summary: `docs/prd/README.md`
 - Compliance notes: `docs/compliance/`

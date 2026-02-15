@@ -78,22 +78,35 @@ def _parse_range(text: str) -> tuple[float, float] | None:
 
 
 def _normalize_units(property_key: str, unit_text: str) -> tuple[str, float]:
-    text = _strip_tags(unit_text).lower().replace(" ", "")
+    raw_text = _strip_tags(unit_text).lower()
+    raw_text = raw_text.replace("−", "-").replace("–", "-").replace("×", "x")
+    raw_text = raw_text.replace("units:", "").replace("unit:", "")
+    text = re.sub(r"\s+", "", raw_text).strip(":;,.")
 
-    if property_key in {"k"} and text in {"w/(m-k)", "w/(m*k)", "w/m-k", "w/m*k"}:
+    if property_key in {"k"} and any(
+        token in text for token in {"w/(m-k)", "w/(m*k)", "w/m-k", "w/m*k"}
+    ):
         return "W/(m*K)", 1.0
-    if property_key in {"cp"} and text in {"j/(kg-k)", "j/(kg*k)", "j/kg-k", "j/kg*k"}:
+    if property_key in {"cp"} and any(
+        token in text for token in {"j/(kg-k)", "j/(kg*k)", "j/kg-k", "j/kg*k"}
+    ):
         return "J/(kg*K)", 1.0
     if property_key == "E":
-        if text == "gpa":
+        if "gpa" in text:
             return "Pa", 1e9
-        if text == "mpa":
+        if "mpa" in text:
             return "Pa", 1e6
         if text == "pa":
             return "Pa", 1.0
     if property_key == "eps_th":
-        if "10" in text and "^5" in text:
-            return "1", 1e-5
+        exp_match = re.search(r"(?:x|\*)\s*10(?:\s*\^|\s+)\s*([+-]?\d+)", raw_text)
+        if exp_match:
+            exp = int(exp_match.group(1))
+            if exp >= 0:
+                return "1", 10.0 ** (-exp)
+            return "1", 10.0**exp
+        if "microstrain" in text:
+            return "1", 1e-6
         return "1", 1.0
 
     if text in {"1/k", "k^-1", "1perk"}:

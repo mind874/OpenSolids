@@ -1,46 +1,76 @@
 {
   "id": "nist-cryo:stainless-steel-304",
   "name": "Stainless Steel 304",
-  "aliases": ["SS304", "AISI 304"],
+  "aliases": ["304 Stainless", "UNS S30400"],
   "composition": "Fe-Cr-Ni",
   "condition": null,
-  "notes": "Cryogenic engineering curves for thermal and elastic properties.",
+  "notes": "Cryogenic to room-temperature fitted representation for engineering studies.",
   "sources": ["nist-cryo-src:stainless-steel-304"],
   "properties": {
     "k": {
       "units": "W/(m*K)",
-      "valid_T_min": 4.0,
+      "valid_T_min": 1.0,
       "valid_T_max": 300.0,
       "recommended_T_min": 20.0,
       "recommended_T_max": 293.15,
       "source_id": "nist-cryo-src:stainless-steel-304",
       "model": {
-        "type": "tabular",
-        "interpolation": "pchip",
-        "T": [4.0, 20.0, 77.0, 150.0, 293.15],
-        "y": [0.4, 2.8, 7.2, 10.4, 14.9]
+        "type": "log_polynomial",
+        "coefficients": [-1.4087, 1.3982, 0.2543, -0.626, 0.2334, 0.4256, -0.4658, 0.165, -0.0199]
       }
     },
     "cp": {
       "units": "J/(kg*K)",
       "valid_T_min": 4.0,
       "valid_T_max": 300.0,
+      "recommended_T_min": 20.0,
+      "recommended_T_max": 293.15,
       "source_id": "nist-cryo-src:stainless-steel-304",
       "model": {
-        "type": "tabular",
-        "interpolation": "pchip",
-        "T": [4.0, 20.0, 77.0, 150.0, 293.15],
-        "y": [30.0, 170.0, 320.0, 420.0, 500.0]
+        "type": "log_polynomial",
+        "coefficients": [22.0061, -127.5528, 303.647, -381.0098, 274.0328, -112.9212, 24.7593, -2.239153, 0.0]
       }
     },
     "E": {
       "units": "Pa",
-      "valid_T_min": 20.0,
-      "valid_T_max": 300.0,
+      "valid_T_min": 57.0,
+      "valid_T_max": 293.0,
+      "recommended_T_min": 77.0,
+      "recommended_T_max": 293.15,
       "source_id": "nist-cryo-src:stainless-steel-304",
       "model": {
         "type": "polynomial",
-        "coefficients": [205000000000.0, -42000000.0]
+        "coefficients": [210059300000.0, 153488300.0, -1617390.0, 5117.06, -6.1546]
+      }
+    },
+    "eps_th": {
+      "units": "1",
+      "valid_T_min": 4.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 77.0,
+      "recommended_T_max": 293.15,
+      "reference_temperature": 293.15,
+      "source_id": "nist-cryo-src:stainless-steel-304",
+      "model": {
+        "type": "piecewise",
+        "branches": [
+          {
+            "condition": {"kind": "lt", "upper": 23.0},
+            "model": {
+              "type": "tabular",
+              "interpolation": "linear",
+              "T": [4.0, 300.0],
+              "y": [-0.0030004, -0.0030004]
+            }
+          },
+          {
+            "condition": {"kind": "ge", "lower": 23.0},
+            "model": {
+              "type": "polynomial",
+              "coefficients": [-0.0029554, -3.9811e-06, 9.2683e-08, -2.0261e-10, 1.7127e-13]
+            }
+          }
+        ]
       }
     }
   }
