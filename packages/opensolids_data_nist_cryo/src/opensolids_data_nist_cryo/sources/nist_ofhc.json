@@ -1,0 +1,14 @@
+{
+  "source_id": "nist-cryo-src:oxygen-free-copper",
+  "title": "Oxygen-Free Copper",
+  "publisher": "NIST",
+  "organization": "National Institute of Standards and Technology",
+  "url_or_citation_id": "https://trc.nist.gov/cryogenics/materials/materialproperties.htm",
+  "license_notes": "NIST fair use/license statement applies; include attribution.",
+  "retrieved_at": "2026-02-15T00:00:00Z",
+  "page_or_table": "material properties page",
+  "extraction_method": "fit-parse",
+  "metadata": {
+    "provider": "nist-cryo"
+  }
+}

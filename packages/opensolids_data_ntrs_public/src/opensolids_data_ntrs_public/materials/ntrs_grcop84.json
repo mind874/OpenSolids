@@ -1,0 +1,48 @@
+{
+  "id": "ntrs:20070017311:grcop-84",
+  "name": "GRCop-84",
+  "aliases": ["NASA GRCop-84"],
+  "composition": "Cu-Cr-Nb",
+  "condition": "solution treated & aged",
+  "notes": "Curated starter curve from NTRS-linked technical report.",
+  "active": true,
+  "sources": ["ntrs-src:20070017311"],
+  "properties": {
+    "k": {
+      "units": "W/(m*K)",
+      "valid_T_min": 293.15,
+      "valid_T_max": 1000.0,
+      "source_id": "ntrs-src:20070017311",
+      "model": {
+        "type": "tabular",
+        "interpolation": "pchip",
+        "T": [293.15, 500.0, 700.0, 900.0, 1000.0],
+        "y": [325.0, 305.0, 285.0, 268.0, 260.0]
+      }
+    },
+    "sigma_y": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 1000.0,
+      "source_id": "ntrs-src:20070017311",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [293.15, 500.0, 700.0, 900.0, 1000.0],
+        "y": [360000000.0, 320000000.0, 270000000.0, 210000000.0, 170000000.0]
+      }
+    },
+    "sigma_uts": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 1000.0,
+      "source_id": "ntrs-src:20070017311",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [293.15, 500.0, 700.0, 900.0, 1000.0],
+        "y": [430000000.0, 390000000.0, 330000000.0, 260000000.0, 220000000.0]
+      }
+    }
+  }
+}

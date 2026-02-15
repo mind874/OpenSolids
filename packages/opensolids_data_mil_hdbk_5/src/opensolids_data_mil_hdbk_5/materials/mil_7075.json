@@ -1,0 +1,35 @@
+{
+  "id": "mil-hdbk-5:H:al-7075-t6",
+  "name": "Aluminum 7075-T6",
+  "aliases": ["7075-T6"],
+  "composition": "Al-Zn-Mg-Cu",
+  "condition": "T6",
+  "notes": "Starter allowables table from MIL-HDBK-5H.",
+  "sources": ["mil-hdbk-5-src:H:al-7075-t6"],
+  "properties": {
+    "sigma_y": {
+      "units": "Pa",
+      "valid_T_min": 294.0,
+      "valid_T_max": 533.0,
+      "source_id": "mil-hdbk-5-src:H:al-7075-t6",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [294.0, 366.0, 422.0, 478.0, 533.0],
+        "y": [503000000.0, 455000000.0, 350000000.0, 230000000.0, 140000000.0]
+      }
+    },
+    "sigma_uts": {
+      "units": "Pa",
+      "valid_T_min": 294.0,
+      "valid_T_max": 533.0,
+      "source_id": "mil-hdbk-5-src:H:al-7075-t6",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [294.0, 366.0, 422.0, 478.0, 533.0],
+        "y": [572000000.0, 525000000.0, 410000000.0, 290000000.0, 180000000.0]
+      }
+    }
+  }
+}

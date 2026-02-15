@@ -1,0 +1,19 @@
+{
+  "source_id": "ntrs-src:20190030979",
+  "title": "AlSi10Mg additive manufacturing mechanical data",
+  "publisher": "NASA STI",
+  "organization": "NASA",
+  "url_or_citation_id": "20190030979",
+  "license_notes": "Curated from NTRS metadata; include citation URL in downstream workflows.",
+  "retrieved_at": "2026-02-15T00:00:00Z",
+  "page_or_table": "curated table",
+  "extraction_method": "tabular-digitized",
+  "metadata": {
+    "citation_id": "20190030979",
+    "safe_for_numeric_extraction": true,
+    "containsThirdPartyMaterial": false,
+    "copyright": {
+      "determinationType": "PUBLIC_USE_PERMITTED"
+    }
+  }
+}

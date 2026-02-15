@@ -1,0 +1,13 @@
+{
+  "provider": "mil-hdbk-5",
+  "version": "0.2.0",
+  "schema_version": 1,
+  "record_counts": {
+    "materials": 3,
+    "sources": 3
+  },
+  "license_notes": [
+    "Curated starter subset from MIL-HDBK-5 revision metadata.",
+    "Include revision/date and distribution statement in provenance records."
+  ]
+}

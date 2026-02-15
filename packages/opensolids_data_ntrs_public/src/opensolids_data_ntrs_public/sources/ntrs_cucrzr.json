@@ -1,0 +1,19 @@
+{
+  "source_id": "ntrs-src:20160001501",
+  "title": "CuCrZr high-temperature behavior for engine liners",
+  "publisher": "NASA STI",
+  "organization": "NASA",
+  "url_or_citation_id": "20160001501",
+  "license_notes": "Curated from NTRS metadata; verify rights before redistributing source PDFs.",
+  "retrieved_at": "2026-02-15T00:00:00Z",
+  "page_or_table": "curated table",
+  "extraction_method": "tabular-digitized",
+  "metadata": {
+    "citation_id": "20160001501",
+    "safe_for_numeric_extraction": true,
+    "containsThirdPartyMaterial": false,
+    "copyright": {
+      "determinationType": "PUBLIC_USE_PERMITTED"
+    }
+  }
+}

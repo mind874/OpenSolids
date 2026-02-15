@@ -1,0 +1,19 @@
+{
+  "source_id": "ntrs-src:20070017311",
+  "title": "GRCop-84 properties for rocket combustion applications",
+  "publisher": "NASA STI",
+  "organization": "NASA",
+  "url_or_citation_id": "20070017311",
+  "license_notes": "Curated from NTRS metadata; verify rights before distributing full text.",
+  "retrieved_at": "2026-02-15T00:00:00Z",
+  "page_or_table": "curated table",
+  "extraction_method": "tabular-digitized",
+  "metadata": {
+    "citation_id": "20070017311",
+    "safe_for_numeric_extraction": true,
+    "containsThirdPartyMaterial": false,
+    "copyright": {
+      "determinationType": "GOV_PUBLIC_USE_PERMITTED"
+    }
+  }
+}

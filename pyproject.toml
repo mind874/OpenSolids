@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opensolids"
+version = "0.2.0"
+description = "Open solid material properties with provenance and provider backends"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "OpenSolids Contributors" }
+]
+license = { text = "GPL-3.0-only" }
+classifiers = [
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+]
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.12",
+  "pint>=0.23",
+  "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+]
+
+[project.scripts]
+opensolids = "opensolids.cli.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opensolids"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src",
+  "packages/opensolids_data_nist_cryo/src",
+  "packages/opensolids_data_ntrs_public/src",
+  "packages/opensolids_data_mil_hdbk_5/src",
+]
+testpaths = ["tests"]
+addopts = "-q"

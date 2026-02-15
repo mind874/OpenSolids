@@ -1,0 +1,35 @@
+{
+  "id": "mil-hdbk-5:H:al-6061-t6",
+  "name": "Aluminum 6061-T6",
+  "aliases": ["6061-T6"],
+  "composition": "Al-Mg-Si",
+  "condition": "T6",
+  "notes": "Starter allowables table from MIL-HDBK-5H.",
+  "sources": ["mil-hdbk-5-src:H:al-6061-t6"],
+  "properties": {
+    "sigma_y": {
+      "units": "Pa",
+      "valid_T_min": 294.0,
+      "valid_T_max": 533.0,
+      "source_id": "mil-hdbk-5-src:H:al-6061-t6",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [294.0, 366.0, 422.0, 478.0, 533.0],
+        "y": [276000000.0, 240000000.0, 190000000.0, 140000000.0, 90000000.0]
+      }
+    },
+    "sigma_uts": {
+      "units": "Pa",
+      "valid_T_min": 294.0,
+      "valid_T_max": 533.0,
+      "source_id": "mil-hdbk-5-src:H:al-6061-t6",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [294.0, 366.0, 422.0, 478.0, 533.0],
+        "y": [310000000.0, 280000000.0, 230000000.0, 170000000.0, 120000000.0]
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "nist-cryo:aluminum-6061-t6",
+  "name": "Aluminum 6061-T6",
+  "aliases": ["AA6061-T6", "6061-T6"],
+  "composition": "Al-Mg-Si",
+  "condition": "T6",
+  "notes": "Cryogenic to room-temperature fitted representation for engineering studies.",
+  "sources": ["nist-cryo-src:aluminum-6061-t6"],
+  "properties": {
+    "k": {
+      "units": "W/(m*K)",
+      "valid_T_min": 4.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 20.0,
+      "recommended_T_max": 293.15,
+      "source_id": "nist-cryo-src:aluminum-6061-t6",
+      "model": {
+        "type": "log_polynomial",
+        "coefficients": [1.22, 0.09, -0.02]
+      }
+    },
+    "cp": {
+      "units": "J/(kg*K)",
+      "valid_T_min": 4.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 20.0,
+      "recommended_T_max": 293.15,
+      "source_id": "nist-cryo-src:aluminum-6061-t6",
+      "model": {
+        "type": "log_polynomial",
+        "coefficients": [1.9, 0.72, -0.12]
+      }
+    },
+    "E": {
+      "units": "Pa",
+      "valid_T_min": 20.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 77.0,
+      "recommended_T_max": 293.15,
+      "source_id": "nist-cryo-src:aluminum-6061-t6",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [72000000000.0, -28000000.0]
+      }
+    },
+    "eps_th": {
+      "units": "1",
+      "valid_T_min": 20.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 77.0,
+      "recommended_T_max": 293.15,
+      "reference_temperature": 293.15,
+      "source_id": "nist-cryo-src:aluminum-6061-t6",
+      "model": {
+        "type": "tabular",
+        "interpolation": "pchip",
+        "T": [20.0, 77.0, 150.0, 293.15],
+        "y": [-0.0031, -0.0022, -0.0012, 0.0]
+      }
+    }
+  }
+}

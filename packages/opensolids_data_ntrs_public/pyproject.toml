@@ -1,0 +1,12 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opensolids-data-ntrs-public"
+version = "0.2.0"
+description = "Curated NTRS public metadata/data pack for OpenSolids"
+requires-python = ">=3.11"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opensolids_data_ntrs_public"]

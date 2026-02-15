@@ -1,0 +1,18 @@
+{
+  "source_id": "mil-hdbk-5-src:H:inconel-718",
+  "title": "MIL-HDBK-5H allowable table for Inconel 718",
+  "publisher": "DoD ASSIST",
+  "organization": "Department of Defense",
+  "url_or_citation_id": "MIL-HDBK-5H",
+  "license_notes": "Distribution Statement A; verify source revision/date.",
+  "retrieved_at": "2026-02-15T00:00:00Z",
+  "page_or_table": "allowables table",
+  "extraction_method": "manual",
+  "metadata": {
+    "revision": "H",
+    "revision_date": "1998-12-01",
+    "distribution_statement": "A",
+    "basis": "B-basis",
+    "product_form": "bar"
+  }
+}

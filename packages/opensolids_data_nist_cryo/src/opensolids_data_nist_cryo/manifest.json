@@ -1,0 +1,13 @@
+{
+  "provider": "nist-cryo",
+  "version": "0.2.0",
+  "schema_version": 1,
+  "record_counts": {
+    "materials": 3,
+    "sources": 3
+  },
+  "license_notes": [
+    "NIST attribution and disclaimer included.",
+    "Derived curves are engineering convenience representations."
+  ]
+}

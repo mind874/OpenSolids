@@ -1,0 +1,14 @@
+{
+  "provider": "ntrs",
+  "version": "0.2.0",
+  "schema_version": 1,
+  "record_counts": {
+    "materials": 3,
+    "sources": 3
+  },
+  "license_notes": [
+    "Citation-first storage policy.",
+    "Full-text redistribution disabled by default.",
+    "Copyright/third-party gating required for extraction."
+  ]
+}
