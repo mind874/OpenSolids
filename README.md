@@ -119,25 +119,25 @@ all providers.
 
 Code source: `examples/05_plot_property_curves.py`
 
-![Thermal conductivity comparison](docs/assets/plots/curve_k_regen.png)
+<img src="docs/assets/plots/curve_k_regen.png" alt="Thermal conductivity comparison" width="65%">
 
 ### Yield strength comparison (NTRS + MIL)
 
 Code source: `examples/05_plot_property_curves.py`
 
-![Yield strength comparison](docs/assets/plots/curve_sigma_y_regen.png)
+<img src="docs/assets/plots/curve_sigma_y_regen.png" alt="Yield strength comparison" width="65%">
 
 ### Out-of-range policy behavior
 
 Code source: `examples/06_plot_policy_behavior.py`
 
-![Policy behavior plot](docs/assets/plots/policy_cucrzr_k.png)
+<img src="docs/assets/plots/policy_cucrzr_k.png" alt="Policy behavior plot" width="65%">
 
 ### Multi-database 6061 workflow
 
 Code source: `examples/10_plot_multidatabase_6061.py`
 
-![Multi-database 6061](docs/assets/plots/al6061_multidatabase.png)
+<img src="docs/assets/plots/al6061_multidatabase.png" alt="Multi-database 6061" width="65%">
 
 ## CLI Workflows
 
