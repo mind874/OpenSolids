@@ -66,6 +66,19 @@ def test_nist_ofhc_specific_heat_reference_point_is_reasonable():
     assert 300.0 < mat.cp(293.15) < 500.0
 
 
+def test_nist_ofhc_alpha_reference_point_is_reasonable():
+    mat = osl.material("nist-cryo:oxygen-free-copper")
+    assert 1.0e-5 < mat.alpha(293.15) < 2.5e-5
+
+
+def test_nist_ofhc_rrr_conductivity_variants_are_reasonable():
+    k50 = osl.material("nist-cryo:oxygen-free-copper-rrr50").k(293.15)
+    k100 = osl.material("nist-cryo:oxygen-free-copper-rrr100").k(293.15)
+    assert 350.0 < k50 < 450.0
+    assert 350.0 < k100 < 450.0
+    assert k100 >= k50
+
+
 def test_nist_316_low_temperature_specific_heat_is_physical():
     mat = osl.material("nist-cryo:stainless-steel-316")
     cp_49_9 = mat.cp(49.9)

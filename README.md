@@ -78,10 +78,12 @@ Current source-backed status:
 - `alsi10mg-am` uses a temperature-dependent AlSi10Mg table sourced to MDPI Applied Sciences
   (DOI `10.3390/app13063460`) with room-temperature UTS anchored to NASA citation
   `20205003675`.
-- `c101` uses Copper.org room-temperature `k`, `rho`, `E`, `alpha`, `sigma_y`, `sigma_uts`
-  plus NIST OFHC `cp(T)`; no bundled temperature-dependent `k(T)` curve yet.
-- `c110` uses Copper.org room-temperature `k`, `rho`, `E`, `alpha`, `sigma_y`, `sigma_uts`
-  plus NIST OFHC `cp(T)` as a copper proxy; no bundled temperature-dependent `k(T)` curve yet.
+- `c101` uses NIST OFHC temperature-dependent thermal proxies (`k(T)` with RRR100, `cp(T)`,
+  `alpha(T)`) plus Copper.org room-temperature anchors for `rho`, `E`, `sigma_y`, and
+  `sigma_uts`.
+- `c110` uses NIST OFHC temperature-dependent thermal proxies (`k(T)` with RRR50, `cp(T)`,
+  `alpha(T)`) plus Copper.org room-temperature anchors for `rho`, `E`, `sigma_y`, and
+  `sigma_uts`.
 
 ## API Overview
 

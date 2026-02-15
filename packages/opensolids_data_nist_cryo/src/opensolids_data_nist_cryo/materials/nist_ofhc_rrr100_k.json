@@ -1,0 +1,30 @@
+{
+  "id": "nist-cryo:oxygen-free-copper-rrr100",
+  "name": "Oxygen-Free Copper (RRR 100 conductivity)",
+  "aliases": ["OFHC Copper RRR100", "UNS C10100/C10200 RRR100"],
+  "composition": "Cu",
+  "condition": "OFHC",
+  "notes": "Thermal conductivity tabulation sampled from the NIST OFHC RRR=100 conductivity fit equation.",
+  "sources": ["nist-cryo-src:oxygen-free-copper-rrr100"],
+  "properties": {
+    "k": {
+      "units": "W/(m*K)",
+      "valid_T_min": 4.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 20.0,
+      "recommended_T_max": 293.15,
+      "source_id": "nist-cryo-src:oxygen-free-copper-rrr100",
+      "metadata": {
+        "rrr_value": 100,
+        "extraction_method": "fit-sampled-tabular",
+        "equation_form": "log10(k) = (a + c*T^0.5 + e*T + g*T^1.5 + i*T^2)/(1 + b*T^0.5 + d*T + f*T^1.5 + h*T^2)"
+      },
+      "model": {
+        "type": "tabular",
+        "interpolation": "pchip",
+        "T": [4.0, 6.0, 8.0, 10.0, 15.0, 20.0, 30.0, 40.0, 50.0, 60.0, 77.0, 100.0, 150.0, 200.0, 250.0, 293.15, 300.0],
+        "y": [642.296961, 931.691746, 1239.020392, 1539.915576, 2142.443673, 2422.510265, 2142.896819, 1485.109355, 1004.846277, 741.209942, 547.199698, 461.549338, 418.093899, 406.95203, 400.883843, 396.895866, 396.323959]
+      }
+    }
+  }
+}

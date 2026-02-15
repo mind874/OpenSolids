@@ -181,16 +181,16 @@ CANONICAL_MATERIAL_SPECS: tuple[CanonicalMaterialSpec, ...] = (
         composition="Cu",
         condition="annealed",
         notes=(
-            "Uses Copper.org C11000 room-temperature datasheet properties and NIST OFHC "
-            "specific-heat fit as a copper cp(T) proxy."
+            "Uses Copper.org C11000 room-temperature datasheet properties plus NIST OFHC "
+            "temperature-dependent thermal proxies (RRR50 conductivity, cp(T), and alpha(T))."
         ),
         density_ref=8940.0,
         property_sources={
-            "k": ("curated-public:c110-room-temp",),
+            "k": ("nist-cryo:oxygen-free-copper-rrr50", "curated-public:c110-room-temp"),
             "cp": ("nist-cryo:oxygen-free-copper", "curated-public:c110-room-temp"),
             "rho": ("curated-public:c110-room-temp",),
             "E": ("curated-public:c110-room-temp",),
-            "alpha": ("curated-public:c110-room-temp",),
+            "alpha": ("nist-cryo:oxygen-free-copper", "curated-public:c110-room-temp"),
             "sigma_y": ("curated-public:c110-room-temp",),
             "sigma_uts": ("curated-public:c110-room-temp",),
         },
@@ -202,16 +202,16 @@ CANONICAL_MATERIAL_SPECS: tuple[CanonicalMaterialSpec, ...] = (
         composition="Cu",
         condition="OFHC",
         notes=(
-            "Uses Copper.org room-temperature datasheet properties and NIST cryogenic "
-            "specific-heat fit for cp(T)."
+            "Uses Copper.org room-temperature datasheet properties plus NIST OFHC "
+            "temperature-dependent curves for conductivity (RRR100), cp(T), and alpha(T)."
         ),
         density_ref=8940.0,
         property_sources={
-            "k": ("curated-public:c101-room-temp",),
+            "k": ("nist-cryo:oxygen-free-copper-rrr100", "curated-public:c101-room-temp"),
             "cp": ("nist-cryo:oxygen-free-copper", "curated-public:c101-room-temp"),
             "rho": ("curated-public:c101-room-temp",),
             "E": ("curated-public:c101-room-temp",),
-            "alpha": ("curated-public:c101-room-temp",),
+            "alpha": ("nist-cryo:oxygen-free-copper", "curated-public:c101-room-temp"),
             "sigma_y": ("curated-public:c101-room-temp",),
             "sigma_uts": ("curated-public:c101-room-temp",),
         },

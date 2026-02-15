@@ -145,11 +145,17 @@ class Material:
         arr = arr.reshape(1) if was_scalar else arr
 
         out = np.zeros_like(arr, dtype=float)
+        if hasattr(np, "trapezoid"):
+            integrate = np.trapezoid
+        elif hasattr(np, "trapz"):
+            integrate = np.trapz
+        else:
+            raise RuntimeError("NumPy integration function unavailable (expected trapezoid or trapz)")
         for i, t_i in enumerate(arr):
             n_points = 64
             grid = np.linspace(T_ref, t_i, n_points)
             alpha_values = np.asarray(curve(grid, policy=policy), dtype=float)
-            out[i] = np.trapz(alpha_values, grid)
+            out[i] = integrate(alpha_values, grid)
 
         values = float(out[0]) if was_scalar else out
         return convert_values(values, "1", units)

@@ -4,7 +4,7 @@
   "aliases": ["OFHC Copper", "UNS C10100", "UNS C10200"],
   "composition": "Cu",
   "condition": "OFHC",
-  "notes": "Cryogenic OFHC specific-heat fit from NIST.",
+  "notes": "Cryogenic OFHC specific-heat and expansion-coefficient fits from NIST.",
   "sources": ["nist-cryo-src:oxygen-free-copper"],
   "properties": {
     "cp": {
@@ -17,6 +17,22 @@
       "model": {
         "type": "log_polynomial",
         "coefficients": [-1.91844, -0.15973, 8.61013, -18.996, 21.9661, -12.7328, 3.54322, -0.3797, 0.0]
+      }
+    },
+    "alpha": {
+      "units": "1/K",
+      "valid_T_min": 4.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 20.0,
+      "recommended_T_max": 293.15,
+      "source_id": "nist-cryo-src:oxygen-free-copper",
+      "metadata": {
+        "original_units": "10^-6 /K",
+        "conversion_note": "Converted to 1/K by shifting log-polynomial intercept by -6."
+      },
+      "model": {
+        "type": "log_polynomial",
+        "coefficients": [-23.9081289, 67.131914, -118.809316, 109.9845997, -53.8696089, 13.30247491, -1.30843441, 0.0, 0.0]
       }
     }
   }

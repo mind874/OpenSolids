@@ -1,0 +1,16 @@
+{
+  "source_id": "nist-cryo-src:oxygen-free-copper-rrr50",
+  "title": "OFHC Copper Conductivity Fit (RRR 50)",
+  "publisher": "NIST",
+  "organization": "National Institute of Standards and Technology",
+  "url_or_citation_id": "https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm",
+  "license_notes": "NIST fair use/license statement applies; include attribution.",
+  "retrieved_at": "2026-02-15T00:00:00Z",
+  "page_or_table": "thermal conductivity fit coefficients and RRR-specific equation",
+  "extraction_method": "fit-sampled-tabular",
+  "metadata": {
+    "provider": "nist-cryo",
+    "rrr": 50,
+    "disclaimer": "Engineering use requires independent verification for certification workflows."
+  }
+}

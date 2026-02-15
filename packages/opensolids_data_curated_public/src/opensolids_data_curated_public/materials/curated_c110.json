@@ -29,9 +29,12 @@
     },
     "rho": {
       "units": "kg/m^3",
-      "valid_T_min": 293.15,
-      "valid_T_max": 293.15,
+      "valid_T_min": 4.0,
+      "valid_T_max": 300.0,
       "source_id": "curated-public-src:c110:copper-org",
+      "metadata": {
+        "assumption": "Room-temperature density treated as constant over 4-300 K for derived diffusivity."
+      },
       "model": {
         "type": "polynomial",
         "coefficients": [8940.0]

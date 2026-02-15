@@ -56,6 +56,38 @@ def test_c101_c110_conductivity_reference_values_are_reasonable():
     assert 300.0 < c110.k(293.15) < 450.0
 
 
+def test_c101_c110_have_temperature_dependent_thermal_curves():
+    c101 = osl.material("c101")
+    c110 = osl.material("c110")
+
+    for mat in (c101, c110):
+        assert mat.curve("k").valid_T_max - mat.curve("k").valid_T_min > 250.0
+        assert mat.curve("cp").valid_T_max - mat.curve("cp").valid_T_min > 250.0
+        assert mat.curve("alpha").valid_T_max - mat.curve("alpha").valid_T_min > 250.0
+
+
+def test_c101_eps_th_derives_from_alpha_without_error():
+    c101 = osl.material("c101")
+    eps = c101.eps_th(77.0)
+    assert isinstance(eps, float)
+
+
+def test_c101_c110_diffusivity_has_temperature_coverage():
+    for material_id in ("c101", "c110"):
+        mat = osl.material(material_id)
+        valid_t_min = max(
+            mat.curve("k").valid_T_min,
+            mat.curve("cp").valid_T_min,
+            mat.curve("rho").valid_T_min,
+        )
+        valid_t_max = min(
+            mat.curve("k").valid_T_max,
+            mat.curve("cp").valid_T_max,
+            mat.curve("rho").valid_T_max,
+        )
+        assert valid_t_max - valid_t_min >= 250.0
+
+
 def test_c110_room_temperature_yield_strength_is_not_understated():
     c110 = osl.material("c110")
     sy_mpa = c110.sigma_y(293.15, units="MPa")

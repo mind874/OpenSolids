@@ -1,10 +1,10 @@
 {
   "provider": "nist-cryo",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "schema_version": 1,
   "record_counts": {
-    "materials": 5,
-    "sources": 5
+    "materials": 7,
+    "sources": 7
   },
   "license_notes": [
     "NIST attribution and disclaimer included.",

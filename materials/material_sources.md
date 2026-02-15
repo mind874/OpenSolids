@@ -28,18 +28,18 @@ This table shows where each canonical property curve comes from.
 | `alsi10mg-am` | `sigma_uts` | `curated-public-src:alsi10mg:nasa-20205003675` | https://ntrs.nasa.gov/citations/20205003675 |
 | `alsi10mg-am` | `sigma_y` | `curated-public-src:alsi10mg:mdpi-ma2023` | https://www.mdpi.com/2076-3417/13/6/3460 |
 | `c101` | `E` | `curated-public-src:c101:copper-org` | https://alloys.copper.org/alloy/C10100 |
-| `c101` | `alpha` | `curated-public-src:c101:copper-org` | https://alloys.copper.org/alloy/C10100 |
+| `c101` | `alpha` | `nist-cryo-src:oxygen-free-copper` | https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm |
 | `c101` | `cp` | `nist-cryo-src:oxygen-free-copper` | https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm |
-| `c101` | `diffusivity` | `k:curated-public-src:c101:copper-org | cp:nist-cryo-src:oxygen-free-copper | rho:curated-public-src:c101:copper-org` | derived |
-| `c101` | `k` | `curated-public-src:c101:copper-org` | https://alloys.copper.org/alloy/C10100 |
+| `c101` | `diffusivity` | `k:nist-cryo-src:oxygen-free-copper-rrr100 | cp:nist-cryo-src:oxygen-free-copper | rho:curated-public-src:c101:copper-org` | derived |
+| `c101` | `k` | `nist-cryo-src:oxygen-free-copper-rrr100` | https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm |
 | `c101` | `rho` | `curated-public-src:c101:copper-org` | https://alloys.copper.org/alloy/C10100 |
 | `c101` | `sigma_uts` | `curated-public-src:c101:copper-org` | https://alloys.copper.org/alloy/C10100 |
 | `c101` | `sigma_y` | `curated-public-src:c101:copper-org` | https://alloys.copper.org/alloy/C10100 |
 | `c110` | `E` | `curated-public-src:c110:copper-org` | https://alloys.copper.org/alloy/C11000 |
-| `c110` | `alpha` | `curated-public-src:c110:copper-org` | https://alloys.copper.org/alloy/C11000 |
+| `c110` | `alpha` | `nist-cryo-src:oxygen-free-copper` | https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm |
 | `c110` | `cp` | `nist-cryo-src:oxygen-free-copper` | https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm |
-| `c110` | `diffusivity` | `k:curated-public-src:c110:copper-org | cp:nist-cryo-src:oxygen-free-copper | rho:curated-public-src:c110:copper-org` | derived |
-| `c110` | `k` | `curated-public-src:c110:copper-org` | https://alloys.copper.org/alloy/C11000 |
+| `c110` | `diffusivity` | `k:nist-cryo-src:oxygen-free-copper-rrr50 | cp:nist-cryo-src:oxygen-free-copper | rho:curated-public-src:c110:copper-org` | derived |
+| `c110` | `k` | `nist-cryo-src:oxygen-free-copper-rrr50` | https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm |
 | `c110` | `rho` | `curated-public-src:c110:copper-org` | https://alloys.copper.org/alloy/C11000 |
 | `c110` | `sigma_uts` | `curated-public-src:c110:copper-org` | https://alloys.copper.org/alloy/C11000 |
 | `c110` | `sigma_y` | `curated-public-src:c110:copper-org` | https://alloys.copper.org/alloy/C11000 |
