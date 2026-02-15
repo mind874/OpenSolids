@@ -4,7 +4,7 @@
   "aliases": ["Copper Chromium Zirconium", "AM CuCrZr"],
   "composition": "Cu-Cr-Zr",
   "condition": "aged",
-  "notes": "Regen-focused starter curve with additive-manufacturing relevance.",
+  "notes": "Regen-focused curve with additive-manufacturing relevance.",
   "active": true,
   "sources": ["ntrs-src:20160001501"],
   "properties": {

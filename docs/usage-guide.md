@@ -34,7 +34,7 @@ Property calls accept scalar and vector temperatures.
 
 ## 3. Choose a Database (Provider)
 
-Providers in this MVP:
+Providers in this library:
 
 - `nist-cryo`: cryogenic/room-temperature thermal + elastic curves.
 - `ntrs`: curated NASA-report-derived engineering curves.
@@ -283,7 +283,7 @@ Generates/refreshes files in:
 - Catch `KeyError` when iterating heterogeneous materials.
 - Inspect `mat.sources` and compliance notes before publication use.
 
-## 15. Known MVP Limits
+## 15. Current Limits
 
 - Coverage varies across materials/properties and is not uniform yet.
 - NTRS is metadata-first with curated numeric subsets.

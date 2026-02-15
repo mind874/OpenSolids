@@ -4,7 +4,7 @@
   "aliases": ["NASA GRCop-84"],
   "composition": "Cu-Cr-Nb",
   "condition": "solution treated & aged",
-  "notes": "Curated starter curve from NTRS-linked technical report.",
+  "notes": "Curated curve from an NTRS-linked technical report.",
   "active": true,
   "sources": ["ntrs-src:20070017311"],
   "properties": {

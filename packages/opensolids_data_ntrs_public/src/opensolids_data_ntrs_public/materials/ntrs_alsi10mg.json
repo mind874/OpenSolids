@@ -4,7 +4,7 @@
   "aliases": ["LPBF AlSi10Mg", "AM AlSi10Mg"],
   "composition": "Al-Si-Mg",
   "condition": "as-built",
-  "notes": "Additive-manufactured aluminum starter dataset for early trade studies.",
+  "notes": "Additive-manufactured aluminum dataset for trade studies.",
   "active": true,
   "sources": ["ntrs-src:20190030979"],
   "properties": {

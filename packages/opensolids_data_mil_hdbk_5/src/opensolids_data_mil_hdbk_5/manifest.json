@@ -7,7 +7,7 @@
     "sources": 3
   },
   "license_notes": [
-    "Curated starter subset from MIL-HDBK-5 revision metadata.",
+    "Curated subset from MIL-HDBK-5 revision metadata.",
     "Include revision/date and distribution statement in provenance records."
   ]
 }

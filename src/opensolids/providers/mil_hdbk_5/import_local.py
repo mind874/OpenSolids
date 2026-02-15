@@ -19,7 +19,7 @@ def _extract_text_from_pdf(pdf_path: Path) -> str:
             capture_output=True,
         )
         return proc.stdout
-    raise RuntimeError("pdftotext is required for PDF import in this MVP implementation")
+    raise RuntimeError("pdftotext is required for PDF import in this implementation")
 
 
 
