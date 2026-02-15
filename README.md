@@ -26,10 +26,31 @@ pip install -e '.[viz]'
 import opensolids as osl
 
 mat = osl.material("nist-cryo:aluminum-6061-t6")
-
 print(mat.k(300.0))
 print(mat.E([77.0, 150.0, 293.15], units="GPa"))
 print(mat.eps_th(120.0, T_ref=293.15))
+```
+
+## Which Database Should I Use?
+
+Use provider IDs by prefix:
+
+- `nist-cryo:*` for cryogenic to room-temperature thermal/elastic curves.
+- `ntrs:*` for curated NASA-report-derived high-temperature material curves.
+- `mil-hdbk-5:*` for handbook allowables style strength curves.
+
+Example material IDs:
+
+- `nist-cryo:aluminum-6061-t6`
+- `ntrs:20160001501:cucrzr`
+- `mil-hdbk-5:H:inconel-718`
+
+Provider workflow example script: `examples/08_database_workflows.py`
+
+Run:
+
+```bash
+.venv/bin/python examples/08_database_workflows.py
 ```
 
 ## API Overview
@@ -41,26 +62,15 @@ print(mat.eps_th(120.0, T_ref=293.15))
 - Out-of-range policy per call: `policy="clamp" | "raise" | "extrapolate"`
 - Units conversion per call: `units="MPa"`, `units="GPa"`, etc.
 
-## Visual Example Outputs
+## Visual Outputs
 
-The repository includes generated visual outputs under `docs/assets/plots/`.
-
-### Thermal conductivity comparison
+### Thermal conductivity comparison (NTRS copper alloys)
 
 Code source: `examples/05_plot_property_curves.py`
 
 ![Thermal conductivity comparison](docs/assets/plots/curve_k_regen.png)
 
-Sample data (`docs/assets/data/k_comparison_regen.csv`):
-
-| T [K] | GRCop-84 k [W/(m*K)] | CuCrZr k [W/(m*K)] |
-| --- | ---: | ---: |
-| 293.15 | 325.0 | 330.0 |
-| 500.0 | 305.0 | 309.4 |
-| 700.0 | 285.0 | 282.8 |
-| 900.0 | 268.0 | 250.0 |
-
-### Yield strength comparison
+### Yield strength comparison (NTRS + MIL)
 
 Code source: `examples/05_plot_property_curves.py`
 
@@ -72,14 +82,19 @@ Code source: `examples/06_plot_policy_behavior.py`
 
 ![Policy behavior plot](docs/assets/plots/policy_cucrzr_k.png)
 
-Sample policy behavior (`docs/assets/data/policy_cucrzr_k.csv`):
+### Provider coverage across databases
 
-| T [K] | clamp k [W/(m*K)] | extrapolate k [W/(m*K)] |
-| --- | ---: | ---: |
-| 250.0 | 330.0 | 333.4 |
-| 293.15 | 330.0 | 330.2 |
-| 900.0 | 250.2 | 250.2 |
-| 1100.0 | 250.0 | 211.3 |
+Code source: `examples/09_plot_provider_coverage.py`
+
+![Provider material counts](docs/assets/plots/provider_material_counts.png)
+
+![Provider property coverage](docs/assets/plots/provider_property_coverage_heatmap.png)
+
+### Multi-database 6061 workflow
+
+Code source: `examples/10_plot_multidatabase_6061.py`
+
+![Multi-database 6061](docs/assets/plots/al6061_multidatabase.png)
 
 ## CLI Workflows
 
@@ -103,6 +118,9 @@ opensolids import mil-hdbk-5 --pdf /path/to/MIL-HDBK-5.pdf
 - `examples/05_plot_property_curves.py`
 - `examples/06_plot_policy_behavior.py`
 - `examples/07_generate_all_visuals.py`
+- `examples/08_database_workflows.py`
+- `examples/09_plot_provider_coverage.py`
+- `examples/10_plot_multidatabase_6061.py`
 
 Run all visual examples:
 

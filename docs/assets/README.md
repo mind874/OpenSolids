@@ -10,3 +10,10 @@ Regenerate from repository root:
 ```bash
 .venv/bin/python examples/07_generate_all_visuals.py
 ```
+
+Primary generators:
+
+- `examples/05_plot_property_curves.py`
+- `examples/06_plot_policy_behavior.py`
+- `examples/09_plot_provider_coverage.py`
+- `examples/10_plot_multidatabase_6061.py`

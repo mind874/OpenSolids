@@ -18,6 +18,8 @@ def _run(script_name: str) -> None:
 def main() -> None:
     _run("05_plot_property_curves.py")
     _run("06_plot_policy_behavior.py")
+    _run("09_plot_provider_coverage.py")
+    _run("10_plot_multidatabase_6061.py")
     print("Done. Updated docs/assets/plots and docs/assets/data")
 
 
