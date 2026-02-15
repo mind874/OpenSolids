@@ -60,6 +60,10 @@ Example IDs:
 - `ntrs:20160001501:cucrzr`
 - `mil-hdbk-5:H:inconel-718`
 
+Bundled material inventory file:
+
+- `docs/materials/material_catalog.csv`
+
 ## 4. Basic API Usage
 
 Source: `examples/01_quickstart.py`
@@ -301,3 +305,4 @@ All curve units are SI-compatible (or dimensionless where expected).
 - PRD summary: `docs/prd/README.md`
 - Compliance notes: `docs/compliance/`
 - Example index: `examples/README.md`
+- Material catalog: `docs/materials/material_catalog.csv`

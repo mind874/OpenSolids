@@ -108,6 +108,11 @@ includes NIST, curated NTRS, and MIL-HDBK-5 records by default.
 If you are working from source, provider data also resolves from the local
 `packages/opensolids_data_*` directories.
 
+## Material Catalog
+
+See `docs/materials/material_catalog.csv` for a current list of bundled materials across
+all providers.
+
 ## Visual Outputs
 
 ### Thermal conductivity comparison (NTRS copper alloys)
@@ -159,6 +164,7 @@ opensolids import mil-hdbk-5 --pdf /path/to/MIL-HDBK-5.pdf
 - `examples/08_database_workflows.py`
 - `examples/10_plot_multidatabase_6061.py`
 - `examples/11_verify_units_and_sanity.py`
+- `examples/12_export_material_catalog.py`
 
 Run all visual examples:
 
@@ -172,12 +178,18 @@ Run the database SI/sanity verification example:
 .venv/bin/python examples/11_verify_units_and_sanity.py
 ```
 
+Export the bundled material catalog:
+
+```bash
+.venv/bin/python examples/12_export_material_catalog.py
+```
+
 ## Documentation
 
 - Comprehensive guide: `docs/usage-guide.md`
 - Example index: `examples/README.md`
 - Compliance notes: `docs/compliance/`
-- PyPI publish workflow: `.github/workflows/publish-pypi.yml` (uses `PYPI_API_TOKEN`)
+- Release guide: `docs/releasing.md`
 
 ## License
 

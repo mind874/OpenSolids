@@ -1,0 +1,10 @@
+provider,material_id,name,condition,properties,aliases
+mil-hdbk-5,mil-hdbk-5:H:al-6061-t6,Aluminum 6061-T6,T6,"sigma_uts,sigma_y",6061-T6
+mil-hdbk-5,mil-hdbk-5:H:al-7075-t6,Aluminum 7075-T6,T6,"sigma_uts,sigma_y",7075-T6
+mil-hdbk-5,mil-hdbk-5:H:inconel-718,Inconel 718,solution treated and aged,"sigma_uts,sigma_y","IN718,Alloy 718"
+nist-cryo,nist-cryo:aluminum-6061-t6,Aluminum 6061-T6,T6,"E,cp,eps_th,k","AA6061-T6,6061-T6"
+nist-cryo,nist-cryo:oxygen-free-copper,Oxygen-Free Copper,OFHC,cp,"OFHC Copper,UNS C10100,UNS C10200"
+nist-cryo,nist-cryo:stainless-steel-304,Stainless Steel 304,,"E,cp,eps_th,k","304 Stainless,UNS S30400"
+ntrs,ntrs:20190030979:alsi10mg,AlSi10Mg,as-built,"E,sigma_uts,sigma_y","LPBF AlSi10Mg,AM AlSi10Mg"
+ntrs,ntrs:20160001501:cucrzr,CuCrZr,aged,"cp,k,sigma_y","Copper Chromium Zirconium,AM CuCrZr"
+ntrs,ntrs:20070017311:grcop-84,GRCop-84,solution treated & aged,"k,sigma_uts,sigma_y",NASA GRCop-84

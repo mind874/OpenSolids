@@ -31,6 +31,7 @@ pip install -e '.[dev,viz]'
 - `08_database_workflows.py`: practical walkthrough for NIST/NTRS/MIL usage.
 - `10_plot_multidatabase_6061.py`: combines NIST and MIL data for one alloy workflow.
 - `11_verify_units_and_sanity.py`: SI unit compatibility + reference sanity checks.
+- `12_export_material_catalog.py`: exports a CSV inventory of bundled materials.
 
 ## Generated output locations
 
