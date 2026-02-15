@@ -73,9 +73,15 @@ Current source-backed status:
 
 - `ss316` and `ss316-am` include NIST-backed `k`, `cp`, `E`, `eps_th`, and derived `diffusivity`.
 - `in718-am` includes NIST-backed `k`, `eps_th` plus MIL-backed `sigma_y`, `sigma_uts`.
-- `c101` currently includes NIST-backed `cp`; conductivity is not bundled yet because NIST
-  publishes conductivity as RRR-specific fit families (condition-dependent).
-- `c110` currently has no bundled temperature-dependent curves.
+- `cucrzr-am` uses NTRS citation `20210010991` for thermal-property trend provenance; strength
+  trend values are curated engineering entries.
+- `alsi10mg-am` uses a temperature-dependent AlSi10Mg table sourced to MDPI Applied Sciences
+  (DOI `10.3390/app13063460`) with room-temperature UTS anchored to NASA citation
+  `20205003675`.
+- `c101` uses Copper.org room-temperature `k`, `rho`, `E`, `alpha`, `sigma_y`, `sigma_uts`
+  plus NIST OFHC `cp(T)`; no bundled temperature-dependent `k(T)` curve yet.
+- `c110` uses Copper.org room-temperature `k`, `rho`, `E`, `alpha`, `sigma_y`, `sigma_uts`
+  plus NIST OFHC `cp(T)` as a copper proxy; no bundled temperature-dependent `k(T)` curve yet.
 
 ## API Overview
 
@@ -176,6 +182,7 @@ opensolids import mil-hdbk-5 --pdf /path/to/MIL-HDBK-5.pdf
 - `examples/10_plot_multidatabase_6061.py`
 - `examples/11_verify_units_and_sanity.py`
 - `examples/12_export_material_catalog.py`
+- `examples/13_audit_focus_material_sources.py`
 
 Run all visual examples:
 
