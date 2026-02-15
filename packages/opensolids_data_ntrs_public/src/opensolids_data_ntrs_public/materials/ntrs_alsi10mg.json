@@ -1,47 +1,41 @@
 {
-  "id": "ntrs:20190030979:alsi10mg",
+  "id": "ntrs:20205003675:alsi10mg",
   "name": "AlSi10Mg",
   "aliases": ["LPBF AlSi10Mg", "AM AlSi10Mg"],
   "composition": "Al-Si-Mg",
   "condition": "as-built",
-  "notes": "Additive-manufactured aluminum dataset for trade studies.",
+  "notes": "Room-temperature mechanical properties curated from NASA NTRS citation 20205003675.",
   "active": true,
-  "sources": ["ntrs-src:20190030979"],
+  "sources": ["ntrs-src:20205003675"],
   "properties": {
     "E": {
       "units": "Pa",
       "valid_T_min": 293.15,
-      "valid_T_max": 600.0,
-      "source_id": "ntrs-src:20190030979",
+      "valid_T_max": 293.15,
+      "source_id": "ntrs-src:20205003675",
       "model": {
-        "type": "tabular",
-        "interpolation": "pchip",
-        "T": [293.15, 400.0, 500.0, 600.0],
-        "y": [69000000000.0, 65000000000.0, 60000000000.0, 55000000000.0]
+        "type": "polynomial",
+        "coefficients": [72190000000.0]
       }
     },
     "sigma_y": {
       "units": "Pa",
       "valid_T_min": 293.15,
-      "valid_T_max": 600.0,
-      "source_id": "ntrs-src:20190030979",
+      "valid_T_max": 293.15,
+      "source_id": "ntrs-src:20205003675",
       "model": {
-        "type": "tabular",
-        "interpolation": "linear",
-        "T": [293.15, 400.0, 500.0, 600.0],
-        "y": [240000000.0, 205000000.0, 165000000.0, 120000000.0]
+        "type": "polynomial",
+        "coefficients": [163750000.0]
       }
     },
     "sigma_uts": {
       "units": "Pa",
       "valid_T_min": 293.15,
-      "valid_T_max": 600.0,
-      "source_id": "ntrs-src:20190030979",
+      "valid_T_max": 293.15,
+      "source_id": "ntrs-src:20205003675",
       "model": {
-        "type": "tabular",
-        "interpolation": "linear",
-        "T": [293.15, 400.0, 500.0, 600.0],
-        "y": [340000000.0, 300000000.0, 245000000.0, 190000000.0]
+        "type": "polynomial",
+        "coefficients": [337710000.0]
       }
     }
   }

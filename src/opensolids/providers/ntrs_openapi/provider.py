@@ -19,7 +19,7 @@ class NTRSOpenAPIProvider(LocalDataPackProvider):
         )
         super().__init__(
             name="ntrs",
-            version="0.2.3",
+            version="0.3.1",
             package_name="opensolids_data_ntrs_public",
             fallback_path=fallback,
         )

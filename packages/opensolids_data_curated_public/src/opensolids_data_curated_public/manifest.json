@@ -1,0 +1,13 @@
+{
+  "provider": "curated-public",
+  "version": "0.3.2",
+  "schema_version": 1,
+  "record_counts": {
+    "materials": 4,
+    "sources": 4
+  },
+  "license_notes": [
+    "Material records are curated from publicly accessible source pages.",
+    "Verify source license terms before redistribution outside this package."
+  ]
+}

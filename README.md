@@ -1,35 +1,26 @@
 # OpenSolids
 
 OpenSolids is a Python library for temperature-dependent solid material properties with
-explicit provenance and provider-based data ingestion.
+explicit provenance.
 
-It is built for solver workflows that need curves like `k(T)`, `cp(T)`, `E(T)`, and
-`sigma_y(T)` instead of fixed constants.
+It is built for analysis workflows that need curves like `k(T)`, `cp(T)`,
+`diffusivity(T)`, `E(T)`, `sigma_y(T)`, and `sigma_uts(T)` instead of fixed constants.
 
 ## Why OpenSolids Exists
 
-Most engineering calculations need properties that change with temperature, not single
-constants. OpenSolids was created to make those curves easy to access from Python while
-keeping source/provenance information visible.
+Engineering calculations depend on properties that move with temperature and material
+condition. OpenSolids was created to make those curves easy to use from Python while
+keeping the source of each curve visible.
 
-## Who This Is For
+## Who It Is For
 
 - Propulsion engineers (regen cooling, chamber/nozzle thermal-structural studies)
 - Mechanical/materials engineers (strength margins and thermal stress studies)
-- Students and independent builders who want reusable material-property tooling
-
-## What You Can Use It For
-
-- Evaluate temperature-dependent conductivity, heat capacity, modulus, and strength
-- Compare materials across multiple data providers in one script
-- Build design sweeps and trade studies with consistent APIs and units
-- Keep source attribution attached to the data you use in analysis
+- Students and independent builders developing thermal/structural models
 
 ## Install
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
 pip install opensolids
 ```
 
@@ -50,108 +41,113 @@ pip install -e '.[dev,viz]'
 ```python
 import opensolids as osl
 
-mat = osl.material("nist-cryo:aluminum-6061-t6")
-print(mat.k(300.0))
-print(mat.E([77.0, 150.0, 293.15], units="GPa"))
-print(mat.eps_th(120.0, T_ref=293.15))
+mat = osl.material("al-6061-t6")
+print(mat.k(300.0))                                   # W/(m*K)
+print(mat.diffusivity(300.0, units="mm^2/s"))         # mm^2/s
+print(mat.E([77.0, 293.15], units="GPa"))             # GPa
+print(mat.sigma_y(293.15, units="MPa"))               # MPa
 ```
 
-## Which Database Should I Use?
+## Focused Material IDs
 
-Use provider IDs by prefix:
+Canonical IDs for the focused set:
 
-- `nist-cryo:*` for cryogenic to room-temperature thermal/elastic curves.
-- `ntrs:*` for curated NASA-report-derived high-temperature material curves.
-- `mil-hdbk-5:*` for handbook allowables style strength curves.
+- `alsi10mg-am`
+- `cucrzr-am`
+- `grcop-84-am`
+- `in718-am`
+- `ss316-am`
+- `al-6061-am`
+- `c110`
+- `c101`
+- `al-6061-t6`
+- `ss316`
+- `ss304`
 
-Example material IDs:
+Provider-prefixed IDs remain available when you need direct source records.
 
-- `nist-cryo:aluminum-6061-t6`
-- `ntrs:20160001501:cucrzr`
-- `mil-hdbk-5:H:inconel-718`
+Property coverage status for this set is documented in
+`materials/material_sources.md` and `docs/assets/data/focus_materials_coverage.csv`.
 
-Provider workflow example script: `examples/08_database_workflows.py`
+Current source-backed status:
 
-Run:
-
-```bash
-.venv/bin/python examples/08_database_workflows.py
-```
+- `ss316` and `ss316-am` include NIST-backed `k`, `cp`, `E`, `eps_th`, and derived `diffusivity`.
+- `in718-am` includes NIST-backed `k`, `eps_th` plus MIL-backed `sigma_y`, `sigma_uts`.
+- `c101` currently includes NIST-backed `cp`; conductivity is not bundled yet because NIST
+  publishes conductivity as RRR-specific fit families (condition-dependent).
+- `c110` currently has no bundled temperature-dependent curves.
 
 ## API Overview
 
-- Material lookup: `osl.material(material_id)`
-- Search: `osl.search(query)`
-- Provider list: `osl.list_providers()`
-- Property calls: `mat.k(T)`, `mat.cp(T)`, `mat.E(T)`, `mat.sigma_y(T)`, ...
+- Material lookup: `osl.material(id_or_alias)`
+- Search: `osl.search(query, required_properties=[...])`
+- Include provider-scoped search hits: `osl.search(query, include_provider_records=True)`
+- List canonical material IDs: `osl.list_material_ids()`
+- Property calls:
+  - `mat.k(T)`, `mat.cp(T)`, `mat.rho(T)`, `mat.E(T)`
+  - `mat.sigma_y(T)`, `mat.sigma_uts(T)`
+  - `mat.eps_th(T, T_ref=...)`
+  - `mat.diffusivity(T)` (direct curve or derived from `k/(rho*cp)`)
 - Out-of-range policy per call: `policy="clamp" | "raise" | "extrapolate"`
-- Units conversion per call: `units="MPa"`, `units="GPa"`, etc.
+- Units conversion per call: `units="MPa"`, `units="GPa"`, `units="mm^2/s"`, etc.
 
 ## Units
 
-OpenSolids stores and serves curves in canonical SI units internally:
+Canonical internal units:
 
 - `k`: `W/(m*K)`
 - `cp`: `J/(kg*K)`
 - `rho`: `kg/m^3`
+- `diffusivity`: `m^2/s`
 - `E`, `sigma_y`, `sigma_uts`: `Pa`
 - `alpha`: `1/K`
 - `nu`, `eps_th`: `1`
 
-You can request output units per call with `units=...`.
+## Data Packaging and Sources
 
-## Data Packaging
+Bundled databases are included in the `opensolids` wheel:
 
-Provider databases are bundled with the `opensolids` wheel, so `pip install opensolids`
-includes NIST, curated NTRS, and MIL-HDBK-5 records by default.
+- NIST cryogenic material records
+- Curated NTRS-linked records
+- Curated MIL-HDBK-5 records
 
-If you are working from source, provider data also resolves from the local
-`packages/opensolids_data_*` directories.
+Source mapping and catalogs:
 
-## Material Catalog
-
-See `materials/material_catalog.csv` for a current list of bundled materials across
-all providers.
-
-Some materials appear multiple times because each provider is source-scoped. The same
-alloy can exist in multiple databases with different available properties and validity
-ranges.
-
-If you only want materials that contain specific properties, use:
-
-```python
-import opensolids as osl
-
-hits = osl.search("", required_properties=["k", "sigma_y"])
-for hit in hits:
-    print(hit.id)
-```
+- Canonical materials: `materials/canonical_materials.csv`
+- Provider records: `materials/material_catalog.csv`
+- Property-to-source mapping: `materials/material_sources.md`
 
 ## Visual Outputs
 
-### Thermal conductivity comparison (NTRS copper alloys)
+### Thermal conductivity comparison
 
 Code source: `examples/05_plot_property_curves.py`
 
 <img src="docs/assets/plots/curve_k_regen.png" alt="Thermal conductivity comparison" width="65%">
 
-### Yield strength comparison (NTRS + MIL)
+### Yield strength comparison
 
 Code source: `examples/05_plot_property_curves.py`
 
 <img src="docs/assets/plots/curve_sigma_y_regen.png" alt="Yield strength comparison" width="65%">
+
+### Thermal diffusivity comparison
+
+Code source: `examples/05_plot_property_curves.py`
+
+<img src="docs/assets/plots/curve_diffusivity_selected.png" alt="Thermal diffusivity comparison" width="65%">
+
+### Focused material set overview
+
+Code source: `examples/09_plot_focus_materials.py`
+
+<img src="docs/assets/plots/focus_materials_properties.png" alt="Focused material set properties" width="65%">
 
 ### Out-of-range policy behavior
 
 Code source: `examples/06_plot_policy_behavior.py`
 
 <img src="docs/assets/plots/policy_cucrzr_k.png" alt="Policy behavior plot" width="65%">
-
-### Multi-database 6061 workflow
-
-Code source: `examples/10_plot_multidatabase_6061.py`
-
-<img src="docs/assets/plots/al6061_multidatabase.png" alt="Multi-database 6061" width="65%">
 
 ## CLI Workflows
 
@@ -176,6 +172,7 @@ opensolids import mil-hdbk-5 --pdf /path/to/MIL-HDBK-5.pdf
 - `examples/06_plot_policy_behavior.py`
 - `examples/07_generate_all_visuals.py`
 - `examples/08_database_workflows.py`
+- `examples/09_plot_focus_materials.py`
 - `examples/10_plot_multidatabase_6061.py`
 - `examples/11_verify_units_and_sanity.py`
 - `examples/12_export_material_catalog.py`
@@ -186,26 +183,12 @@ Run all visual examples:
 .venv/bin/python examples/07_generate_all_visuals.py
 ```
 
-Run the database SI/sanity verification example:
-
-```bash
-.venv/bin/python examples/11_verify_units_and_sanity.py
-```
-
-Export the bundled material catalog:
+Refresh material/source indexes:
 
 ```bash
 .venv/bin/python examples/12_export_material_catalog.py
 ```
 
-## Repository Notes
-
-- Examples: `examples/README.md`
-- Material inventory: `materials/material_catalog.csv`
-
 ## License
 
 OpenSolids is licensed under `GPL-3.0-only`.
-
-If you plan to distribute software that includes OpenSolids, review the GPL terms in
-`LICENSE` to understand your distribution requirements.

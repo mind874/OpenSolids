@@ -39,6 +39,7 @@ def main() -> None:
 
     nist = osl.material("nist-cryo:aluminum-6061-t6")
     mil = osl.material("mil-hdbk-5:H:al-6061-t6")
+    canonical = osl.material("al-6061-t6")
 
     t_k = np.linspace(20.0, 300.0, 180)
     t_sy = np.linspace(294.0, 533.0, 180)
@@ -77,6 +78,10 @@ def main() -> None:
     print("Design-point combined query at 295 K:")
     print(f"- k from NIST: {nist.k(t_design, policy='clamp'):.3f} W/(m*K)")
     print(f"- sigma_y from MIL: {mil.sigma_y(t_design, units='MPa', policy='clamp'):.3f} MPa")
+    print(
+        f"- canonical diffusivity: "
+        f"{canonical.diffusivity(t_design, units='mm^2/s', policy='clamp'):.3f} mm^2/s"
+    )
     print("Generated files:")
     print(f"- {plot_path}")
     print(f"- {k_csv}")

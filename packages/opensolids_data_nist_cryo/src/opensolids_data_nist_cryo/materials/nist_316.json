@@ -1,0 +1,92 @@
+{
+  "id": "nist-cryo:stainless-steel-316",
+  "name": "Stainless Steel 316",
+  "aliases": ["316 Stainless", "UNS S31600", "316L"],
+  "composition": "Fe-Cr-Ni-Mo",
+  "condition": null,
+  "notes": "Cryogenic to room-temperature fitted representation from NIST.",
+  "sources": ["nist-cryo-src:stainless-steel-316"],
+  "properties": {
+    "k": {
+      "units": "W/(m*K)",
+      "valid_T_min": 1.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 20.0,
+      "recommended_T_max": 293.15,
+      "source_id": "nist-cryo-src:stainless-steel-316",
+      "model": {
+        "type": "log_polynomial",
+        "coefficients": [-1.4087, 1.3982, 0.2543, -0.626, 0.2334, 0.4256, -0.4658, 0.165, -0.0199]
+      }
+    },
+    "cp": {
+      "units": "J/(kg*K)",
+      "valid_T_min": 4.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 20.0,
+      "recommended_T_max": 293.15,
+      "source_id": "nist-cryo-src:stainless-steel-316",
+      "model": {
+        "type": "piecewise",
+        "branches": [
+          {
+            "condition": {"kind": "lt", "upper": 50.0},
+            "model": {
+              "type": "log_polynomial",
+              "coefficients": [12.2486, -80.6422, 218.743, -308.854, 239.5296, -89.9982, 3.15315, 8.44996, -1.91368]
+            }
+          },
+          {
+            "condition": {"kind": "ge", "lower": 50.0},
+            "model": {
+              "type": "log_polynomial",
+              "coefficients": [-1879.464, 3643.198, 76.70125, -6176.028, 7437.6247, -4305.7217, 1382.4627, -237.22704, 17.05262]
+            }
+          }
+        ]
+      }
+    },
+    "E": {
+      "units": "Pa",
+      "valid_T_min": 50.0,
+      "valid_T_max": 294.0,
+      "recommended_T_min": 77.0,
+      "recommended_T_max": 293.15,
+      "source_id": "nist-cryo-src:stainless-steel-316",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [207948800000.0, 73942410.0, -962720.0, 2845.56, -3.2408]
+      }
+    },
+    "eps_th": {
+      "units": "1",
+      "valid_T_min": 4.0,
+      "valid_T_max": 300.0,
+      "recommended_T_min": 77.0,
+      "recommended_T_max": 293.15,
+      "reference_temperature": 293.15,
+      "source_id": "nist-cryo-src:stainless-steel-316",
+      "model": {
+        "type": "piecewise",
+        "branches": [
+          {
+            "condition": {"kind": "lt", "upper": 23.0},
+            "model": {
+              "type": "tabular",
+              "interpolation": "linear",
+              "T": [4.0, 300.0],
+              "y": [-0.0030004, -0.0030004]
+            }
+          },
+          {
+            "condition": {"kind": "ge", "lower": 23.0},
+            "model": {
+              "type": "polynomial",
+              "coefficients": [-0.0029554, -3.9811e-06, 9.2683e-08, -2.0261e-10, 1.7127e-13]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

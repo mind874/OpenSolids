@@ -4,7 +4,7 @@
   "aliases": ["OFHC Copper", "UNS C10100", "UNS C10200"],
   "composition": "Cu",
   "condition": "OFHC",
-  "notes": "Specific heat curve from NIST fit table. Thermal conductivity is omitted because the NIST page provides multiple RRR-specific models.",
+  "notes": "Cryogenic OFHC specific-heat fit from NIST.",
   "sources": ["nist-cryo-src:oxygen-free-copper"],
   "properties": {
     "cp": {

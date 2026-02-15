@@ -1,9 +1,8 @@
-"""How to choose and use different OpenSolids databases/providers."""
+"""Practical workflows across bundled databases with canonical material IDs."""
 
 from __future__ import annotations
 
 import opensolids as osl
-
 
 
 def _print_sources(mat_id: str) -> None:
@@ -16,50 +15,29 @@ def _print_sources(mat_id: str) -> None:
     print()
 
 
-
 def main() -> None:
-    print("Providers:", osl.list_providers())
+    print("Canonical lookup with no provider prefix:")
+    mat = osl.material("al-6061-t6")
+    print(f"{mat.id} k(293.15 K): {mat.k(293.15):.3f} W/(m*K)")
+    print(f"{mat.id} sigma_y(293.15 K): {mat.sigma_y(293.15, units='MPa'):.3f} MPa")
     print()
 
-    print("Use case 1: cryogenic thermal properties (NIST)")
-    nist_id = "nist-cryo:aluminum-6061-t6"
-    nist = osl.material(nist_id)
-    print(f"{nist_id} k(T) at [20, 77, 293.15] K:")
-    print(nist.k([20.0, 77.0, 293.15]))
-    print(f"{nist_id} E(T) at [77, 293.15] K in GPa:")
-    print(nist.E([77.0, 293.15], units="GPa"))
+    print("AM-focused entries:")
+    for material_id in ("alsi10mg-am", "cucrzr-am", "grcop-84-am", "in718-am"):
+        am = osl.material(material_id)
+        props = ", ".join(am.available_properties())
+        print(f"- {material_id}: {props}")
     print()
 
-    print("Use case 2: high-temp chamber-liner style properties (NTRS)")
-    ntrs_id = "ntrs:20160001501:cucrzr"
-    ntrs = osl.material(ntrs_id)
-    print(f"{ntrs_id} k(T) at [500, 700, 900] K:")
-    print(ntrs.k([500.0, 700.0, 900.0]))
-    print(f"{ntrs_id} sigma_y(T) at [500, 700, 900] K in MPa:")
-    print(ntrs.sigma_y([500.0, 700.0, 900.0], units="MPa"))
+    print("Provider-specific IDs are still available when needed:")
+    nist = osl.material("nist-cryo:aluminum-6061-t6")
+    mil = osl.material("mil-hdbk-5:H:al-6061-t6")
+    print(f"- NIST k(293.15 K): {nist.k(293.15):.3f} W/(m*K)")
+    print(f"- MIL sigma_y(293.15 K): {mil.sigma_y(293.15, units='MPa'):.3f} MPa")
     print()
 
-    print("Use case 3: handbook allowables style strength curves (MIL-HDBK-5)")
-    mil_id = "mil-hdbk-5:H:inconel-718"
-    mil = osl.material(mil_id)
-    print(f"{mil_id} sigma_y(T) at [294, 700, 1000] K in MPa:")
-    print(mil.sigma_y([294.0, 700.0, 1000.0], units="MPa"))
-    print()
-
-    print("Combining databases for a single design workflow (6061):")
-    nist_6061 = osl.material("nist-cryo:aluminum-6061-t6")
-    mil_6061 = osl.material("mil-hdbk-5:H:al-6061-t6")
-
-    t_design = 295.0
-    k_val = nist_6061.k(t_design, policy="clamp")
-    sy_val = mil_6061.sigma_y(t_design, units="MPa", policy="clamp")
-    print(f"At T={t_design} K -> k from NIST: {k_val:.3f} W/(m*K)")
-    print(f"At T={t_design} K -> sigma_y from MIL: {sy_val:.3f} MPa")
-    print()
-
-    _print_sources(nist_id)
-    _print_sources(ntrs_id)
-    _print_sources(mil_id)
+    _print_sources("al-6061-t6")
+    _print_sources("cucrzr-am")
 
 
 if __name__ == "__main__":

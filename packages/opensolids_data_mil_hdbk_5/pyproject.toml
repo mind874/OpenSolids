@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "opensolids-data-mil-hdbk-5"
-version = "0.2.3"
+version = "0.3.0"
 description = "MIL-HDBK-5 data pack for OpenSolids"
 requires-python = ">=3.11"
 

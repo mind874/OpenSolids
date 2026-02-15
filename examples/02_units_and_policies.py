@@ -4,7 +4,7 @@ import opensolids as osl
 
 
 def main() -> None:
-    mat = osl.material("ntrs:20160001501:cucrzr")
+    mat = osl.material("cucrzr")
 
     t = 293.15
     sy_pa = mat.sigma_y(t)
@@ -12,6 +12,7 @@ def main() -> None:
 
     print(f"sigma_y({t} K) = {sy_pa:.1f} Pa")
     print(f"sigma_y({t} K) = {sy_mpa:.2f} MPa")
+    print(f"diffusivity({t} K) = {mat.diffusivity(t, units='mm^2/s'):.3f} mm^2/s")
     print()
 
     t_out = 1500.0

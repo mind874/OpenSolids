@@ -88,7 +88,7 @@ def import_mil_hdbk_5_pdf(
 
     manifest = {
         "provider": "mil-hdbk-5",
-        "version": "0.2.3",
+        "version": "0.3.0",
         "record_counts": {"materials": 1, "sources": 1},
         "license_notes": [
             "Imported from local PDF provided by user.",

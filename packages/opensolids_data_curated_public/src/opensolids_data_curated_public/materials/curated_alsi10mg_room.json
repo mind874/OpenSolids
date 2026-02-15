@@ -1,0 +1,41 @@
+{
+  "id": "curated-public:alsi10mg-room-temp-nasa",
+  "name": "AlSi10Mg (room-temperature NASA table)",
+  "aliases": ["AlSi10Mg NASA 20205003675"],
+  "composition": "Al-Si-Mg",
+  "condition": "as-built",
+  "notes": "Room-temperature mechanical properties extracted from NASA NTRS citation 20205003675 (Table 2, MSFC data set).",
+  "sources": ["curated-public-src:alsi10mg:nasa-20205003675"],
+  "properties": {
+    "E": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:alsi10mg:nasa-20205003675",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [72190000000.0]
+      }
+    },
+    "sigma_y": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:alsi10mg:nasa-20205003675",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [163750000.0]
+      }
+    },
+    "sigma_uts": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:alsi10mg:nasa-20205003675",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [337710000.0]
+      }
+    }
+  }
+}

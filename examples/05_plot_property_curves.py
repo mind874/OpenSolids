@@ -18,16 +18,21 @@ except ImportError as exc:  # pragma: no cover
 
 
 THERMAL_MATERIALS = {
-    "GRCop-84": "ntrs:20070017311:grcop-84",
-    "CuCrZr": "ntrs:20160001501:cucrzr",
+    "GRCop-84 (AM)": "grcop-84-am",
+    "CuCrZr (AM)": "cucrzr-am",
 }
 
 STRENGTH_MATERIALS = {
-    "GRCop-84": "ntrs:20070017311:grcop-84",
-    "CuCrZr": "ntrs:20160001501:cucrzr",
-    "Inconel 718": "mil-hdbk-5:H:inconel-718",
+    "GRCop-84 (AM)": "grcop-84-am",
+    "CuCrZr (AM)": "cucrzr-am",
+    "IN718 (AM entry)": "in718-am",
 }
 
+DIFFUSIVITY_MATERIALS = {
+    "Al 6061-T6": "al-6061-t6",
+    "CuCrZr (AM)": "cucrzr-am",
+    "SS304": "ss304",
+}
 
 
 def _ensure_dirs(plot_dir: Path, data_dir: Path) -> None:
@@ -35,13 +40,11 @@ def _ensure_dirs(plot_dir: Path, data_dir: Path) -> None:
     data_dir.mkdir(parents=True, exist_ok=True)
 
 
-
 def _write_csv(path: Path, header: list[str], rows: list[list[float]]) -> None:
     with path.open("w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(header)
         writer.writerows(rows)
-
 
 
 def generate_thermal_conductivity(plot_dir: Path, data_dir: Path) -> tuple[Path, Path]:
@@ -69,12 +72,17 @@ def generate_thermal_conductivity(plot_dir: Path, data_dir: Path) -> tuple[Path,
 
     csv_rows: list[list[float]] = []
     for i, t in enumerate(temps):
-        csv_rows.append([float(t), float(curves["GRCop-84"][i]), float(curves["CuCrZr"][i])])
+        csv_rows.append(
+            [
+                float(t),
+                float(curves["GRCop-84 (AM)"][i]),
+                float(curves["CuCrZr (AM)"][i]),
+            ]
+        )
 
     data_path = data_dir / "k_comparison_regen.csv"
     _write_csv(data_path, ["T_K", "k_grcop84_W_per_mK", "k_cucrzr_W_per_mK"], csv_rows)
     return plot_path, data_path
-
 
 
 def generate_strength_curves(plot_dir: Path, data_dir: Path) -> tuple[Path, Path]:
@@ -105,9 +113,9 @@ def generate_strength_curves(plot_dir: Path, data_dir: Path) -> tuple[Path, Path
         csv_rows.append(
             [
                 float(t),
-                float(curves["GRCop-84"][i]),
-                float(curves["CuCrZr"][i]),
-                float(curves["Inconel 718"][i]),
+                float(curves["GRCop-84 (AM)"][i]),
+                float(curves["CuCrZr (AM)"][i]),
+                float(curves["IN718 (AM entry)"][i]),
             ]
         )
 
@@ -120,6 +128,48 @@ def generate_strength_curves(plot_dir: Path, data_dir: Path) -> tuple[Path, Path
     return plot_path, data_path
 
 
+def generate_diffusivity_curves(plot_dir: Path, data_dir: Path) -> tuple[Path, Path]:
+    temps = np.linspace(293.15, 900.0, 180)
+    curves: dict[str, np.ndarray] = {}
+
+    for label, material_id in DIFFUSIVITY_MATERIALS.items():
+        mat = osl.material(material_id)
+        curves[label] = np.asarray(mat.diffusivity(temps, units="mm^2/s", policy="clamp"), dtype=float)
+
+    fig, ax = plt.subplots(figsize=(8.8, 5.2), dpi=150)
+    for label, values in curves.items():
+        ax.plot(temps, values, linewidth=2.2, label=label)
+
+    ax.set_title("Thermal Diffusivity vs Temperature")
+    ax.set_xlabel("Temperature [K]")
+    ax.set_ylabel("diffusivity [mm^2/s]")
+    ax.grid(alpha=0.25)
+    ax.legend(frameon=False)
+    fig.tight_layout()
+
+    plot_path = plot_dir / "curve_diffusivity_selected.png"
+    fig.savefig(plot_path)
+    plt.close(fig)
+
+    csv_rows: list[list[float]] = []
+    for i, t in enumerate(temps):
+        csv_rows.append(
+            [
+                float(t),
+                float(curves["Al 6061-T6"][i]),
+                float(curves["CuCrZr (AM)"][i]),
+                float(curves["SS304"][i]),
+            ]
+        )
+
+    data_path = data_dir / "diffusivity_comparison_selected.csv"
+    _write_csv(
+        data_path,
+        ["T_K", "a_6061_mm2_per_s", "a_cucrzr_mm2_per_s", "a_ss304_mm2_per_s"],
+        csv_rows,
+    )
+    return plot_path, data_path
+
 
 def main() -> None:
     plot_dir = Path("docs/assets/plots")
@@ -128,12 +178,15 @@ def main() -> None:
 
     k_plot, k_csv = generate_thermal_conductivity(plot_dir, data_dir)
     sy_plot, sy_csv = generate_strength_curves(plot_dir, data_dir)
+    a_plot, a_csv = generate_diffusivity_curves(plot_dir, data_dir)
 
     print("Generated files:")
     print(f"- {k_plot}")
     print(f"- {k_csv}")
     print(f"- {sy_plot}")
     print(f"- {sy_csv}")
+    print(f"- {a_plot}")
+    print(f"- {a_csv}")
 
 
 if __name__ == "__main__":

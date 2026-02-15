@@ -4,7 +4,7 @@ import opensolids as osl
 
 
 def test_material_lookup_and_property_calls():
-    mat = osl.material("nist-cryo:aluminum-6061-t6")
+    mat = osl.material("al-6061-t6")
     k = mat.k(300.0)
     assert isinstance(k, float)
     assert k > 0
@@ -15,7 +15,7 @@ def test_material_lookup_and_property_calls():
 
 
 def test_eps_th_reference_shift_behavior():
-    mat = osl.material("nist-cryo:aluminum-6061-t6")
+    mat = osl.material("al-6061-t6")
 
     eps_default = mat.eps_th(120.0)
     eps_shifted = mat.eps_th(120.0, T_ref=150.0)
@@ -24,7 +24,7 @@ def test_eps_th_reference_shift_behavior():
 
 
 def test_unit_conversion_strength_to_mpa():
-    mat = osl.material("ntrs:20160001501:cucrzr")
+    mat = osl.material("cucrzr")
     sy_pa = mat.sigma_y(293.15)
     sy_mpa = mat.sigma_y(293.15, units="MPa")
 
@@ -32,12 +32,35 @@ def test_unit_conversion_strength_to_mpa():
     assert sy_mpa > 100.0
 
 
+def test_diffusivity_is_available_when_density_ref_is_set():
+    mat = osl.material("al-6061-t6")
+
+    diffusivity = mat.diffusivity(293.15)
+    assert isinstance(diffusivity, float)
+    assert 4e-5 < diffusivity < 8e-5
+
+    diffusivity_mm2_s = mat.diffusivity(293.15, units="mm^2/s")
+    assert 40.0 < diffusivity_mm2_s < 80.0
+
+
+def test_canonical_alias_lookup():
+    mat = osl.material("6061-t6")
+    assert mat.id == "al-6061-t6"
+    assert "k" in mat.available_properties()
+    assert "sigma_y" in mat.available_properties()
+
+
 def test_list_providers_and_search():
     providers = osl.list_providers()
+    assert "curated-public" in providers
     assert "nist-cryo" in providers
     assert "ntrs" in providers
     assert "mil-hdbk-5" in providers
 
     results = osl.search("cucrzr")
     ids = {r.id for r in results}
-    assert "ntrs:20160001501:cucrzr" in ids
+    assert "cucrzr-am" in ids
+
+    provider_results = osl.search("cucrzr", include_provider_records=True)
+    provider_ids = {r.id for r in provider_results}
+    assert "ntrs:20210010991:cucrzr" in provider_ids

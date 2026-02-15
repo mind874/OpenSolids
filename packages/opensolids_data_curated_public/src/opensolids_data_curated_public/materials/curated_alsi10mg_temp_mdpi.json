@@ -1,0 +1,95 @@
+{
+  "id": "curated-public:alsi10mg-temp-mdpi-ma2023",
+  "name": "AlSi10Mg (temperature-dependent table, MDPI Applied Sciences 2023)",
+  "aliases": ["AlSi10Mg MA2023", "SLM AlSi10Mg temperature table"],
+  "composition": "Al-Si-Mg",
+  "condition": "SLM",
+  "notes": "Temperature-dependent tabular properties curated from an MDPI Applied Sciences 2023 simulation input table.",
+  "sources": ["curated-public-src:alsi10mg:mdpi-ma2023"],
+  "properties": {
+    "k": {
+      "units": "W/(m*K)",
+      "valid_T_min": 293.15,
+      "valid_T_max": 793.15,
+      "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [293.15, 393.15, 593.15, 793.15],
+        "y": [150.0, 145.0, 140.0, 130.0]
+      }
+    },
+    "cp": {
+      "units": "J/(kg*K)",
+      "valid_T_min": 293.15,
+      "valid_T_max": 793.15,
+      "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [293.15, 393.15, 593.15, 793.15],
+        "y": [700.0, 748.0, 848.0, 958.0]
+      }
+    },
+    "rho": {
+      "units": "kg/m^3",
+      "valid_T_min": 293.15,
+      "valid_T_max": 793.15,
+      "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [293.15, 393.15, 593.15, 793.15],
+        "y": [2680.0, 2640.0, 2550.0, 2460.0]
+      }
+    },
+    "alpha": {
+      "units": "1/K",
+      "valid_T_min": 293.15,
+      "valid_T_max": 793.15,
+      "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [293.15, 393.15, 593.15, 793.15],
+        "y": [2e-05, 2.2e-05, 2.4e-05, 2.6e-05]
+      }
+    },
+    "E": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 793.15,
+      "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [293.15, 393.15, 593.15, 793.15],
+        "y": [72000000000.0, 68000000000.0, 55000000000.0, 35000000000.0]
+      }
+    },
+    "nu": {
+      "units": "1",
+      "valid_T_min": 293.15,
+      "valid_T_max": 793.15,
+      "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [293.15, 393.15, 593.15, 793.15],
+        "y": [0.33, 0.33, 0.34, 0.34]
+      }
+    },
+    "sigma_y": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 793.15,
+      "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [293.15, 393.15, 593.15, 793.15],
+        "y": [250000000.0, 150000000.0, 105000000.0, 70000000.0]
+      }
+    }
+  }
+}

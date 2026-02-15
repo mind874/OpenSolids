@@ -1,18 +1,18 @@
 {
-  "id": "ntrs:20160001501:cucrzr",
+  "id": "ntrs:20210010991:cucrzr",
   "name": "CuCrZr",
   "aliases": ["Copper Chromium Zirconium", "AM CuCrZr"],
   "composition": "Cu-Cr-Zr",
   "condition": "aged",
-  "notes": "Regen-focused curve with additive-manufacturing relevance.",
+  "notes": "Regen-focused AM C-18150 curve set. Thermal trends are sourced from the cited NTRS paper; strength trend entries are curated engineering values.",
   "active": true,
-  "sources": ["ntrs-src:20160001501"],
+  "sources": ["ntrs-src:20210010991"],
   "properties": {
     "k": {
       "units": "W/(m*K)",
       "valid_T_min": 293.15,
       "valid_T_max": 900.0,
-      "source_id": "ntrs-src:20160001501",
+      "source_id": "ntrs-src:20210010991",
       "model": {
         "type": "tabular",
         "interpolation": "pchip",
@@ -24,7 +24,7 @@
       "units": "J/(kg*K)",
       "valid_T_min": 293.15,
       "valid_T_max": 900.0,
-      "source_id": "ntrs-src:20160001501",
+      "source_id": "ntrs-src:20210010991",
       "model": {
         "type": "tabular",
         "interpolation": "linear",
@@ -36,7 +36,7 @@
       "units": "Pa",
       "valid_T_min": 293.15,
       "valid_T_max": 900.0,
-      "source_id": "ntrs-src:20160001501",
+      "source_id": "ntrs-src:20210010991",
       "model": {
         "type": "tabular",
         "interpolation": "linear",

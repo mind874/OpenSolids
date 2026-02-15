@@ -1,0 +1,15 @@
+{
+  "source_id": "nist-cryo-src:stainless-steel-316",
+  "title": "316 Stainless",
+  "publisher": "NIST",
+  "organization": "National Institute of Standards and Technology",
+  "url_or_citation_id": "https://trc.nist.gov/cryogenics/materials/316Stainless/316Stainless_rev.htm",
+  "license_notes": "NIST fair use/license statement applies; include attribution.",
+  "retrieved_at": "2026-02-15T00:00:00Z",
+  "page_or_table": "cryogenic property equation table",
+  "extraction_method": "fit-parse",
+  "metadata": {
+    "provider": "nist-cryo",
+    "disclaimer": "Engineering use requires independent verification for certification workflows."
+  }
+}

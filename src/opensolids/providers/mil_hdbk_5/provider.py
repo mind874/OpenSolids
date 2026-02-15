@@ -17,7 +17,7 @@ class MilHdbk5Provider(LocalDataPackProvider):
         )
         super().__init__(
             name="mil-hdbk-5",
-            version="0.2.3",
+            version="0.3.0",
             package_name="opensolids_data_mil_hdbk_5",
             fallback_path=fallback,
         )

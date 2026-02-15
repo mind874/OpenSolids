@@ -1,0 +1,17 @@
+{
+  "source_id": "curated-public-src:alsi10mg:nasa-20205003675",
+  "title": "Characterizing Effects of Potential Build Induced Artifacts in L-PBF Components",
+  "publisher": "NASA STI",
+  "organization": "NASA",
+  "url_or_citation_id": "https://ntrs.nasa.gov/citations/20205003675",
+  "license_notes": "NASA public citation record; follow NASA STI copyright/distribution guidance.",
+  "retrieved_at": "2026-02-15T00:00:00Z",
+  "page_or_table": "Table 2: Mechanical properties with witness mark across specimen gauge section",
+  "extraction_method": "manual",
+  "metadata": {
+    "provider": "curated-public",
+    "citation_id": "20205003675",
+    "download_url": "https://ntrs.nasa.gov/api/citations/20205003675/downloads/AM_AlSi10Mg_Build_Artifacts%20(AIAA)_15June2020.pdf",
+    "safe_for_numeric_extraction": true
+  }
+}

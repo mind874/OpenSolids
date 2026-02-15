@@ -1,6 +1,8 @@
 # Materials Inventory
 
-- `material_catalog.csv` lists all currently bundled materials across providers.
+- `material_catalog.csv` lists bundled provider-scoped records.
+- `canonical_materials.csv` lists plain user-facing material IDs.
+- `material_sources.md` maps canonical properties to their source references.
 
 Regenerate with:
 

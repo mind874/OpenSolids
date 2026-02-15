@@ -1,0 +1,88 @@
+{
+  "id": "curated-public:c110-room-temp",
+  "name": "Copper C110 (room-temperature datasheet)",
+  "aliases": ["C11000 Copper", "ETP Copper"],
+  "composition": "Cu",
+  "condition": "annealed",
+  "notes": "Room-temperature point properties curated from Copper.org C11000 datasheet.",
+  "sources": ["curated-public-src:c110:copper-org"],
+  "properties": {
+    "k": {
+      "units": "W/(m*K)",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:c110:copper-org",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [391.0]
+      }
+    },
+    "cp": {
+      "units": "J/(kg*K)",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:c110:copper-org",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [385.0]
+      }
+    },
+    "rho": {
+      "units": "kg/m^3",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:c110:copper-org",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [8940.0]
+      }
+    },
+    "E": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:c110:copper-org",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [117000000000.0]
+      }
+    },
+    "alpha": {
+      "units": "1/K",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:c110:copper-org",
+      "model": {
+        "type": "polynomial",
+        "coefficients": [1.76e-05]
+      }
+    },
+    "sigma_y": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:c110:copper-org",
+      "metadata": {
+        "selected_value_basis": "10 ksi YS-0.5% extension room-temperature row converted to SI"
+      },
+      "model": {
+        "type": "polynomial",
+        "coefficients": [68947572.9]
+      }
+    },
+    "sigma_uts": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 293.15,
+      "source_id": "curated-public-src:c110:copper-org",
+      "metadata": {
+        "reported_range_Pa": [220000000.0, 250000000.0],
+        "selected_value_note": "Conservative lower-bound from reported room-temperature range."
+      },
+      "model": {
+        "type": "polynomial",
+        "coefficients": [220000000.0]
+      }
+    }
+  }
+}

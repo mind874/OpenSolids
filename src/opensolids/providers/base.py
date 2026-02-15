@@ -126,6 +126,8 @@ class LocalDataPackProvider:
                         provider=self.name,
                         condition=rec.get("condition"),
                         aliases=tuple(aliases),
+                        source_count=len(rec.get("sources", [])),
+                        property_coverage=tuple(sorted(rec.get("properties", {}).keys())),
                     )
                 )
 

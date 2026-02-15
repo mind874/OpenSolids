@@ -1,0 +1,17 @@
+{
+  "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
+  "title": "Research on the Warping and Dross Formation of an Overhang Structure Manufactured by Laser Powder Bed Fusion",
+  "publisher": "Applied Sciences (MDPI)",
+  "organization": "MDPI",
+  "url_or_citation_id": "https://www.mdpi.com/2076-3417/13/6/3460",
+  "license_notes": "Open-access journal article. Verify downstream redistribution rights for extracted numeric tables.",
+  "retrieved_at": "2026-02-16T00:00:00Z",
+  "page_or_table": "material-property table used for thermal/mechanical simulation inputs",
+  "extraction_method": "manual",
+  "metadata": {
+    "provider": "curated-public",
+    "doi": "10.3390/app13063460",
+    "dataset_type": "temperature-dependent tabular properties",
+    "notes": "Values are curated from the paper's published simulation-input property table."
+  }
+}

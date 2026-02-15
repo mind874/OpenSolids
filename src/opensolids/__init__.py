@@ -1,4 +1,4 @@
-from .api import list_providers, material, register_provider, search
+from .api import list_material_ids, list_providers, material, register_provider, search
 from .material import Material
 from .types import MaterialSummary, SourceRef
 
@@ -8,6 +8,7 @@ __all__ = [
     "SourceRef",
     "material",
     "search",
+    "list_material_ids",
     "list_providers",
     "register_provider",
 ]

@@ -6,7 +6,7 @@ import numpy as np
 
 from .curve import PropertyCurve, curve_from_record
 from .types import SourceRef
-from .units import convert_values
+from .units import as_array_with_scalar_flag, convert_values, restore_scalar_if_needed
 
 
 @dataclass
@@ -17,6 +17,7 @@ class Material:
     composition: str | None
     condition: str | None
     notes: str | None
+    density_ref: float | None
     sources: list[SourceRef]
     _properties: dict
     _source_lookup: dict[str, SourceRef]
@@ -33,6 +34,9 @@ class Material:
             composition=record.get("composition"),
             condition=record.get("condition"),
             notes=record.get("notes"),
+            density_ref=(
+                float(record["density_ref"]) if record.get("density_ref") is not None else None
+            ),
             sources=material_sources,
             _properties=record.get("properties", {}),
             _source_lookup=source_lookup,
@@ -40,7 +44,17 @@ class Material:
         )
 
     def available_properties(self) -> list[str]:
-        return sorted(self._properties.keys())
+        props = set(self._properties.keys())
+        if self._can_compute_diffusivity():
+            props.add("diffusivity")
+        return sorted(props)
+
+    def _can_compute_diffusivity(self) -> bool:
+        if "diffusivity" in self._properties:
+            return True
+        if "k" not in self._properties or "cp" not in self._properties:
+            return False
+        return "rho" in self._properties or self.density_ref is not None
 
     def curve(self, property_key: str) -> PropertyCurve:
         if property_key in self._curve_cache:
@@ -80,6 +94,29 @@ class Material:
 
     def sigma_uts(self, T, *, units: str | None = None, policy: str | None = None):
         return self._eval("sigma_uts", T, units=units, policy=policy)
+
+    def diffusivity(self, T, *, units: str | None = None, policy: str | None = None):
+        if "diffusivity" in self._properties:
+            return self._eval("diffusivity", T, units=units, policy=policy)
+
+        if not self._can_compute_diffusivity():
+            raise KeyError(
+                f"Property not available for {self.id}: diffusivity "
+                "(requires k(T), cp(T), and rho(T) or density_ref)"
+            )
+
+        arr, was_scalar = as_array_with_scalar_flag(T)
+        k_values = np.asarray(self.k(arr, policy=policy), dtype=float)
+        cp_values = np.asarray(self.cp(arr, policy=policy), dtype=float)
+
+        if "rho" in self._properties:
+            rho_values = np.asarray(self.rho(arr, policy=policy), dtype=float)
+        else:
+            rho_values = np.full_like(arr, float(self.density_ref), dtype=float)
+
+        values = k_values / (rho_values * cp_values)
+        values = restore_scalar_if_needed(values, was_scalar)
+        return convert_values(values, "m^2/s", units)
 
     def eps_th(
         self,

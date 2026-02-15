@@ -1,19 +1,20 @@
 {
-  "source_id": "ntrs-src:20160001501",
-  "title": "CuCrZr high-temperature behavior for engine liners",
+  "source_id": "ntrs-src:20210010991",
+  "title": "Effect of Temperature History on Thermal Properties of Additively Manufactured C-18150 Alloy Samples",
   "publisher": "NASA STI",
   "organization": "NASA",
-  "url_or_citation_id": "20160001501",
+  "url_or_citation_id": "https://ntrs.nasa.gov/citations/20210010991",
   "license_notes": "Curated from NTRS metadata; verify rights before redistributing source PDFs.",
   "retrieved_at": "2026-02-15T00:00:00Z",
-  "page_or_table": "curated table",
+  "page_or_table": "thermal property figures and text (RT conductivity around 280 W/(m*K) after heat treatment); strength trend values are curated",
   "extraction_method": "tabular-digitized",
   "metadata": {
-    "citation_id": "20160001501",
+    "citation_id": "20210010991",
     "safe_for_numeric_extraction": true,
     "containsThirdPartyMaterial": false,
+    "notes": "Thermal property trend is sourced from this citation. Strength entries in the paired material record are curated engineering trend values.",
     "copyright": {
-      "determinationType": "PUBLIC_USE_PERMITTED"
+      "determinationType": "GOV_PERMITTED"
     }
   }
 }

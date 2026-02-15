@@ -1,0 +1,16 @@
+{
+  "source_id": "curated-public-src:c110:copper-org",
+  "title": "Copper Alloy C11000 Data Sheet",
+  "publisher": "Copper Development Association Inc.",
+  "organization": "Copper.org",
+  "url_or_citation_id": "https://alloys.copper.org/alloy/C11000",
+  "license_notes": "Public web datasheet. Verify source licensing terms for redistribution.",
+  "retrieved_at": "2026-02-15T00:00:00Z",
+  "page_or_table": "Mechanical and Physical Properties tables",
+  "extraction_method": "manual",
+  "metadata": {
+    "provider": "curated-public",
+    "temperature_basis": "room temperature (68 F / 20 C)",
+    "notes": "Values are point-in-temperature material properties from datasheet tables."
+  }
+}

@@ -25,3 +25,6 @@ class MaterialSummary:
     provider: str
     condition: str | None
     aliases: tuple[str, ...]
+    canonical_id: str | None = None
+    source_count: int = 0
+    property_coverage: tuple[str, ...] = ()

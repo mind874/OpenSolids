@@ -9,6 +9,7 @@ import opensolids as osl
 from opensolids.units import CANONICAL_UNITS, UREG
 
 MATERIAL_DIRS = [
+    Path("packages/opensolids_data_curated_public/src/opensolids_data_curated_public/materials"),
     Path("packages/opensolids_data_nist_cryo/src/opensolids_data_nist_cryo/materials"),
     Path("packages/opensolids_data_ntrs_public/src/opensolids_data_ntrs_public/materials"),
     Path("packages/opensolids_data_mil_hdbk_5/src/opensolids_data_mil_hdbk_5/materials"),
@@ -44,16 +45,18 @@ def verify_units() -> tuple[int, int]:
 def print_reference_points() -> None:
     print("\nReference checkpoints:")
 
-    al = osl.material("nist-cryo:aluminum-6061-t6")
+    al = osl.material("al-6061-t6")
     print(f"- 6061-T6 k(293.15 K): {al.k(293.15):.3f} W/(m*K)")
     print(f"- 6061-T6 cp(293.15 K): {al.cp(293.15):.3f} J/(kg*K)")
     print(f"- 6061-T6 E(293.15 K): {al.E(293.15, units='GPa'):.3f} GPa")
+    print(f"- 6061-T6 diffusivity(293.15 K): {al.diffusivity(293.15, units='mm^2/s'):.3f} mm^2/s")
 
-    ss = osl.material("nist-cryo:stainless-steel-304")
+    ss = osl.material("ss304")
     print(f"- 304 SS k(293.15 K): {ss.k(293.15):.3f} W/(m*K)")
     print(f"- 304 SS E(293.15 K): {ss.E(293.15, units='GPa'):.3f} GPa")
+    print(f"- 304 SS diffusivity(293.15 K): {ss.diffusivity(293.15, units='mm^2/s'):.3f} mm^2/s")
 
-    cu = osl.material("nist-cryo:oxygen-free-copper")
+    cu = osl.material("c101")
     print(f"- OFHC cp(293.15 K): {cu.cp(293.15):.3f} J/(kg*K)")
 
 

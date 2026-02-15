@@ -4,7 +4,7 @@
   "aliases": ["IN718", "Alloy 718"],
   "composition": "Ni-Cr-Fe-Nb-Mo",
   "condition": "solution treated and aged",
-  "notes": "Starter high-temperature allowable from MIL-HDBK-5 aligned table conventions.",
+  "notes": "High-temperature allowables aligned to MIL-HDBK-5 table conventions.",
   "sources": ["mil-hdbk-5-src:H:inconel-718"],
   "properties": {
     "sigma_y": {

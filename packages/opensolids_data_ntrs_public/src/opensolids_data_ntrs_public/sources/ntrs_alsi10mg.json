@@ -1,15 +1,15 @@
 {
-  "source_id": "ntrs-src:20190030979",
-  "title": "AlSi10Mg additive manufacturing mechanical data",
+  "source_id": "ntrs-src:20205003675",
+  "title": "Characterizing Effects of Potential Build Induced Artifacts in L-PBF Components",
   "publisher": "NASA STI",
   "organization": "NASA",
-  "url_or_citation_id": "20190030979",
+  "url_or_citation_id": "https://ntrs.nasa.gov/citations/20205003675",
   "license_notes": "Curated from NTRS metadata; include citation URL in downstream workflows.",
   "retrieved_at": "2026-02-15T00:00:00Z",
-  "page_or_table": "curated table",
-  "extraction_method": "tabular-digitized",
+  "page_or_table": "Table 2 (MSFC build set, room-temperature tensile properties)",
+  "extraction_method": "manual",
   "metadata": {
-    "citation_id": "20190030979",
+    "citation_id": "20205003675",
     "safe_for_numeric_extraction": true,
     "containsThirdPartyMaterial": false,
     "copyright": {

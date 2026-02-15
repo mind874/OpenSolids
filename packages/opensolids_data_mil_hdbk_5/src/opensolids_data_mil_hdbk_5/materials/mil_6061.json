@@ -4,7 +4,7 @@
   "aliases": ["6061-T6"],
   "composition": "Al-Mg-Si",
   "condition": "T6",
-  "notes": "Starter allowables table from MIL-HDBK-5H.",
+  "notes": "Temperature-dependent allowables table from MIL-HDBK-5H.",
   "sources": ["mil-hdbk-5-src:H:al-6061-t6"],
   "properties": {
     "sigma_y": {

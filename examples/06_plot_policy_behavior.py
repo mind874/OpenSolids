@@ -37,7 +37,7 @@ def main() -> None:
     data_dir = Path("docs/assets/data")
     _ensure_dirs(plot_dir, data_dir)
 
-    mat = osl.material("ntrs:20160001501:cucrzr")
+    mat = osl.material("cucrzr")
     curve = mat.curve("k")
 
     temps = np.linspace(200.0, 1200.0, 220)

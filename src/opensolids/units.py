@@ -16,6 +16,7 @@ CANONICAL_UNITS: dict[str, str] = {
     "nu": "1",
     "alpha": "1/K",
     "eps_th": "1",
+    "diffusivity": "m^2/s",
     "sigma_y": "Pa",
     "sigma_uts": "Pa",
 }
