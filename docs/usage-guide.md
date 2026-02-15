@@ -285,7 +285,7 @@ Generates/refreshes files in:
 
 ## 15. Known MVP Limits
 
-- Coverage is starter-level and incomplete across materials/properties.
+- Coverage varies across materials/properties and is not uniform yet.
 - NTRS is metadata-first with curated numeric subsets.
 - MIL PDF import is intentionally minimal and expects parseable table text.
 

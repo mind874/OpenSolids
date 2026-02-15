@@ -6,6 +6,25 @@ explicit provenance and provider-based data ingestion.
 It is built for solver workflows that need curves like `k(T)`, `cp(T)`, `E(T)`, and
 `sigma_y(T)` instead of fixed constants.
 
+## Why OpenSolids Exists
+
+Most engineering calculations need properties that change with temperature, not single
+constants. OpenSolids was created to make those curves easy to access from Python while
+keeping source/provenance information visible.
+
+## Who This Is For
+
+- Propulsion engineers (regen cooling, chamber/nozzle thermal-structural studies)
+- Mechanical/materials engineers (strength margins and thermal stress studies)
+- Students and independent builders who want reusable material-property tooling
+
+## What You Can Use It For
+
+- Evaluate temperature-dependent conductivity, heat capacity, modulus, and strength
+- Compare materials across multiple data providers in one script
+- Build design sweeps and trade studies with consistent APIs and units
+- Keep source attribution attached to the data you use in analysis
+
 ## Install
 
 ```bash
@@ -138,5 +157,5 @@ Run all visual examples:
 
 OpenSolids is licensed under `GPL-3.0-only`.
 
-This is a strong copyleft license. If you distribute a derivative work that includes
-OpenSolids, you must make the derivative source available under GPL-compatible terms.
+If you plan to distribute software that includes OpenSolids, review the GPL terms in
+`LICENSE` to understand your distribution requirements.
