@@ -3,23 +3,10 @@
 OpenSolids is a Python library for temperature-dependent solid material properties with
 explicit provenance and provider-based data ingestion.
 
-It is designed for solver workflows that need values like `k(T)`, `cp(T)`, `E(T)`, and
+It is built for solver workflows that need curves like `k(T)`, `cp(T)`, `E(T)`, and
 `sigma_y(T)` instead of fixed constants.
 
-## What You Get
-
-- Temperature-dependent property evaluation with scalar and vector inputs.
-- Consistent property API across providers.
-- Explicit provenance (`SourceRef`) for each material record.
-- Safe out-of-range behavior (`clamp` default, `raise`, `extrapolate`).
-- Three provider modules and offline data-pack structure:
-  - `nist-cryo`
-  - `ntrs`
-  - `mil-hdbk-5`
-
 ## Install
-
-### Local development
 
 ```bash
 python3 -m venv .venv
@@ -27,80 +14,72 @@ source .venv/bin/activate
 pip install -e '.[dev]'
 ```
 
-### Use in code
+For plot-generating examples:
+
+```bash
+pip install -e '.[viz]'
+```
+
+## Quick Start
 
 ```python
 import opensolids as osl
 
 mat = osl.material("nist-cryo:aluminum-6061-t6")
+
 print(mat.k(300.0))
+print(mat.E([77.0, 150.0, 293.15], units="GPa"))
+print(mat.eps_th(120.0, T_ref=293.15))
 ```
 
-## Quick API Tour
+## API Overview
 
-```python
-import opensolids as osl
+- Material lookup: `osl.material(material_id)`
+- Search: `osl.search(query)`
+- Provider list: `osl.list_providers()`
+- Property calls: `mat.k(T)`, `mat.cp(T)`, `mat.E(T)`, `mat.sigma_y(T)`, ...
+- Out-of-range policy per call: `policy="clamp" | "raise" | "extrapolate"`
+- Units conversion per call: `units="MPa"`, `units="GPa"`, etc.
 
-mat = osl.material("ntrs:20160001501:cucrzr")
+## Visual Example Outputs
 
-# scalar input -> scalar output
-k_500 = mat.k(500.0)
+The repository includes generated visual outputs under `docs/assets/plots/`.
 
-# vector input -> numpy array output
-E_curve = mat.E([293.15, 500.0, 700.0])
+### Thermal conductivity comparison
 
-# units conversion through pint
-sigma_y_mpa = mat.sigma_y(293.15, units="MPa")
+Code source: `examples/05_plot_property_curves.py`
 
-# out-of-range policy: clamp | raise | extrapolate
-safe_value = mat.k(2000.0, policy="clamp")
-```
+![Thermal conductivity comparison](docs/assets/plots/curve_k_regen.png)
 
-## Core Concepts
+Sample data (`docs/assets/data/k_comparison_regen.csv`):
 
-### Material lookup
+| T [K] | GRCop-84 k [W/(m*K)] | CuCrZr k [W/(m*K)] |
+| --- | ---: | ---: |
+| 293.15 | 325.0 | 330.0 |
+| 500.0 | 305.0 | 309.4 |
+| 700.0 | 285.0 | 282.8 |
+| 900.0 | 268.0 | 250.0 |
 
-```python
-mat = osl.material("nist-cryo:aluminum-6061-t6")
-```
+### Yield strength comparison
 
-### Property methods
+Code source: `examples/05_plot_property_curves.py`
 
-Available method names include:
+![Yield strength comparison](docs/assets/plots/curve_sigma_y_regen.png)
 
-- `k`, `cp`, `rho`
-- `E`, `nu`, `alpha`, `eps_th`
-- `sigma_y`, `sigma_uts`
+### Out-of-range policy behavior
 
-Use `mat.available_properties()` to inspect what a specific material supports.
+Code source: `examples/06_plot_policy_behavior.py`
 
-### Thermal strain helper
+![Policy behavior plot](docs/assets/plots/policy_cucrzr_k.png)
 
-`eps_th(T, T_ref=293.15)` works in two ways:
+Sample policy behavior (`docs/assets/data/policy_cucrzr_k.csv`):
 
-- Directly from stored `eps_th` curve when present.
-- By integrating `alpha(T)` if `eps_th` is not stored.
-
-### Provenance
-
-Each material exposes `mat.sources`, a list of `SourceRef` objects with:
-
-- source IDs and titles
-- URL/citation info
-- extraction method
-- license notes
-
-## Search and Discovery
-
-```python
-import opensolids as osl
-
-providers = osl.list_providers()
-results = osl.search("cucrzr")
-
-for item in results:
-    print(item.id, item.name, item.provider)
-```
+| T [K] | clamp k [W/(m*K)] | extrapolate k [W/(m*K)] |
+| --- | ---: | ---: |
+| 250.0 | 330.0 | 333.4 |
+| 293.15 | 330.0 | 330.2 |
+| 900.0 | 250.2 | 250.2 |
+| 1100.0 | 250.0 | 211.3 |
 
 ## CLI Workflows
 
@@ -117,29 +96,25 @@ opensolids import mil-hdbk-5 --pdf /path/to/MIL-HDBK-5.pdf
 
 ## Examples
 
-Runnable scripts are in `examples/`:
-
 - `examples/01_quickstart.py`
 - `examples/02_units_and_policies.py`
 - `examples/03_search_and_provenance.py`
 - `examples/04_regen_trade_study.py`
+- `examples/05_plot_property_curves.py`
+- `examples/06_plot_policy_behavior.py`
+- `examples/07_generate_all_visuals.py`
 
-Run them with:
+Run all visual examples:
 
 ```bash
-.venv/bin/python examples/01_quickstart.py
+.venv/bin/python examples/07_generate_all_visuals.py
 ```
 
-See `examples/README.md` for details.
+## Documentation
 
-## Full Usage Guide
-
-Detailed, step-by-step guide: `docs/usage-guide.md`.
-
-## Current Scope
-
-This is an MVP-focused engineering toolkit. It is not a certification library and does
-not replace source-document engineering judgment.
+- Comprehensive guide: `docs/usage-guide.md`
+- Example index: `examples/README.md`
+- Compliance notes: `docs/compliance/`
 
 ## License
 
