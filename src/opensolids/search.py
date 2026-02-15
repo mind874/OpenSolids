@@ -8,7 +8,7 @@ def normalize_text(text: str) -> str:
 def matches_query(query: str, *fields: str | None) -> bool:
     q = normalize_text(query)
     if not q:
-        return False
+        return True
     for field in fields:
         if field and q in normalize_text(field):
             return True

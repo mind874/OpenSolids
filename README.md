@@ -110,8 +110,22 @@ If you are working from source, provider data also resolves from the local
 
 ## Material Catalog
 
-See `docs/materials/material_catalog.csv` for a current list of bundled materials across
+See `materials/material_catalog.csv` for a current list of bundled materials across
 all providers.
+
+Some materials appear multiple times because each provider is source-scoped. The same
+alloy can exist in multiple databases with different available properties and validity
+ranges.
+
+If you only want materials that contain specific properties, use:
+
+```python
+import opensolids as osl
+
+hits = osl.search("", required_properties=["k", "sigma_y"])
+for hit in hits:
+    print(hit.id)
+```
 
 ## Visual Outputs
 
@@ -184,12 +198,10 @@ Export the bundled material catalog:
 .venv/bin/python examples/12_export_material_catalog.py
 ```
 
-## Documentation
+## Repository Notes
 
-- Comprehensive guide: `docs/usage-guide.md`
-- Example index: `examples/README.md`
-- Compliance notes: `docs/compliance/`
-- Release guide: `docs/releasing.md`
+- Examples: `examples/README.md`
+- Material inventory: `materials/material_catalog.csv`
 
 ## License
 

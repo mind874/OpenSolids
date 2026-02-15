@@ -72,7 +72,7 @@ OpenSolids stores and serves curves in canonical SI units internally:
 
 Bundled material inventory:
 
-- https://github.com/mind874/OpenSolids/blob/main/docs/materials/material_catalog.csv
+- https://github.com/mind874/OpenSolids/blob/main/materials/material_catalog.csv
 
 ## Visual Outputs
 
@@ -94,9 +94,7 @@ Bundled material inventory:
 
 ## Documentation
 
-- Usage guide: https://github.com/mind874/OpenSolids/blob/main/docs/usage-guide.md
 - Examples: https://github.com/mind874/OpenSolids/blob/main/examples/README.md
-- Compliance notes: https://github.com/mind874/OpenSolids/tree/main/docs/compliance
 - Source repository: https://github.com/mind874/OpenSolids
 
 ## License

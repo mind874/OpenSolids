@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Iterable
+
 from .material import Material
 from .providers.base import Provider
 from .registry import ProviderRegistry, default_registry
@@ -11,9 +13,28 @@ def material(material_id: str, *, registry: ProviderRegistry | None = None) -> M
     return reg.material(material_id)
 
 
-def search(query: str, *, registry: ProviderRegistry | None = None) -> list[MaterialSummary]:
+def search(
+    query: str,
+    *,
+    required_properties: Iterable[str] | None = None,
+    registry: ProviderRegistry | None = None,
+) -> list[MaterialSummary]:
     reg = registry or default_registry()
-    return reg.search(query)
+    hits = reg.search(query)
+
+    if required_properties is None:
+        return hits
+
+    required = {p for p in required_properties}
+    if not required:
+        return hits
+
+    filtered: list[MaterialSummary] = []
+    for hit in hits:
+        mat = reg.material(hit.id)
+        if required.issubset(set(mat.available_properties())):
+            filtered.append(hit)
+    return filtered
 
 
 def list_providers(*, registry: ProviderRegistry | None = None) -> list[str]:

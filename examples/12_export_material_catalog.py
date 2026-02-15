@@ -1,4 +1,4 @@
-"""Export all packaged provider materials to docs/materials/material_catalog.csv."""
+"""Export all packaged provider materials to materials/material_catalog.csv."""
 
 from __future__ import annotations
 
@@ -38,7 +38,7 @@ def main() -> None:
 
     rows.sort(key=lambda r: (r[0], r[2], r[1]))
 
-    out = Path("docs/materials/material_catalog.csv")
+    out = Path("materials/material_catalog.csv")
     _write_csv(
         out,
         ["provider", "material_id", "name", "condition", "properties", "aliases"],
