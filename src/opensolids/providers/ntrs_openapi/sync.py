@@ -51,7 +51,7 @@ def sync_ntrs(
 
     manifest = {
         "provider": "ntrs",
-        "version": "0.2.1",
+        "version": "0.2.2",
         "record_counts": {"materials": 0, "sources": source_count},
         "synced_since": since,
         "redistributions_checked": len(
