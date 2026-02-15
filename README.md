@@ -128,14 +128,6 @@ Code source: `examples/06_plot_policy_behavior.py`
 
 ![Policy behavior plot](docs/assets/plots/policy_cucrzr_k.png)
 
-### Provider coverage across databases
-
-Code source: `examples/09_plot_provider_coverage.py`
-
-![Provider material counts](docs/assets/plots/provider_material_counts.png)
-
-![Provider property coverage](docs/assets/plots/provider_property_coverage_heatmap.png)
-
 ### Multi-database 6061 workflow
 
 Code source: `examples/10_plot_multidatabase_6061.py`
@@ -165,7 +157,6 @@ opensolids import mil-hdbk-5 --pdf /path/to/MIL-HDBK-5.pdf
 - `examples/06_plot_policy_behavior.py`
 - `examples/07_generate_all_visuals.py`
 - `examples/08_database_workflows.py`
-- `examples/09_plot_provider_coverage.py`
 - `examples/10_plot_multidatabase_6061.py`
 - `examples/11_verify_units_and_sanity.py`
 

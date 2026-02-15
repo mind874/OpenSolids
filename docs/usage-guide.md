@@ -187,30 +187,7 @@ Backing data: `docs/assets/data/policy_cucrzr_k.csv`
 | 900.0 | 250.2 | 250.2 |
 | 1100.0 | 250.0 | 211.3 |
 
-## 9. Visual Provider Coverage (Different Databases)
-
-Source: `examples/09_plot_provider_coverage.py`
-
-Run:
-
-```bash
-.venv/bin/python examples/09_plot_provider_coverage.py
-```
-
-### 9.1 Materials per provider
-
-![Provider material counts](assets/plots/provider_material_counts.png)
-
-### 9.2 Property coverage heatmap
-
-![Provider property coverage](assets/plots/provider_property_coverage_heatmap.png)
-
-Backing CSV files:
-
-- `docs/assets/data/provider_material_counts.csv`
-- `docs/assets/data/provider_property_coverage.csv`
-
-## 10. Visual Multi-Database 6061 Workflow
+## 9. Visual Multi-Database 6061 Workflow
 
 Source: `examples/10_plot_multidatabase_6061.py`
 
@@ -234,7 +211,7 @@ Backing CSV files:
 - `docs/assets/data/al6061_nist_k.csv`
 - `docs/assets/data/al6061_mil_sigma_y.csv`
 
-## 11. Search and Provenance
+## 10. Search and Provenance
 
 Source: `examples/03_search_and_provenance.py`
 
@@ -252,7 +229,7 @@ for src in mat.sources:
 
 Use provenance fields before using curves in reports or design decisions.
 
-## 12. CLI Data Workflows
+## 11. CLI Data Workflows
 
 ### Sync NIST
 
@@ -272,7 +249,7 @@ opensolids sync ntrs --since 2021-01-01 --citation-id 20070017311
 opensolids import mil-hdbk-5 --pdf /path/to/MIL-HDBK-5.pdf
 ```
 
-## 13. Generate All Documentation Visuals
+## 12. Generate All Documentation Visuals
 
 ```bash
 .venv/bin/python examples/07_generate_all_visuals.py
@@ -283,7 +260,7 @@ Generates/refreshes files in:
 - `docs/assets/plots/`
 - `docs/assets/data/`
 
-## 14. Verify Units and Data Sanity
+## 13. Verify Units and Data Sanity
 
 Source: `examples/11_verify_units_and_sanity.py`
 
@@ -305,7 +282,7 @@ Checked 24 property curves for SI compatibility.
 All curve units are SI-compatible (or dimensionless where expected).
 ```
 
-## 15. Best Practices
+## 14. Best Practices
 
 - Use `policy="raise"` in strict validation pipelines.
 - Use `policy="clamp"` in broad design sweeps.
@@ -313,13 +290,13 @@ All curve units are SI-compatible (or dimensionless where expected).
 - Catch `KeyError` when iterating heterogeneous materials.
 - Inspect `mat.sources` and compliance notes before publication use.
 
-## 16. Current Limits
+## 15. Current Limits
 
 - Coverage varies across materials/properties and is not uniform yet.
 - NTRS is metadata-first with curated numeric subsets.
 - MIL PDF import is intentionally minimal and expects parseable table text.
 
-## 17. Additional References
+## 16. Additional References
 
 - PRD summary: `docs/prd/README.md`
 - Compliance notes: `docs/compliance/`
