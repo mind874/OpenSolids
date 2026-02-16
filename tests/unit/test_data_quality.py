@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 import opensolids as osl
+import pytest
 from opensolids.units import CANONICAL_UNITS, UREG
 
 
@@ -93,3 +94,25 @@ def test_nist_in718_source_url_uses_live_path():
     )
     payload = json.loads(source_file.read_text())
     assert "Iconel%20718" in payload["url_or_citation_id"]
+
+
+def test_cucrzr_provider_record_has_only_thermal_curves_from_ntrs_20210010991():
+    rec = osl.material("ntrs:20210010991:cucrzr")
+    props = set(rec.available_properties())
+    assert props == {"cp", "k"}
+
+
+def test_cucrzr_canonical_has_no_sigma_y_until_source_backed_curve_exists():
+    mat = osl.material("cucrzr-am")
+    assert "sigma_y" not in set(mat.available_properties())
+    with pytest.raises(KeyError):
+        mat.sigma_y(293.15)
+
+
+def test_alsi10mg_mdpi_source_is_marked_as_model_derived():
+    source_file = Path(
+        "packages/opensolids_data_curated_public/src/opensolids_data_curated_public/sources/curated_alsi10mg_mdpi_ma2023.json"
+    )
+    payload = json.loads(source_file.read_text())
+    assert payload["metadata"]["data_origin"] == "computed"
+    assert payload["metadata"]["modeling_tool"] == "JMatPro"

@@ -24,7 +24,6 @@ THERMAL_MATERIALS = {
 
 STRENGTH_MATERIALS = {
     "GRCop-84 (AM)": "grcop-84-am",
-    "CuCrZr (AM)": "cucrzr-am",
     "IN718 (AM entry)": "in718-am",
 }
 
@@ -114,7 +113,6 @@ def generate_strength_curves(plot_dir: Path, data_dir: Path) -> tuple[Path, Path
             [
                 float(t),
                 float(curves["GRCop-84 (AM)"][i]),
-                float(curves["CuCrZr (AM)"][i]),
                 float(curves["IN718 (AM entry)"][i]),
             ]
         )
@@ -122,7 +120,7 @@ def generate_strength_curves(plot_dir: Path, data_dir: Path) -> tuple[Path, Path
     data_path = data_dir / "sigma_y_comparison_regen.csv"
     _write_csv(
         data_path,
-        ["T_K", "sigma_y_grcop84_MPa", "sigma_y_cucrzr_MPa", "sigma_y_in718_MPa"],
+        ["T_K", "sigma_y_grcop84_MPa", "sigma_y_in718_MPa"],
         csv_rows,
     )
     return plot_path, data_path

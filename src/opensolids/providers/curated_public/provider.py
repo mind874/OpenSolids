@@ -17,7 +17,7 @@ class CuratedPublicProvider(LocalDataPackProvider):
         )
         super().__init__(
             name="curated-public",
-            version="0.3.3",
+            version="0.3.4",
             package_name="opensolids_data_curated_public",
             fallback_path=fallback,
         )

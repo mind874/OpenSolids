@@ -1,6 +1,6 @@
 {
   "provider": "ntrs",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "schema_version": 1,
   "record_counts": {
     "materials": 3,

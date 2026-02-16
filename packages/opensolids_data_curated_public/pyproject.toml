@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "opensolids-data-curated-public"
-version = "0.3.3"
+version = "0.3.4"
 description = "Curated public-source data pack for OpenSolids"
 requires-python = ">=3.11"
 

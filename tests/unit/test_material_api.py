@@ -24,7 +24,7 @@ def test_eps_th_reference_shift_behavior():
 
 
 def test_unit_conversion_strength_to_mpa():
-    mat = osl.material("cucrzr")
+    mat = osl.material("in718-am")
     sy_pa = mat.sigma_y(293.15)
     sy_mpa = mat.sigma_y(293.15, units="MPa")
 

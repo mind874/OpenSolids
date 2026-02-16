@@ -11,7 +11,9 @@
   "metadata": {
     "provider": "curated-public",
     "doi": "10.3390/app13063460",
+    "data_origin": "computed",
+    "modeling_tool": "JMatPro",
     "dataset_type": "temperature-dependent tabular properties",
-    "notes": "Values are curated from the paper's published simulation-input property table."
+    "notes": "Values are curated from the paper's published simulation-input property table (model-derived inputs, not direct tensile test tables)."
   }
 }

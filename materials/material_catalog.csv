@@ -14,5 +14,5 @@ nist-cryo,nist-cryo:oxygen-free-copper-rrr50,Oxygen-Free Copper (RRR 50 conducti
 nist-cryo,nist-cryo:stainless-steel-304,Stainless Steel 304,,"E,cp,eps_th,k","304 Stainless,UNS S30400"
 nist-cryo,nist-cryo:stainless-steel-316,Stainless Steel 316,,"E,cp,eps_th,k","316 Stainless,UNS S31600,316L"
 ntrs,ntrs:20205003675:alsi10mg,AlSi10Mg,as-built,"E,sigma_uts,sigma_y","LPBF AlSi10Mg,AM AlSi10Mg"
-ntrs,ntrs:20210010991:cucrzr,CuCrZr,aged,"cp,k,sigma_y","Copper Chromium Zirconium,AM CuCrZr"
+ntrs,ntrs:20210010991:cucrzr,CuCrZr,aged,"cp,k","Copper Chromium Zirconium,AM CuCrZr"
 ntrs,ntrs:20070017311:grcop-84,GRCop-84,solution treated & aged,"k,sigma_uts,sigma_y",NASA GRCop-84

@@ -5,9 +5,9 @@ def test_search_with_required_properties_filters_results():
     hits = osl.search("", required_properties=["k", "sigma_y"])
     ids = {h.id for h in hits}
 
-    assert "cucrzr-am" in ids
     assert "grcop-84-am" in ids
     assert "al-6061-t6" in ids
+    assert "cucrzr-am" not in ids
     assert "ss316" not in ids
 
 

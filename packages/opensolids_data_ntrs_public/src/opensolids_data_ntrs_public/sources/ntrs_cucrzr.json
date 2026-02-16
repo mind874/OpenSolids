@@ -6,13 +6,14 @@
   "url_or_citation_id": "https://ntrs.nasa.gov/citations/20210010991",
   "license_notes": "Curated from NTRS metadata; verify rights before redistributing source PDFs.",
   "retrieved_at": "2026-02-15T00:00:00Z",
-  "page_or_table": "thermal property figures and text (RT conductivity around 280 W/(m*K) after heat treatment); strength trend values are curated",
+  "page_or_table": "thermal property figures and text",
   "extraction_method": "tabular-digitized",
   "metadata": {
     "citation_id": "20210010991",
     "safe_for_numeric_extraction": true,
     "containsThirdPartyMaterial": false,
-    "notes": "Thermal property trend is sourced from this citation. Strength entries in the paired material record are curated engineering trend values.",
+    "data_origin": "experimental",
+    "notes": "Thermal-property curves are digitized from this citation.",
     "copyright": {
       "determinationType": "GOV_PERMITTED"
     }

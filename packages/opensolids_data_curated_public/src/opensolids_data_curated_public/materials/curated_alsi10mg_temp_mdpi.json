@@ -4,8 +4,13 @@
   "aliases": ["AlSi10Mg MA2023", "SLM AlSi10Mg temperature table"],
   "composition": "Al-Si-Mg",
   "condition": "SLM",
-  "notes": "Temperature-dependent tabular properties curated from an MDPI Applied Sciences 2023 simulation input table.",
+  "notes": "Temperature-dependent tabular properties curated from an MDPI Applied Sciences 2023 simulation-input table (JMatPro-derived values reported by the paper).",
   "sources": ["curated-public-src:alsi10mg:mdpi-ma2023"],
+  "metadata": {
+    "data_origin": "computed",
+    "modeling_tool": "JMatPro",
+    "origin_note": "Values are from the publication's simulation-input property table."
+  },
   "properties": {
     "k": {
       "units": "W/(m*K)",
@@ -84,6 +89,9 @@
       "valid_T_min": 293.15,
       "valid_T_max": 793.15,
       "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
+      "metadata": {
+        "yield_definition": "unspecified in source table"
+      },
       "model": {
         "type": "tabular",
         "interpolation": "linear",

@@ -4,7 +4,7 @@
   "aliases": ["Copper Chromium Zirconium", "AM CuCrZr"],
   "composition": "Cu-Cr-Zr",
   "condition": "aged",
-  "notes": "Regen-focused AM C-18150 curve set. Thermal trends are sourced from the cited NTRS paper; strength trend entries are curated engineering values.",
+  "notes": "Regen-focused AM C-18150 thermal-property curve set sourced from the cited NTRS paper.",
   "active": true,
   "sources": ["ntrs-src:20210010991"],
   "properties": {
@@ -30,18 +30,6 @@
         "interpolation": "linear",
         "T": [293.15, 450.0, 650.0, 900.0],
         "y": [390.0, 420.0, 460.0, 510.0]
-      }
-    },
-    "sigma_y": {
-      "units": "Pa",
-      "valid_T_min": 293.15,
-      "valid_T_max": 900.0,
-      "source_id": "ntrs-src:20210010991",
-      "model": {
-        "type": "tabular",
-        "interpolation": "linear",
-        "T": [293.15, 450.0, 650.0, 900.0],
-        "y": [320000000.0, 290000000.0, 230000000.0, 150000000.0]
       }
     }
   }

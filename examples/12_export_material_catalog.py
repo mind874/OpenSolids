@@ -64,60 +64,101 @@ def _canonical_rows() -> list[list[str]]:
     return rows
 
 
-def _derived_source_text(mat, property_key: str) -> str:
-    if property_key != "diffusivity":
-        return ""
+def _origin_from_source(source) -> str:
+    if source is None:
+        return "n/a"
+    metadata = source.metadata or {}
+    origin = metadata.get("data_origin")
+    if origin:
+        return str(origin)
+    return source.extraction_method
 
+
+def _derived_diffusivity_details(mat) -> tuple[str, str, str, str, str]:
+    component_keys = ["k", "cp"]
+    component_curves = [mat.curve("k"), mat.curve("cp")]
     source_parts: list[str] = []
-    for base_prop in ("k", "cp"):
-        try:
-            source_ref = mat.curve(base_prop).source_ref
-        except KeyError:
-            source_ref = None
-        if source_ref:
-            source_parts.append(f"{base_prop}:{source_ref.source_id}")
+    origins: list[str] = []
+    citations: list[str] = []
+
+    for key, curve in zip(component_keys, component_curves):
+        source = curve.source_ref
+        if source:
+            source_parts.append(f"{key}:{source.source_id}")
+            origins.append(_origin_from_source(source))
+            citations.append(source.url_or_citation_id)
+
     if "rho" in set(mat.available_properties()):
-        try:
-            source_ref = mat.curve("rho").source_ref
-        except KeyError:
-            source_ref = None
-        if source_ref:
-            source_parts.append(f"rho:{source_ref.source_id}")
+        curve = mat.curve("rho")
+        component_curves.append(curve)
+        source = curve.source_ref
+        if source:
+            source_parts.append(f"rho:{source.source_id}")
+            origins.append(_origin_from_source(source))
+            citations.append(source.url_or_citation_id)
     elif mat.density_ref is not None:
         source_parts.append(f"rho:density_ref={mat.density_ref:.1f} kg/m^3")
-    return " | ".join(source_parts)
+        origins.append("assumed-constant")
+
+    valid_t_min = max(curve.valid_T_min for curve in component_curves)
+    valid_t_max = min(curve.valid_T_max for curve in component_curves)
+
+    source_text = " | ".join(source_parts) if source_parts else "derived"
+    origin_text = " | ".join(dict.fromkeys(origins)) if origins else "derived"
+    citation_text = "<br>".join(dict.fromkeys(citations)) if citations else "derived"
+    range_text = f"[{valid_t_min:.6g}, {valid_t_max:.6g}]"
+    return "m^2/s", range_text, source_text, origin_text, citation_text
 
 
 def _source_lines() -> list[str]:
     lines = [
         "# Material Sources",
         "",
-        "This table shows where each canonical property curve comes from.",
+        "This table shows where each canonical property curve comes from, including units,",
+        "valid temperature range, and whether data is modeled/computed or experimentally derived.",
         "",
-        "| canonical_id | property | source_id / derivation | citation_or_url |",
-        "|---|---|---|---|",
+        "| canonical_id | property | units | valid_T_range_K | source_id / derivation | data_origin | citation_or_url |",
+        "|---|---|---|---|---|---|---|",
     ]
 
     for material_id in osl.list_material_ids():
         mat = osl.material(material_id)
         props = mat.available_properties()
         if not props:
-            lines.append(f"| `{mat.id}` | `-` | no bundled curves yet | n/a |")
+            lines.append(f"| `{mat.id}` | `-` | `-` | `-` | no bundled curves yet | `n/a` | n/a |")
             continue
 
         for property_key in props:
             try:
                 curve = mat.curve(property_key)
             except KeyError:
+                if property_key == "diffusivity":
+                    units, valid_range, source_text, origin_text, citation_text = (
+                        _derived_diffusivity_details(mat)
+                    )
+                else:
+                    units, valid_range, source_text, origin_text, citation_text = (
+                        "-",
+                        "-",
+                        "derived",
+                        "derived",
+                        "derived",
+                    )
                 lines.append(
-                    f"| `{mat.id}` | `{property_key}` | `{_derived_source_text(mat, property_key)}` | derived |"
+                    f"| `{mat.id}` | `{property_key}` | `{units}` | `{valid_range}` | "
+                    f"`{source_text}` | `{origin_text}` | {citation_text} |"
                 )
                 continue
 
             source = curve.source_ref
             source_id = source.source_id if source else "n/a"
+            origin = _origin_from_source(source)
             citation = source.url_or_citation_id if source else "n/a"
-            lines.append(f"| `{mat.id}` | `{property_key}` | `{source_id}` | {citation} |")
+            valid_range = f"[{curve.valid_T_min:.6g}, {curve.valid_T_max:.6g}]"
+            lines.append(
+                f"| `{mat.id}` | `{property_key}` | `{curve.units}` | `{valid_range}` | "
+                f"`{source_id}` | `{origin}` | {citation} |"
+            )
 
     return lines
 

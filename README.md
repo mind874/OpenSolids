@@ -73,10 +73,12 @@ Current source-backed status:
 
 - `ss316` and `ss316-am` include NIST-backed `k`, `cp`, `E`, `eps_th`, and derived `diffusivity`.
 - `in718-am` includes NIST-backed `k`, `eps_th` plus MIL-backed `sigma_y`, `sigma_uts`.
-- `cucrzr-am` uses NTRS citation `20210010991` for thermal-property trend provenance; strength
-  trend values are curated engineering entries.
+- `cucrzr-am` uses NTRS citation `20210010991` for temperature-dependent thermal properties
+  (`k`, `cp`); bundled `sigma_y(T)` is intentionally omitted until a dedicated source-backed
+  curve is added.
 - `alsi10mg-am` uses a temperature-dependent AlSi10Mg table sourced to MDPI Applied Sciences
-  (DOI `10.3390/app13063460`) with room-temperature UTS anchored to NASA citation
+  (DOI `10.3390/app13063460`); this table is marked as model-derived (JMatPro-based in source
+  article) with room-temperature UTS anchored to NASA citation
   `20205003675`.
 - `c101` uses NIST OFHC temperature-dependent thermal proxies (`k(T)` with RRR100, `cp(T)`,
   `alpha(T)`) plus Copper.org room-temperature anchors for `rho`, `E`, `sigma_y`, and

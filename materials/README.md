@@ -2,7 +2,8 @@
 
 - `material_catalog.csv` lists bundled provider-scoped records.
 - `canonical_materials.csv` lists plain user-facing material IDs.
-- `material_sources.md` maps canonical properties to their source references.
+- `material_sources.md` maps canonical properties to source references and includes
+  units, valid temperature range, and data origin tags.
 
 Regenerate with:
 

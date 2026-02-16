@@ -1,4 +1,5 @@
 import opensolids as osl
+import pytest
 
 
 def test_canonical_material_lookup_by_alias():
@@ -40,6 +41,15 @@ def test_in718_am_includes_nist_thermal_conductivity():
     props = set(mat.available_properties())
     assert "k" in props
     assert "sigma_y" in props
+
+
+def test_cucrzr_am_exposes_thermal_curves_but_not_strength_until_verified_source():
+    mat = osl.material("cucrzr-am")
+    props = set(mat.available_properties())
+    assert {"k", "cp", "diffusivity"}.issubset(props)
+    assert "sigma_y" not in props
+    with pytest.raises(KeyError):
+        mat.sigma_y(293.15)
 
 
 def test_c101_includes_thermal_and_room_mechanical_properties():

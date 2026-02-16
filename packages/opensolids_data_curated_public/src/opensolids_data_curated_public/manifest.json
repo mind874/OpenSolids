@@ -1,6 +1,6 @@
 {
   "provider": "curated-public",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "schema_version": 1,
   "record_counts": {
     "materials": 4,

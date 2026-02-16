@@ -70,12 +70,14 @@ CANONICAL_MATERIAL_SPECS: tuple[CanonicalMaterialSpec, ...] = (
         ),
         composition="Cu-Cr-Zr",
         condition="aged",
-        notes="Additive manufacturing-focused record with direct NTRS-derived thermal and strength curves.",
+        notes=(
+            "Additive manufacturing-focused record with direct NTRS-derived thermal-property curves. "
+            "Yield strength is intentionally omitted until a dedicated source-backed sigma_y(T) dataset is added."
+        ),
         density_ref=8900.0,
         property_sources={
             "k": ("ntrs:20210010991:cucrzr",),
             "cp": ("ntrs:20210010991:cucrzr",),
-            "sigma_y": ("ntrs:20210010991:cucrzr",),
         },
     ),
     CanonicalMaterialSpec(
