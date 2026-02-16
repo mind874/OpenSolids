@@ -8,6 +8,7 @@ from pathlib import Path
 import numpy as np
 
 import opensolids as osl
+from _plot_style import apply_plot_style, color_for_label
 
 try:
     import matplotlib.pyplot as plt
@@ -54,15 +55,17 @@ def generate_thermal_conductivity(plot_dir: Path, data_dir: Path) -> tuple[Path,
         mat = osl.material(material_id)
         curves[label] = np.asarray(mat.k(temps, policy="clamp"), dtype=float)
 
-    fig, ax = plt.subplots(figsize=(8.8, 5.2), dpi=150)
+    fig, ax = plt.subplots(figsize=(9.4, 5.4), dpi=165)
     for label, values in curves.items():
-        ax.plot(temps, values, linewidth=2.2, label=label)
+        color = color_for_label(label)
+        ax.plot(temps, values, linewidth=2.6, color=color, label=label)
+        ax.scatter(temps[::35], values[::35], s=14, color=color, alpha=0.9, zorder=3)
 
     ax.set_title("Thermal Conductivity vs Temperature")
     ax.set_xlabel("Temperature [K]")
     ax.set_ylabel("k [W/(m*K)]")
-    ax.grid(alpha=0.25)
-    ax.legend(frameon=False)
+    ax.set_xlim(float(temps[0]), float(temps[-1]))
+    ax.legend(loc="upper right")
     fig.tight_layout()
 
     plot_path = plot_dir / "curve_k_regen.png"
@@ -92,15 +95,17 @@ def generate_strength_curves(plot_dir: Path, data_dir: Path) -> tuple[Path, Path
         mat = osl.material(material_id)
         curves[label] = np.asarray(mat.sigma_y(temps, units="MPa", policy="clamp"), dtype=float)
 
-    fig, ax = plt.subplots(figsize=(8.8, 5.2), dpi=150)
+    fig, ax = plt.subplots(figsize=(9.4, 5.4), dpi=165)
     for label, values in curves.items():
-        ax.plot(temps, values, linewidth=2.2, label=label)
+        color = color_for_label(label)
+        ax.plot(temps, values, linewidth=2.6, color=color, label=label)
+        ax.scatter(temps[::35], values[::35], s=14, color=color, alpha=0.9, zorder=3)
 
     ax.set_title("Yield Strength vs Temperature")
     ax.set_xlabel("Temperature [K]")
     ax.set_ylabel("sigma_y [MPa]")
-    ax.grid(alpha=0.25)
-    ax.legend(frameon=False)
+    ax.set_xlim(float(temps[0]), float(temps[-1]))
+    ax.legend(loc="upper right")
     fig.tight_layout()
 
     plot_path = plot_dir / "curve_sigma_y_regen.png"
@@ -134,15 +139,22 @@ def generate_diffusivity_curves(plot_dir: Path, data_dir: Path) -> tuple[Path, P
         mat = osl.material(material_id)
         curves[label] = np.asarray(mat.diffusivity(temps, units="mm^2/s", policy="clamp"), dtype=float)
 
-    fig, ax = plt.subplots(figsize=(8.8, 5.2), dpi=150)
+    fig, ax = plt.subplots(figsize=(9.4, 5.4), dpi=165)
     for label, values in curves.items():
-        ax.plot(temps, values, linewidth=2.2, label=label)
+        color = color_for_label(label)
+        ax.plot(temps, values, linewidth=2.6, color=color, label=label)
+        ax.scatter(temps[::35], values[::35], s=14, color=color, alpha=0.9, zorder=3)
+
+    # 6061 data is valid to 300 K in this dataset; values beyond that are clamp-policy behavior.
+    ax.axvspan(300.0, float(temps[-1]), color="#eceff8", alpha=0.65, zorder=0)
+    ax.axvline(300.0, color="#7f8aa3", linewidth=1.2, linestyle="--", alpha=0.8)
+    ax.text(307.0, float(np.max([v.max() for v in curves.values()])) * 0.97, "clamp region for 6061", fontsize=9)
 
     ax.set_title("Thermal Diffusivity vs Temperature")
     ax.set_xlabel("Temperature [K]")
     ax.set_ylabel("diffusivity [mm^2/s]")
-    ax.grid(alpha=0.25)
-    ax.legend(frameon=False)
+    ax.set_xlim(float(temps[0]), float(temps[-1]))
+    ax.legend(loc="upper right")
     fig.tight_layout()
 
     plot_path = plot_dir / "curve_diffusivity_selected.png"
@@ -170,6 +182,8 @@ def generate_diffusivity_curves(plot_dir: Path, data_dir: Path) -> tuple[Path, P
 
 
 def main() -> None:
+    apply_plot_style()
+
     plot_dir = Path("docs/assets/plots")
     data_dir = Path("docs/assets/data")
     _ensure_dirs(plot_dir, data_dir)

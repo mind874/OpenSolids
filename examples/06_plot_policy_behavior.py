@@ -8,6 +8,7 @@ from pathlib import Path
 import numpy as np
 
 import opensolids as osl
+from _plot_style import apply_plot_style, color_for_label
 
 try:
     import matplotlib.pyplot as plt
@@ -33,6 +34,8 @@ def _write_csv(path: Path, header: list[str], rows: list[list[float]]) -> None:
 
 
 def main() -> None:
+    apply_plot_style()
+
     plot_dir = Path("docs/assets/plots")
     data_dir = Path("docs/assets/data")
     _ensure_dirs(plot_dir, data_dir)
@@ -44,20 +47,32 @@ def main() -> None:
     k_clamp = np.asarray(mat.k(temps, policy="clamp"), dtype=float)
     k_extrap = np.asarray(mat.k(temps, policy="extrapolate"), dtype=float)
 
-    fig, ax = plt.subplots(figsize=(8.8, 5.2), dpi=150)
-    ax.plot(temps, k_clamp, linewidth=2.2, label="clamp")
-    ax.plot(temps, k_extrap, linewidth=2.2, linestyle="--", label="extrapolate")
+    fig, ax = plt.subplots(figsize=(9.4, 5.4), dpi=165)
+    clamp_color = color_for_label("CuCrZr (AM)", fallback="#00897b")
+    extrap_color = "#c2185b"
+    ax.plot(temps, k_clamp, linewidth=2.6, color=clamp_color, label="policy='clamp'")
+    ax.plot(
+        temps,
+        k_extrap,
+        linewidth=2.3,
+        linestyle="--",
+        color=extrap_color,
+        label="policy='extrapolate'",
+    )
 
-    ax.axvline(curve.valid_T_min, color="gray", linewidth=1.2, alpha=0.75)
-    ax.axvline(curve.valid_T_max, color="gray", linewidth=1.2, alpha=0.75)
-    ax.text(curve.valid_T_min + 6, np.max(k_extrap) - 8, "valid min", fontsize=9)
-    ax.text(curve.valid_T_max + 6, np.max(k_extrap) - 8, "valid max", fontsize=9)
+    ax.axvspan(curve.valid_T_min, curve.valid_T_max, color="#e9effa", alpha=0.75, zorder=0)
+    ax.axvline(curve.valid_T_min, color="#5b6a84", linewidth=1.2, alpha=0.85)
+    ax.axvline(curve.valid_T_max, color="#5b6a84", linewidth=1.2, alpha=0.85)
+    label_y = float(np.max(k_extrap)) * 0.96
+    ax.text(curve.valid_T_min + 8, label_y, "valid min", fontsize=9)
+    ax.text(curve.valid_T_max + 8, label_y, "valid max", fontsize=9)
+    ax.text((curve.valid_T_min + curve.valid_T_max) * 0.5 - 80, label_y, "source-supported range", fontsize=9)
 
     ax.set_title("Out-of-Range Policy Behavior (CuCrZr k(T))")
     ax.set_xlabel("Temperature [K]")
     ax.set_ylabel("k [W/(m*K)]")
-    ax.grid(alpha=0.25)
-    ax.legend(frameon=False)
+    ax.set_xlim(float(temps[0]), float(temps[-1]))
+    ax.legend(loc="upper right")
     fig.tight_layout()
 
     plot_path = plot_dir / "policy_cucrzr_k.png"
