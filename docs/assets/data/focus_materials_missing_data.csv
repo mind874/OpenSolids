@@ -1,0 +1,20 @@
+material_id,name,property,status,valid_T_min_K,valid_T_max_K,reason
+c101,Copper C101,sigma_y,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+c101,Copper C101,sigma_uts,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+c101,Copper C101,E,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+c110,Copper C110,sigma_y,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+c110,Copper C110,sigma_uts,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+c110,Copper C110,E,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+cucrzr-am,CuCrZr (AM),sigma_y,missing,,,property unavailable
+cucrzr-am,CuCrZr (AM),sigma_uts,missing,,,property unavailable
+cucrzr-am,CuCrZr (AM),E,missing,,,property unavailable
+grcop-42-am,GRCop-42 (AM),cp,missing,,,property unavailable
+grcop-42-am,GRCop-42 (AM),diffusivity,missing,,,property unavailable
+grcop-42-am,GRCop-42 (AM),E,missing,,,property unavailable
+grcop-84-am,GRCop-84 (AM),cp,missing,,,property unavailable
+grcop-84-am,GRCop-84 (AM),diffusivity,missing,,,property unavailable
+grcop-84-am,GRCop-84 (AM),E,missing,,,property unavailable
+alsi10mg-am,AlSi10Mg (AM),sigma_uts,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+in718-am,IN718 (AM),cp,missing,,,property unavailable
+in718-am,IN718 (AM),diffusivity,missing,,,property unavailable
+in718-am,IN718 (AM),E,missing,,,property unavailable

@@ -8,6 +8,7 @@ from pathlib import Path
 import numpy as np
 
 import opensolids as osl
+from _plot_style import apply_plot_style, color_for_label
 
 try:
     import matplotlib.pyplot as plt
@@ -33,6 +34,8 @@ def _write_csv(path: Path, header: list[str], rows: list[list[float]]) -> None:
 
 
 def main() -> None:
+    apply_plot_style()
+
     plot_dir = Path("docs/assets/plots")
     data_dir = Path("docs/assets/data")
     _ensure_dirs(plot_dir, data_dir)
@@ -47,22 +50,26 @@ def main() -> None:
     k_vals = np.asarray(nist.k(t_k, policy="clamp"), dtype=float)
     sy_vals = np.asarray(mil.sigma_y(t_sy, units="MPa", policy="clamp"), dtype=float)
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.2, 4.8), dpi=150)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.6, 5.1), dpi=165)
 
-    ax1.plot(t_k, k_vals, linewidth=2.2, color="#1f77b4")
+    ax1.plot(t_k, k_vals, linewidth=2.6, color=color_for_label("Al 6061-T6"))
+    ax1.scatter(t_k[::35], k_vals[::35], s=14, color=color_for_label("Al 6061-T6"), alpha=0.9, zorder=3)
+    ax1.axvspan(1.0, 300.0, color="#e9effa", alpha=0.5, zorder=0)
     ax1.set_title("NIST: 6061-T6 Thermal Conductivity")
     ax1.set_xlabel("Temperature [K]")
     ax1.set_ylabel("k [W/(m*K)]")
-    ax1.grid(alpha=0.25)
+    ax1.text(0.02, 0.95, "NIST valid range: 1-300 K", transform=ax1.transAxes, fontsize=8, color="#5d6a83", va="top")
 
-    ax2.plot(t_sy, sy_vals, linewidth=2.2, color="#d62728")
+    ax2.plot(t_sy, sy_vals, linewidth=2.6, color="#d81b60")
+    ax2.scatter(t_sy[::35], sy_vals[::35], s=14, color="#d81b60", alpha=0.9, zorder=3)
+    ax2.axvspan(294.0, 533.0, color="#e9effa", alpha=0.5, zorder=0)
     ax2.set_title("MIL-HDBK-5: 6061-T6 Yield Strength")
     ax2.set_xlabel("Temperature [K]")
     ax2.set_ylabel("sigma_y [MPa]")
-    ax2.grid(alpha=0.25)
+    ax2.text(0.02, 0.95, "MIL table range: 294-533 K", transform=ax2.transAxes, fontsize=8, color="#5d6a83", va="top")
 
-    fig.suptitle("Multi-Database Workflow Example: 6061-T6", fontsize=12)
-    fig.tight_layout()
+    fig.suptitle("Multi-Database Workflow Example: 6061-T6", fontsize=13, fontweight="semibold")
+    fig.tight_layout(rect=[0, 0, 1, 0.96])
 
     plot_path = plot_dir / "al6061_multidatabase.png"
     fig.savefig(plot_path)

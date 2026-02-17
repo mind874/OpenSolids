@@ -1,0 +1,7 @@
+property,family,material_id,status,reason
+sigma_y,Copper Family,c101,single-point-or-constant,"valid range [293.15, 293.15] K"
+sigma_y,Copper Family,c110,single-point-or-constant,"valid range [293.15, 293.15] K"
+sigma_y,Copper Family,cucrzr-am,missing,property unavailable
+diffusivity,Copper Family,grcop-42-am,missing,property unavailable
+diffusivity,Copper Family,grcop-84-am,missing,property unavailable
+diffusivity,Nickel/Steel Family,in718-am,missing,property unavailable

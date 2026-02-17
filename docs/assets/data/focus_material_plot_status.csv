@@ -1,0 +1,49 @@
+family,material_id,property,status,valid_T_min_K,valid_T_max_K,reason
+Copper Family,c101,k,temp-varying,4.0,300.0,source-valid varying curve
+Copper Family,c110,k,temp-varying,4.0,300.0,source-valid varying curve
+Copper Family,cucrzr-am,k,temp-varying,293.15,900.0,source-valid varying curve
+Copper Family,grcop-42-am,k,temp-varying,40.0,298.15,source-valid varying curve
+Copper Family,grcop-84-am,k,temp-varying,293.15,1000.0,source-valid varying curve
+Copper Family,c101,diffusivity,temp-varying,4.0,300.0,source-valid varying curve
+Copper Family,c110,diffusivity,temp-varying,4.0,300.0,source-valid varying curve
+Copper Family,cucrzr-am,diffusivity,temp-varying,293.15,900.0,source-valid varying curve
+Copper Family,grcop-42-am,diffusivity,missing,,,property unavailable
+Copper Family,grcop-84-am,diffusivity,missing,,,property unavailable
+Copper Family,c101,sigma_y,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+Copper Family,c110,sigma_y,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+Copper Family,cucrzr-am,sigma_y,missing,,,property unavailable
+Copper Family,grcop-42-am,sigma_y,temp-varying,173.15,298.15,source-valid varying curve
+Copper Family,grcop-84-am,sigma_y,temp-varying,293.15,1000.0,source-valid varying curve
+Copper Family,c101,sigma_uts,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+Copper Family,c110,sigma_uts,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+Copper Family,cucrzr-am,sigma_uts,missing,,,property unavailable
+Copper Family,grcop-42-am,sigma_uts,temp-varying,173.15,298.15,source-valid varying curve
+Copper Family,grcop-84-am,sigma_uts,temp-varying,293.15,1000.0,source-valid varying curve
+Aluminum Family,alsi10mg-am,k,temp-varying,293.15,793.15,source-valid varying curve
+Aluminum Family,al-6061-am,k,temp-varying,1.0,300.0,source-valid varying curve
+Aluminum Family,al-6061-t6,k,temp-varying,1.0,300.0,source-valid varying curve
+Aluminum Family,alsi10mg-am,diffusivity,temp-varying,293.15,793.15,source-valid varying curve
+Aluminum Family,al-6061-am,diffusivity,temp-varying,4.0,300.0,source-valid varying curve
+Aluminum Family,al-6061-t6,diffusivity,temp-varying,4.0,300.0,source-valid varying curve
+Aluminum Family,alsi10mg-am,sigma_y,temp-varying,293.15,793.15,source-valid varying curve
+Aluminum Family,al-6061-am,sigma_y,temp-varying,294.0,533.0,source-valid varying curve
+Aluminum Family,al-6061-t6,sigma_y,temp-varying,294.0,533.0,source-valid varying curve
+Aluminum Family,alsi10mg-am,sigma_uts,single-point-or-constant,293.15,293.15,"valid range [293.15, 293.15] K"
+Aluminum Family,al-6061-am,sigma_uts,temp-varying,294.0,533.0,source-valid varying curve
+Aluminum Family,al-6061-t6,sigma_uts,temp-varying,294.0,533.0,source-valid varying curve
+Nickel/Steel Family,in718-am,k,temp-varying,4.0,300.0,source-valid varying curve
+Nickel/Steel Family,ss304,k,temp-varying,4.0,973.15,source-valid varying curve
+Nickel/Steel Family,ss316,k,temp-varying,4.0,873.15,source-valid varying curve
+Nickel/Steel Family,ss316-am,k,temp-varying,4.0,873.15,source-valid varying curve
+Nickel/Steel Family,in718-am,diffusivity,missing,,,property unavailable
+Nickel/Steel Family,ss304,diffusivity,temp-varying,4.0,300.0,source-valid varying curve
+Nickel/Steel Family,ss316,diffusivity,temp-varying,4.0,300.0,source-valid varying curve
+Nickel/Steel Family,ss316-am,diffusivity,temp-varying,4.0,300.0,source-valid varying curve
+Nickel/Steel Family,in718-am,sigma_y,temp-varying,294.0,1000.0,source-valid varying curve
+Nickel/Steel Family,ss304,sigma_y,temp-varying,293.15,873.15,source-valid varying curve
+Nickel/Steel Family,ss316,sigma_y,temp-varying,293.15,773.15,source-valid varying curve
+Nickel/Steel Family,ss316-am,sigma_y,temp-varying,293.15,773.15,source-valid varying curve
+Nickel/Steel Family,in718-am,sigma_uts,temp-varying,294.0,1000.0,source-valid varying curve
+Nickel/Steel Family,ss304,sigma_uts,temp-varying,293.15,873.15,source-valid varying curve
+Nickel/Steel Family,ss316,sigma_uts,temp-varying,293.15,773.15,source-valid varying curve
+Nickel/Steel Family,ss316-am,sigma_uts,temp-varying,293.15,773.15,source-valid varying curve

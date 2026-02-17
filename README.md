@@ -131,6 +131,8 @@ Source mapping and catalogs:
 - Canonical materials: `materials/canonical_materials.csv`
 - Provider records: `materials/material_catalog.csv`
 - Property-to-source mapping: `materials/material_sources.md`
+- Plot status tables (missing/non-varying visibility): `docs/assets/data/plot_exclusions_by_property.csv`,
+  `docs/assets/data/focus_materials_missing_data.csv`, `docs/assets/data/focus_material_plot_status.csv`
 - Contributor guide for new `k(T)` / `sigma_y(T)` datasets: `docs/contributing_data.md`
 
 ## Visual Outputs

@@ -25,11 +25,11 @@ pip install -e '.[dev,viz]'
 - `02_units_and_policies.py`: unit conversion and out-of-range behavior.
 - `03_search_and_provenance.py`: search and provenance inspection.
 - `04_regen_trade_study.py`: regen-focused material comparison table.
-- `05_plot_property_curves.py`: curve plots + CSV outputs.
+- `05_plot_property_curves.py`: family-grouped curve plots (temperature-varying data only) + CSV outputs + exclusions report.
 - `06_plot_policy_behavior.py`: out-of-range policy plot + CSV output.
 - `07_generate_all_visuals.py`: refreshes all documentation visual assets.
 - `08_database_workflows.py`: practical walkthrough for NIST/NTRS/MIL usage.
-- `09_plot_focus_materials.py`: plots the focused material set with coverage export.
+- `09_plot_focus_materials.py`: plots focused materials by family (temperature-varying data only) with strict coverage/missing-status exports.
 - `10_plot_multidatabase_6061.py`: combines NIST and MIL data for one alloy workflow.
 - `11_verify_units_and_sanity.py`: SI unit compatibility + reference sanity checks.
 - `12_export_material_catalog.py`: exports a CSV inventory of bundled materials.
@@ -39,3 +39,6 @@ pip install -e '.[dev,viz]'
 
 - Plots: `docs/assets/plots/`
 - Data tables: `docs/assets/data/`
+  - includes `plot_exclusions_by_property.csv`
+  - includes `focus_materials_missing_data.csv`
+  - includes `focus_material_plot_status.csv`

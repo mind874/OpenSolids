@@ -1,13 +1,13 @@
 material_id,name,k,cp,diffusivity,sigma_y,sigma_uts,E
-alsi10mg-am,AlSi10Mg (AM),yes,yes,yes,yes,yes,yes
-cucrzr-am,CuCrZr (AM),yes,yes,yes,,,
-grcop-84-am,GRCop-84 (AM),yes,,,yes,yes,
-grcop-42-am,GRCop-42 (AM),yes,,,yes,yes,
-in718-am,IN718 (AM),yes,,,yes,yes,
-ss316-am,Stainless Steel 316 (AM),yes,yes,yes,yes,yes,yes
-al-6061-am,Aluminum 6061 (AM),yes,yes,yes,yes,yes,yes
-c110,Copper C110,yes,yes,yes,yes,yes,yes
-c101,Copper C101,yes,yes,yes,yes,yes,yes
-al-6061-t6,Aluminum 6061-T6,yes,yes,yes,yes,yes,yes
-ss316,Stainless Steel 316,yes,yes,yes,yes,yes,yes
-ss304,Stainless Steel 304,yes,yes,yes,yes,yes,yes
+c101,Copper C101,temp-varying,temp-varying,temp-varying,single-point-or-constant,single-point-or-constant,single-point-or-constant
+c110,Copper C110,temp-varying,temp-varying,temp-varying,single-point-or-constant,single-point-or-constant,single-point-or-constant
+cucrzr-am,CuCrZr (AM),temp-varying,temp-varying,temp-varying,missing,missing,missing
+grcop-42-am,GRCop-42 (AM),temp-varying,missing,missing,temp-varying,temp-varying,missing
+grcop-84-am,GRCop-84 (AM),temp-varying,missing,missing,temp-varying,temp-varying,missing
+alsi10mg-am,AlSi10Mg (AM),temp-varying,temp-varying,temp-varying,temp-varying,single-point-or-constant,temp-varying
+al-6061-am,Aluminum 6061 (AM),temp-varying,temp-varying,temp-varying,temp-varying,temp-varying,temp-varying
+al-6061-t6,Aluminum 6061-T6,temp-varying,temp-varying,temp-varying,temp-varying,temp-varying,temp-varying
+in718-am,IN718 (AM),temp-varying,missing,missing,temp-varying,temp-varying,missing
+ss304,Stainless Steel 304,temp-varying,temp-varying,temp-varying,temp-varying,temp-varying,temp-varying
+ss316,Stainless Steel 316,temp-varying,temp-varying,temp-varying,temp-varying,temp-varying,temp-varying
+ss316-am,Stainless Steel 316 (AM),temp-varying,temp-varying,temp-varying,temp-varying,temp-varying,temp-varying
