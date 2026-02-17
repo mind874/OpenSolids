@@ -1,0 +1,17 @@
+{
+  "source_id": "curated-public-src:ss316:alleima-316-316l",
+  "title": "Alleima datasheet: 316/316L (1.4401/1.4404) bar and billet",
+  "publisher": "Alleima",
+  "organization": "Alleima",
+  "url_or_citation_id": "https://www.alleima.com/en/materials-center/material-datasheets/bar-and-billet/stainless-steel/alleima-316316l/",
+  "license_notes": "Public vendor datasheet page. Verify downstream redistribution rights for extracted numeric tables.",
+  "retrieved_at": "2026-02-18T00:00:00Z",
+  "page_or_table": "At high temperatures table (proof strength/tensile strength) and physical properties table",
+  "extraction_method": "manual",
+  "metadata": {
+    "provider": "curated-public",
+    "data_origin": "datasheet-standard-minimum",
+    "yield_definition": "Rp0.2 (minimum)",
+    "material_grade_context": "EN 1.4401 / 1.4404"
+  }
+}

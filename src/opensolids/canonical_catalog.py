@@ -102,6 +102,31 @@ CANONICAL_MATERIAL_SPECS: tuple[CanonicalMaterialSpec, ...] = (
         },
     ),
     CanonicalMaterialSpec(
+        id="grcop-42-am",
+        name="GRCop-42 (AM)",
+        aliases=(
+            "grcop-42",
+            "gr-cop-42",
+            "grcop42",
+            "grcop 42",
+            "grcop-42 am",
+            "grcop42 am",
+        ),
+        composition="Cu-Cr-Nb",
+        condition="heat-treated",
+        notes=(
+            "AM-focused GRCop-42 entry with source-backed low-temperature thermal conductivity "
+            "and temperature-dependent strength curves. Current bundled coverage is cryogenic to "
+            "room temperature only."
+        ),
+        density_ref=8750.0,
+        property_sources={
+            "k": ("curated-public:grcop-42-am-mdpi-ht",),
+            "sigma_y": ("curated-public:grcop-42-am-mdpi-ht",),
+            "sigma_uts": ("curated-public:grcop-42-am-mdpi-ht",),
+        },
+    ),
+    CanonicalMaterialSpec(
         id="in718-am",
         name="IN718 (AM)",
         aliases=(
@@ -138,15 +163,17 @@ CANONICAL_MATERIAL_SPECS: tuple[CanonicalMaterialSpec, ...] = (
         composition="Fe-Cr-Ni-Mo",
         condition=None,
         notes=(
-            "AM-first entry; currently uses NIST 316 cryogenic/room-temperature thermal and "
-            "elastic curves as fallback."
+            "AM-first entry; uses stitched conductivity and elevated-temperature strength minima "
+            "from curated 316/316L datasheet tables with NIST cp/E/eps_th thermal-elastic curves."
         ),
         density_ref=8000.0,
         property_sources={
-            "k": ("nist-cryo:stainless-steel-316",),
+            "k": ("curated-public:ss316-thermomech-alleima", "nist-cryo:stainless-steel-316"),
             "cp": ("nist-cryo:stainless-steel-316",),
             "E": ("nist-cryo:stainless-steel-316",),
             "eps_th": ("nist-cryo:stainless-steel-316",),
+            "sigma_y": ("curated-public:ss316-thermomech-alleima",),
+            "sigma_uts": ("curated-public:ss316-thermomech-alleima",),
         },
     ),
     CanonicalMaterialSpec(
@@ -241,13 +268,18 @@ CANONICAL_MATERIAL_SPECS: tuple[CanonicalMaterialSpec, ...] = (
         aliases=("ss316", "316", "316 stainless", "uns s31600", "uns s31603", "316l"),
         composition="Fe-Cr-Ni-Mo",
         condition=None,
-        notes="Cryogenic to room-temperature thermal and elastic curves from NIST.",
+        notes=(
+            "Stitched conductivity plus elevated-temperature strength minima from curated 316/316L "
+            "datasheet tables, with NIST cp/E/eps_th curves."
+        ),
         density_ref=8000.0,
         property_sources={
-            "k": ("nist-cryo:stainless-steel-316",),
+            "k": ("curated-public:ss316-thermomech-alleima", "nist-cryo:stainless-steel-316"),
             "cp": ("nist-cryo:stainless-steel-316",),
             "E": ("nist-cryo:stainless-steel-316",),
             "eps_th": ("nist-cryo:stainless-steel-316",),
+            "sigma_y": ("curated-public:ss316-thermomech-alleima",),
+            "sigma_uts": ("curated-public:ss316-thermomech-alleima",),
         },
     ),
     CanonicalMaterialSpec(
@@ -256,13 +288,18 @@ CANONICAL_MATERIAL_SPECS: tuple[CanonicalMaterialSpec, ...] = (
         aliases=("ss304", "304", "304 stainless", "uns s30400"),
         composition="Fe-Cr-Ni",
         condition=None,
-        notes="Cryogenic to room-temperature thermal and elastic curves from NIST.",
+        notes=(
+            "Stitched conductivity plus elevated-temperature strength minima from curated 304/304L "
+            "datasheet tables, with NIST cp/E/eps_th curves."
+        ),
         density_ref=8030.0,
         property_sources={
-            "k": ("nist-cryo:stainless-steel-304",),
+            "k": ("curated-public:ss304-thermomech-alleima", "nist-cryo:stainless-steel-304"),
             "cp": ("nist-cryo:stainless-steel-304",),
             "E": ("nist-cryo:stainless-steel-304",),
             "eps_th": ("nist-cryo:stainless-steel-304",),
+            "sigma_y": ("curated-public:ss304-thermomech-alleima",),
+            "sigma_uts": ("curated-public:ss304-thermomech-alleima",),
         },
     ),
 )

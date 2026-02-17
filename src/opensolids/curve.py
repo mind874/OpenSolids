@@ -30,6 +30,7 @@ class PropertyCurve:
     recommended_T_max: float | None
     source_ref: SourceRef | None
     reference_temperature: float | None = None
+    metadata: dict[str, Any] | None = None
 
     def __call__(self, T, *, policy: str | None = None):
         arr, was_scalar = as_array_with_scalar_flag(T)
@@ -99,4 +100,5 @@ def curve_from_record(
             if curve_record.get("reference_temperature") is not None
             else None
         ),
+        metadata=curve_record.get("metadata"),
     )

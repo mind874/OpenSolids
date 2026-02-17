@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from .units import UREG
+from .units import CANONICAL_UNITS, UREG
 
 REQUIRED_MATERIAL_FIELDS = {
     "id",
@@ -26,12 +26,23 @@ def _validate_units(units: str) -> None:
     UREG(units)
 
 
-def validate_curve_record(curve: dict[str, Any]) -> None:
+def validate_curve_record(curve: dict[str, Any], *, property_key: str | None = None) -> None:
     missing = REQUIRED_CURVE_FIELDS.difference(curve.keys())
     if missing:
         raise ValueError(f"Curve missing required fields: {sorted(missing)}")
 
-    _validate_units(curve["units"])
+    units = curve["units"]
+    _validate_units(units)
+
+    if property_key and property_key in CANONICAL_UNITS:
+        canonical_units = CANONICAL_UNITS[property_key]
+        if canonical_units == "1":
+            if units not in {"", "1", "dimensionless"}:
+                raise ValueError(
+                    f"Invalid units for dimensionless property '{property_key}': {units}"
+                )
+        else:
+            (1 * UREG(units)).to(canonical_units)
 
     tmin = float(curve["valid_T_min"])
     tmax = float(curve["valid_T_max"])
@@ -61,4 +72,4 @@ def validate_material_record(record: dict[str, Any]) -> None:
             raise ValueError("Property key must be a string")
         if not isinstance(curve, dict):
             raise ValueError(f"Curve record for {prop_key} must be a dict")
-        validate_curve_record(curve)
+        validate_curve_record(curve, property_key=prop_key)

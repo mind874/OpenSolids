@@ -30,10 +30,27 @@ def test_c110_has_room_temperature_curves():
     assert {"k", "cp", "rho", "E", "sigma_y", "sigma_uts", "diffusivity"}.issubset(props)
 
 
-def test_ss316_uses_bundled_nist_thermal_curves():
+def test_ss316_has_stitched_conductivity_and_strength_curves():
     mat = osl.material("ss316")
     props = set(mat.available_properties())
-    assert {"k", "cp", "E", "eps_th", "diffusivity"}.issubset(props)
+    assert {"k", "cp", "E", "eps_th", "diffusivity", "sigma_y", "sigma_uts"}.issubset(props)
+    assert mat.curve("k").valid_T_max >= 873.15
+    assert mat.sigma_y(293.15, units="MPa") >= 180.0
+
+
+def test_ss304_has_strength_curves_and_extended_conductivity_range():
+    mat = osl.material("ss304")
+    props = set(mat.available_properties())
+    assert {"k", "cp", "E", "eps_th", "diffusivity", "sigma_y", "sigma_uts"}.issubset(props)
+    assert mat.curve("k").valid_T_max >= 973.15
+    assert mat.sigma_y(293.15, units="MPa") >= 200.0
+
+
+def test_ss316_am_includes_strength_fallback_curves():
+    mat = osl.material("ss316-am")
+    props = set(mat.available_properties())
+    assert {"k", "cp", "E", "eps_th", "diffusivity", "sigma_y", "sigma_uts"}.issubset(props)
+    assert mat.curve("k").valid_T_max >= 873.15
 
 
 def test_in718_am_includes_nist_thermal_conductivity():
@@ -41,6 +58,14 @@ def test_in718_am_includes_nist_thermal_conductivity():
     props = set(mat.available_properties())
     assert "k" in props
     assert "sigma_y" in props
+
+
+def test_grcop42_am_has_temperature_dependent_k_and_strength():
+    mat = osl.material("grcop-42-am")
+    props = set(mat.available_properties())
+    assert {"k", "sigma_y", "sigma_uts"}.issubset(props)
+    assert mat.curve("k").valid_T_max > mat.curve("k").valid_T_min
+    assert mat.sigma_y(298.15, units="MPa") > 100.0
 
 
 def test_cucrzr_am_exposes_thermal_curves_but_not_strength_until_verified_source():

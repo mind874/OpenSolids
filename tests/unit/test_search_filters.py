@@ -7,8 +7,9 @@ def test_search_with_required_properties_filters_results():
 
     assert "grcop-84-am" in ids
     assert "al-6061-t6" in ids
+    assert "ss304" in ids
+    assert "ss316" in ids
     assert "cucrzr-am" not in ids
-    assert "ss316" not in ids
 
 
 def test_search_with_empty_required_properties_matches_default():

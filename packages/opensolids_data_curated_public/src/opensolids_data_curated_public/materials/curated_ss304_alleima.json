@@ -1,0 +1,147 @@
+{
+  "id": "curated-public:ss304-thermomech-alleima",
+  "name": "Stainless Steel 304/304L (Alleima table set)",
+  "aliases": ["SS304 Alleima", "1.4301", "1.4307"],
+  "composition": "Fe-Cr-Ni",
+  "condition": "solution annealed",
+  "notes": "Thermal conductivity stitched from NIST cryogenic endpoint plus Alleima high-temperature datasheet points. Strength values are minimum datasheet values (Rp0.2 and UTS).",
+  "sources": [
+    "curated-public-src:ss304:k-stitched-nist-alleima",
+    "curated-public-src:ss304:alleima-304-304l"
+  ],
+  "properties": {
+    "k": {
+      "units": "W/(m*K)",
+      "valid_T_min": 4.0,
+      "valid_T_max": 973.15,
+      "source_id": "curated-public-src:ss304:k-stitched-nist-alleima",
+      "metadata": {
+        "process": "wrought",
+        "stitch_transition_K": 293.15,
+        "source_notes": "Low-temperature branch sampled from NIST; high-temperature branch from Alleima thermal conductivity table."
+      },
+      "model": {
+        "type": "piecewise",
+        "branches": [
+          {
+            "condition": {
+              "kind": "le",
+              "upper": 293.15
+            },
+            "model": {
+              "type": "tabular",
+              "interpolation": "pchip",
+              "T": [4.0, 20.0, 77.0, 150.0, 250.0, 293.15],
+              "y": [0.2724, 2.1686, 7.9207, 11.1652, 13.9812, 15.127317130127201]
+            }
+          },
+          {
+            "condition": {
+              "kind": "gt",
+              "lower": 293.15
+            },
+            "model": {
+              "type": "tabular",
+              "interpolation": "linear",
+              "T": [293.15, 373.15, 473.15, 573.15, 673.15, 773.15, 873.15, 973.15],
+              "y": [15.127317130127201, 16.0, 18.0, 20.0, 22.0, 23.0, 25.0, 26.0]
+            }
+          }
+        ]
+      }
+    },
+    "sigma_y": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 873.15,
+      "source_id": "curated-public-src:ss304:alleima-304-304l",
+      "metadata": {
+        "yield_definition": "Rp0.2 minimum",
+        "process": "wrought",
+        "heat_treatment": "solution annealed",
+        "orientation": "not specified",
+        "source_notes": "Datasheet minimum proof strength values."
+      },
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [
+          293.15,
+          323.15,
+          373.15,
+          423.15,
+          473.15,
+          523.15,
+          573.15,
+          623.15,
+          673.15,
+          723.15,
+          773.15,
+          823.15,
+          873.15
+        ],
+        "y": [
+          210000000.0,
+          190000000.0,
+          176000000.0,
+          162000000.0,
+          149000000.0,
+          136000000.0,
+          127000000.0,
+          119000000.0,
+          113000000.0,
+          107000000.0,
+          102000000.0,
+          97000000.0,
+          92000000.0
+        ]
+      }
+    },
+    "sigma_uts": {
+      "units": "Pa",
+      "valid_T_min": 293.15,
+      "valid_T_max": 873.15,
+      "source_id": "curated-public-src:ss304:alleima-304-304l",
+      "metadata": {
+        "process": "wrought",
+        "heat_treatment": "solution annealed",
+        "orientation": "not specified",
+        "source_notes": "Datasheet minimum tensile strength values."
+      },
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [
+          293.15,
+          323.15,
+          373.15,
+          423.15,
+          473.15,
+          523.15,
+          573.15,
+          623.15,
+          673.15,
+          723.15,
+          773.15,
+          823.15,
+          873.15
+        ],
+        "y": [
+          515000000.0,
+          480000000.0,
+          450000000.0,
+          430000000.0,
+          410000000.0,
+          400000000.0,
+          390000000.0,
+          380000000.0,
+          370000000.0,
+          360000000.0,
+          350000000.0,
+          340000000.0,
+          330000000.0
+        ]
+      }
+    }
+  }
+}

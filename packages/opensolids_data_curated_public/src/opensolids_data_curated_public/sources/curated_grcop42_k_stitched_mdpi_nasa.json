@@ -1,0 +1,17 @@
+{
+  "source_id": "curated-public-src:grcop42:k-stitched-mdpi-nasa",
+  "title": "Stitched GRCop-42 thermal conductivity curve (MDPI low-temperature table + NASA room-temperature anchor)",
+  "publisher": "OpenSolids curated-public",
+  "organization": "OpenSolids",
+  "url_or_citation_id": "https://www.mdpi.com/2075-4701/15/6/604<br>https://ntrs.nasa.gov/citations/20050192166",
+  "license_notes": "Derived curve built from cited sources with explicit provenance.",
+  "retrieved_at": "2026-02-18T00:00:00Z",
+  "page_or_table": "MDPI Table 4 (HT condition) + NASA room-temperature conductivity statement",
+  "extraction_method": "tabular-stitched",
+  "metadata": {
+    "provider": "curated-public",
+    "data_origin": "tabular-stitched",
+    "low_temperature_source_id": "curated-public-src:grcop42:mdpi-metals-2025",
+    "room_temperature_anchor_source_id": "curated-public-src:grcop42:nasa-20050192166"
+  }
+}

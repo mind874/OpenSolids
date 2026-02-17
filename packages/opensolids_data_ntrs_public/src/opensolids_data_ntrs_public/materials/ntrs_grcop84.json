@@ -25,6 +25,13 @@
       "valid_T_min": 293.15,
       "valid_T_max": 1000.0,
       "source_id": "ntrs-src:20070017311",
+      "metadata": {
+        "yield_definition": "0.2% offset (assumed for engineering tensile tables; verify in source)",
+        "process": "unknown",
+        "heat_treatment": "solution treated and aged",
+        "orientation": "not specified",
+        "source_notes": "Digitized from NTRS-linked engineering report table."
+      },
       "model": {
         "type": "tabular",
         "interpolation": "linear",
@@ -37,6 +44,12 @@
       "valid_T_min": 293.15,
       "valid_T_max": 1000.0,
       "source_id": "ntrs-src:20070017311",
+      "metadata": {
+        "process": "unknown",
+        "heat_treatment": "solution treated and aged",
+        "orientation": "not specified",
+        "source_notes": "Digitized from NTRS-linked engineering report table."
+      },
       "model": {
         "type": "tabular",
         "interpolation": "linear",

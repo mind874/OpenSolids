@@ -1,0 +1,69 @@
+{
+  "id": "curated-public:grcop-42-am-mdpi-ht",
+  "name": "GRCop-42 (AM, heat-treated)",
+  "aliases": ["GRCop-42 HT", "LPBF GRCop-42 HT", "GR-Cop-42"],
+  "composition": "Cu-Cr-Nb",
+  "condition": "heat-treated",
+  "notes": "Temperature-dependent mechanical and low-temperature thermal conductivity data from MDPI Metals 2025 (HT condition), with room-temperature thermal conductivity anchor from NASA citation 20050192166.",
+  "sources": [
+    "curated-public-src:grcop42:mdpi-metals-2025",
+    "curated-public-src:grcop42:nasa-20050192166",
+    "curated-public-src:grcop42:k-stitched-mdpi-nasa"
+  ],
+  "properties": {
+    "k": {
+      "units": "W/(m*K)",
+      "valid_T_min": 40.0,
+      "valid_T_max": 298.15,
+      "source_id": "curated-public-src:grcop42:k-stitched-mdpi-nasa",
+      "metadata": {
+        "process": "LPBF",
+        "heat_treatment": "HT",
+        "source_notes": "40-200 K points from MDPI Table 4 (HT); 298.15 K anchor from NASA citation 20050192166."
+      },
+      "model": {
+        "type": "tabular",
+        "interpolation": "pchip",
+        "T": [40.0, 77.0, 200.0, 298.15],
+        "y": [36.4, 206.6, 312.5, 344.0]
+      }
+    },
+    "sigma_y": {
+      "units": "Pa",
+      "valid_T_min": 173.15,
+      "valid_T_max": 298.15,
+      "source_id": "curated-public-src:grcop42:mdpi-metals-2025",
+      "metadata": {
+        "yield_definition": "0.2% offset (reported as YS)",
+        "process": "LPBF",
+        "heat_treatment": "HT",
+        "orientation": "build orientation not specified in extracted table rows",
+        "source_notes": "MDPI Metals 2025 Table 5, HT condition."
+      },
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [173.15, 223.15, 298.15],
+        "y": [322700000.0, 189600000.0, 154800000.0]
+      }
+    },
+    "sigma_uts": {
+      "units": "Pa",
+      "valid_T_min": 173.15,
+      "valid_T_max": 298.15,
+      "source_id": "curated-public-src:grcop42:mdpi-metals-2025",
+      "metadata": {
+        "process": "LPBF",
+        "heat_treatment": "HT",
+        "orientation": "build orientation not specified in extracted table rows",
+        "source_notes": "MDPI Metals 2025 Table 5, HT condition."
+      },
+      "model": {
+        "type": "tabular",
+        "interpolation": "linear",
+        "T": [173.15, 223.15, 298.15],
+        "y": [363200000.0, 264600000.0, 224600000.0]
+      }
+    }
+  }
+}

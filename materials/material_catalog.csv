@@ -3,6 +3,9 @@ curated-public,curated-public:alsi10mg-room-temp-nasa,AlSi10Mg (room-temperature
 curated-public,curated-public:alsi10mg-temp-mdpi-ma2023,"AlSi10Mg (temperature-dependent table, MDPI Applied Sciences 2023)",SLM,"E,alpha,cp,diffusivity,k,nu,rho,sigma_y","AlSi10Mg MA2023,SLM AlSi10Mg temperature table"
 curated-public,curated-public:c101-room-temp,Copper C101 (room-temperature datasheet),annealed,"E,alpha,cp,diffusivity,k,rho,sigma_uts,sigma_y","C10100 Copper,OFE Copper"
 curated-public,curated-public:c110-room-temp,Copper C110 (room-temperature datasheet),annealed,"E,alpha,cp,diffusivity,k,rho,sigma_uts,sigma_y","C11000 Copper,ETP Copper"
+curated-public,curated-public:grcop-42-am-mdpi-ht,"GRCop-42 (AM, heat-treated)",heat-treated,"k,sigma_uts,sigma_y","GRCop-42 HT,LPBF GRCop-42 HT,GR-Cop-42"
+curated-public,curated-public:ss304-thermomech-alleima,Stainless Steel 304/304L (Alleima table set),solution annealed,"k,sigma_uts,sigma_y","SS304 Alleima,1.4301,1.4307"
+curated-public,curated-public:ss316-thermomech-alleima,Stainless Steel 316/316L (Alleima table set),solution annealed,"k,sigma_uts,sigma_y","SS316 Alleima,1.4401,1.4404,316L"
 mil-hdbk-5,mil-hdbk-5:H:al-6061-t6,Aluminum 6061-T6,T6,"sigma_uts,sigma_y",6061-T6
 mil-hdbk-5,mil-hdbk-5:H:al-7075-t6,Aluminum 7075-T6,T6,"sigma_uts,sigma_y",7075-T6
 mil-hdbk-5,mil-hdbk-5:H:inconel-718,Inconel 718,solution treated and aged,"sigma_uts,sigma_y","IN718,Alloy 718"

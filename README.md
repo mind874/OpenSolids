@@ -55,6 +55,7 @@ Canonical IDs for the focused set:
 - `alsi10mg-am`
 - `cucrzr-am`
 - `grcop-84-am`
+- `grcop-42-am`
 - `in718-am`
 - `ss316-am`
 - `al-6061-am`
@@ -71,7 +72,9 @@ Property coverage status for this set is documented in
 
 Current source-backed status:
 
-- `ss316` and `ss316-am` include NIST-backed `k`, `cp`, `E`, `eps_th`, and derived `diffusivity`.
+- `ss304`, `ss316`, and `ss316-am` include source-backed `sigma_y(T)` and `sigma_uts(T)` from
+  elevated-temperature datasheet tables; `k(T)` is stitched from NIST cryogenic data to
+  high-temperature datasheet points while `cp(T)`, `E(T)`, and `eps_th(T)` come from NIST.
 - `in718-am` includes NIST-backed `k`, `eps_th` plus MIL-backed `sigma_y`, `sigma_uts`.
 - `cucrzr-am` uses NTRS citation `20210010991` for temperature-dependent thermal properties
   (`k`, `cp`); bundled `sigma_y(T)` is intentionally omitted until a dedicated source-backed
@@ -86,6 +89,8 @@ Current source-backed status:
 - `c110` uses NIST OFHC temperature-dependent thermal proxies (`k(T)` with RRR50, `cp(T)`,
   `alpha(T)`) plus Copper.org room-temperature anchors for `rho`, `E`, `sigma_y`, and
   `sigma_uts`.
+- `grcop-42-am` includes temperature-dependent `k`, `sigma_y`, and `sigma_uts` with current
+  bundled validity from cryogenic to room temperature.
 
 ## API Overview
 
@@ -126,6 +131,7 @@ Source mapping and catalogs:
 - Canonical materials: `materials/canonical_materials.csv`
 - Provider records: `materials/material_catalog.csv`
 - Property-to-source mapping: `materials/material_sources.md`
+- Contributor guide for new `k(T)` / `sigma_y(T)` datasets: `docs/contributing_data.md`
 
 ## Visual Outputs
 

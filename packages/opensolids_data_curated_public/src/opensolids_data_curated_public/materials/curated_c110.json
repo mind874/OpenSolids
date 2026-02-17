@@ -66,7 +66,12 @@
       "valid_T_max": 293.15,
       "source_id": "curated-public-src:c110:copper-org",
       "metadata": {
-        "selected_value_basis": "10 ksi YS-0.5% extension room-temperature row converted to SI"
+        "yield_definition": "0.5% extension",
+        "process": "wrought",
+        "heat_treatment": "annealed",
+        "orientation": "not specified",
+        "selected_value_basis": "10 ksi YS-0.5% extension room-temperature row converted to SI",
+        "source_notes": "Single room-temperature datasheet value."
       },
       "model": {
         "type": "polynomial",

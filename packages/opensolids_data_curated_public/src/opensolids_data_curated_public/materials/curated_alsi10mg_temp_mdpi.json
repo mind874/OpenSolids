@@ -90,7 +90,11 @@
       "valid_T_max": 793.15,
       "source_id": "curated-public-src:alsi10mg:mdpi-ma2023",
       "metadata": {
-        "yield_definition": "unspecified in source table"
+        "yield_definition": "unspecified in source table",
+        "process": "SLM (as stated by source context)",
+        "heat_treatment": "unknown",
+        "orientation": "unknown",
+        "source_notes": "Model-derived table reported for simulation inputs."
       },
       "model": {
         "type": "tabular",

@@ -1,0 +1,16 @@
+{
+  "source_id": "curated-public-src:grcop42:nasa-20050192166",
+  "title": "Conductivity of GRCop-42 Alloy Enhanced by Processing",
+  "publisher": "NASA STI",
+  "organization": "NASA",
+  "url_or_citation_id": "https://ntrs.nasa.gov/citations/20050192166",
+  "license_notes": "NASA public citation record; follow NASA STI copyright/distribution guidance.",
+  "retrieved_at": "2026-02-18T00:00:00Z",
+  "page_or_table": "Conductivity discussion; room-temperature conductivity value",
+  "extraction_method": "manual",
+  "metadata": {
+    "provider": "curated-public",
+    "citation_id": "20050192166",
+    "data_origin": "experimental"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "source_id": "curated-public-src:ss304:k-stitched-nist-alleima",
+  "title": "Stitched SS304 thermal conductivity curve (NIST cryogenic + Alleima high-temperature datasheet)",
+  "publisher": "OpenSolids curated-public",
+  "organization": "OpenSolids",
+  "url_or_citation_id": "https://trc.nist.gov/cryogenics/materials/304Stainless/304Stainless_rev.htm<br>https://www.alleima.com/en/materials-center/material-datasheets/tube-and-pipe-seamless/sanmac/sanmac--304304l/",
+  "license_notes": "Derived curve built from cited public sources. Verify original source terms before redistributing full source content.",
+  "retrieved_at": "2026-02-18T00:00:00Z",
+  "page_or_table": "NIST k(T) fit sampled on 4-293.15 K + Alleima thermal conductivity table from 100 C to 700 C",
+  "extraction_method": "tabular-stitched",
+  "metadata": {
+    "provider": "curated-public",
+    "data_origin": "tabular-stitched",
+    "low_temperature_source_id": "nist-cryo-src:stainless-steel-304",
+    "high_temperature_source_id": "curated-public-src:ss304:alleima-304-304l",
+    "stitch_note": "High-temperature branch is anchored at T=293.15 K to the NIST endpoint for continuity."
+  }
+}

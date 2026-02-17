@@ -1,0 +1,17 @@
+{
+  "source_id": "curated-public-src:grcop42:mdpi-metals-2025",
+  "title": "Experimental Evaluation and Optimization of LPBF Parameters on GRCop-42 Mechanical and Thermophysical Properties at Low Temperatures",
+  "publisher": "Metals (MDPI)",
+  "organization": "MDPI",
+  "url_or_citation_id": "https://www.mdpi.com/2075-4701/15/6/604",
+  "license_notes": "Open-access article (CC BY). Provide attribution when reusing extracted numeric values.",
+  "retrieved_at": "2026-02-18T00:00:00Z",
+  "page_or_table": "Table 4 (thermal conductivity) and Table 5 (yield and ultimate strength)",
+  "extraction_method": "manual",
+  "metadata": {
+    "provider": "curated-public",
+    "data_origin": "experimental",
+    "process": "LPBF",
+    "condition": "heat-treated (HT)"
+  }
+}

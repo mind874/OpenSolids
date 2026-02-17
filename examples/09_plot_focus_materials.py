@@ -22,6 +22,7 @@ FOCUS_MATERIALS = [
     "alsi10mg-am",
     "cucrzr-am",
     "grcop-84-am",
+    "grcop-42-am",
     "in718-am",
     "ss316-am",
     "al-6061-am",

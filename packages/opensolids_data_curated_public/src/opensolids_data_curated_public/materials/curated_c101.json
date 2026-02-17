@@ -65,6 +65,13 @@
       "valid_T_min": 293.15,
       "valid_T_max": 293.15,
       "source_id": "curated-public-src:c101:copper-org",
+      "metadata": {
+        "yield_definition": "not specified on datasheet row",
+        "process": "wrought",
+        "heat_treatment": "annealed",
+        "orientation": "not specified",
+        "source_notes": "Single room-temperature datasheet value."
+      },
       "model": {
         "type": "polynomial",
         "coefficients": [69000000.0]

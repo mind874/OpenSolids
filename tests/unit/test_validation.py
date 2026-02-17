@@ -7,6 +7,7 @@ from opensolids.validation import validate_material_record
 
 def test_sample_data_records_validate():
     base_dirs = [
+        Path("packages/opensolids_data_curated_public/src/opensolids_data_curated_public/materials"),
         Path("packages/opensolids_data_nist_cryo/src/opensolids_data_nist_cryo/materials"),
         Path("packages/opensolids_data_ntrs_public/src/opensolids_data_ntrs_public/materials"),
         Path("packages/opensolids_data_mil_hdbk_5/src/opensolids_data_mil_hdbk_5/materials"),

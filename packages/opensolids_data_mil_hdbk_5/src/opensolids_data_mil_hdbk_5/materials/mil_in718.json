@@ -12,6 +12,15 @@
       "valid_T_min": 294.0,
       "valid_T_max": 1000.0,
       "source_id": "mil-hdbk-5-src:H:inconel-718",
+      "metadata": {
+        "yield_definition": "allowable yield strength per MIL-HDBK-5H table",
+        "basis": "B-basis",
+        "process": "wrought",
+        "heat_treatment": "solution treated and aged",
+        "product_form": "bar",
+        "orientation": "not specified",
+        "source_notes": "Manual extraction from MIL-HDBK-5H allowables table."
+      },
       "model": {
         "type": "tabular",
         "interpolation": "linear",
@@ -24,6 +33,14 @@
       "valid_T_min": 294.0,
       "valid_T_max": 1000.0,
       "source_id": "mil-hdbk-5-src:H:inconel-718",
+      "metadata": {
+        "basis": "B-basis",
+        "process": "wrought",
+        "heat_treatment": "solution treated and aged",
+        "product_form": "bar",
+        "orientation": "not specified",
+        "source_notes": "Manual extraction from MIL-HDBK-5H allowables table."
+      },
       "model": {
         "type": "tabular",
         "interpolation": "linear",

@@ -23,7 +23,7 @@ def main() -> None:
     print()
 
     print("AM-focused entries:")
-    for material_id in ("alsi10mg-am", "cucrzr-am", "grcop-84-am", "in718-am"):
+    for material_id in ("alsi10mg-am", "cucrzr-am", "grcop-84-am", "grcop-42-am", "in718-am"):
         am = osl.material(material_id)
         props = ", ".join(am.available_properties())
         print(f"- {material_id}: {props}")

@@ -23,6 +23,13 @@
       "valid_T_min": 293.15,
       "valid_T_max": 293.15,
       "source_id": "ntrs-src:20205003675",
+      "metadata": {
+        "yield_definition": "not explicitly stated in curated table",
+        "process": "LPBF",
+        "heat_treatment": "as-built",
+        "orientation": "unknown",
+        "source_notes": "Single-temperature tensile summary from NASA citation table."
+      },
       "model": {
         "type": "polynomial",
         "coefficients": [163750000.0]

@@ -1,0 +1,17 @@
+{
+  "source_id": "curated-public-src:ss304:alleima-304-304l",
+  "title": "Alleima datasheet: Sanmac 304/304L (1.4301/1.4307) hollow bar",
+  "publisher": "Alleima",
+  "organization": "Alleima",
+  "url_or_citation_id": "https://www.alleima.com/en/materials-center/material-datasheets/tube-and-pipe-seamless/sanmac/sanmac--304304l/",
+  "license_notes": "Public vendor datasheet page. Verify downstream redistribution rights for extracted numeric tables.",
+  "retrieved_at": "2026-02-18T00:00:00Z",
+  "page_or_table": "At high temperatures table (proof strength/tensile strength) and room-temperature minimum values table",
+  "extraction_method": "manual",
+  "metadata": {
+    "provider": "curated-public",
+    "data_origin": "datasheet-standard-minimum",
+    "yield_definition": "Rp0.2 (minimum)",
+    "material_grade_context": "EN 1.4301 / 1.4307"
+  }
+}
